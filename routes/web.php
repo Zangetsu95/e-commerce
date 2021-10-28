@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 /*For Admin*/
 Route::group(['prefix'=>'admin','middlewlare'=>['admin:admin']],function(){
-    Route::get('/login',[AdminController::class,'login']);
+    Route::get('/login',[AdminController::class,'loginForm']);
     Route::post('/login',[AdminController::class,'store'])->name('admin.login');
 });
 
