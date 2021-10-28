@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use App\Actions\Fortify\AttemptToAuthenticate;
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
+/* use laravel\fortify\actions\
+avant on utilisait le défaut mtn on prend le notre pour le attempt et redirect
+*/
 
 class FortifyServiceProvider extends ServiceProvider
 {
