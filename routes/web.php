@@ -25,7 +25,7 @@ Route::group(['prefix'=>'admin','middlewlare'=>['admin:admin']],function(){
 });
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->name('dashboard');
 
 /*For User */
