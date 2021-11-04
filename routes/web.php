@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*For Admin*/
+/*Admin all route*/
 Route::group(['prefix'=>'admin','middlewlare'=>['admin:admin']],function(){
     Route::get('/login',[AdminController::class,'loginForm']);
     Route::post('/login',[AdminController::class,'store'])->name('admin.login');
@@ -27,6 +27,8 @@ Route::group(['prefix'=>'admin','middlewlare'=>['admin:admin']],function(){
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
+
+Route::get('admin/logout',[AdminController::class,'destroy'])->name('admin.logout');
 
 /*For User */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
