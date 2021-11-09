@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/skin_color.css')}}">
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -28,7 +30,7 @@
         @include('admin.body.header')
 
         <!-- Left side column. contains the logo and sidebar -->
-       @include('admin.body.sidebar')
+        @include('admin.body.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -37,10 +39,7 @@
 
         </div>
         <!-- /.content-wrapper -->
-      @include('admin.body.footer')
-
-      
-       
+        @include('admin.body.footer')
 
         <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
@@ -56,11 +55,54 @@
     <script src="{{asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js')}}"></script>
     <script src="{{asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script>
 
-    <!-- Sunny Admin App -->
+    <!-- Sunny Admin App attention deuxième script-->
     <script src="{{asset('backend/js/template.js')}}"></script>
     <script src="{{asset('js/pages/dashboard.js')}}"></script>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
     
+  <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.success("{{ session('message') }}");
+  @endif
+
+  @if(Session::has('error'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.error("{{ session('error') }}");
+  @endif
+
+  @if(Session::has('info'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.info("{{ session('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.warning("{{ session('warning') }}");
+  @endif
+</script>
+    
+
+
 </body>
 
 </html>

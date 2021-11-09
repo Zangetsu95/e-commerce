@@ -31,7 +31,7 @@ class AdminProfileController extends Controller
         if ($request->file('profile_photo_path')) {
             $file = $request->file('profile_photo_path');
 
-            @unlink(public_path('upload/admin_images/'.$data->profile_photo_path));
+            @unlink(public_path('upload/admin_images/' . $data->profile_photo_path));
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
@@ -39,6 +39,12 @@ class AdminProfileController extends Controller
         }
 
         $data->save();
-        return redirect()->route('admin.profile');
+
+        $notifications = array(
+            'message' => 'Admin Profile Updated SuccessFuly !',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.profile')->with($notifications);
     }
 }
