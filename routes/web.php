@@ -33,6 +33,8 @@ Route::get('admin/logout',[AdminController::class,'destroy'])->name('admin.logou
 
 Route::get('admin/profile',[AdminProfileController::class,'AdminProfile'])->name('admin.profile');
 
+Route::get('admin/profile/edit',[AdminProfileController::class,'AdminProfileEdit'])->name('admin.profile.edit');
+
 /*For User */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
