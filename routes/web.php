@@ -37,6 +37,12 @@ Route::get('admin/profile/edit',[AdminProfileController::class,'AdminProfileEdit
 
 Route::post('admin/profile/store',[AdminProfileController::class,'AdminProfileStore'])->name('admin.profile.store');
 
+Route::get('admin/change/password',[AdminProfileController::class,'AdminChangePassword'])->name('admin.change.password');
+
+Route::post('update/change/password',[AdminProfileController::class,'AdminUpdateChangePassword'])->name('update.change.password');
+
+
+
 
 /*For User */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
