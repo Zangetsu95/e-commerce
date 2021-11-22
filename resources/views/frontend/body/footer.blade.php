@@ -108,7 +108,7 @@
         <div class="clearfix payment-methods">
           <ul>
             <li><img src="{{ asset('frontend/assets/images/payments/1.png') }}  " alt=""></li>
-            <li><img src="{{ asset('frontend/assets/images/payments/2.pn') }}  g" alt=""></li>
+            <li><img src="{{ asset('frontend/assets/images/payments/2.png') }}  " alt=""></li>
             <li><img src="{{ asset('frontend/assets/images/payments/3.png') }}  " alt=""></li>
             <li><img src="{{ asset('frontend/assets/images/payments/4.png') }}  " alt=""></li>
             <li><img src="{{ asset('frontend/assets/images/payments/5.png') }}  " alt=""></li>
