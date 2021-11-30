@@ -65,4 +65,5 @@ Route::get('/user/profile',[IndexController::class,'UserProfile'])->name('user.p
 
 Route::post('/user/profile/store',[IndexController::class,'UserProfileStore'])->name('user.profile.store');
 
+Route::get('/user/change/password',[IndexController::class,'UserChangePassword'])->name('change.password');
 
