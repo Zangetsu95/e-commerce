@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/skin_color.css')}}">
 
+    <!-- toastr-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
@@ -59,10 +60,11 @@
     <script src="{{asset('backend/js/template.js')}}"></script>
     <script src="{{asset('js/pages/dashboard.js')}}"></script>
 
+    <!-- Toastr -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
-    
+
   <script>
   @if(Session::has('message'))
   toastr.options =
@@ -100,7 +102,7 @@
   		toastr.warning("{{ session('warning') }}");
   @endif
 </script>
-    
+
 
 
 </body>
