@@ -76,4 +76,5 @@ Route::prefix('brand')->group(function () {
 
     Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand');
 
+    Route::get('/store', [BrandController::class, 'BrandStore'])->name('brand.store');
 });
