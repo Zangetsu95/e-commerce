@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('backend/images/favicon.ico')}}">
+    <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
     <title>Easy Ecommerce Admin - Dashboard</title>
 
 
     <!-- Vendors Style-->
-    <link rel="stylesheet" href="{{asset('backend/css/vendors_css.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
 
     <!-- Style-->
-    <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('backend/css/skin_color.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
     <!-- toastr-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -50,58 +50,60 @@
 
 
     <!-- Vendor JS -->
-    <script src="{{asset('backend/js/vendors.min.js')}}"></script>
-    <script src="{{asset('../assets/icons/feather-icons/feather.min.js')}}"></script>
-    <script src="{{asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js')}}"></script>
-    <script src="{{asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js')}}"></script>
-    <script src="{{asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script>
+    <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 
     <!-- Sunny Admin App attention deuxième script-->
-    <script src="{{asset('backend/js/template.js')}}"></script>
-    <script src="{{asset('js/pages/dashboard.js')}}"></script>
+    <script src="{{ asset('backend/js/template.js') }}"></script>
+    <script src="{{ asset('js/pages/dashboard.js') }}"></script>
 
     <!-- Toastr -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
 
-  <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.success("{{ session('message') }}");
-  @endif
+    <script>
+        @if (Session::has('message'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('message') }}");
+        @endif
 
-  @if(Session::has('error'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.error("{{ session('error') }}");
-  @endif
+        @if (Session::has('error'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
 
-  @if(Session::has('info'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.info("{{ session('info') }}");
-  @endif
+        @if (Session::has('info'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.info("{{ session('info') }}");
+        @endif
 
-  @if(Session::has('warning'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.warning("{{ session('warning') }}");
-  @endif
-</script>
+        @if (Session::has('warning'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 
 
 
