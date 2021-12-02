@@ -72,9 +72,18 @@ function CategoryUpdate (Request $request)
 
     }//end method
 
-function CategoryDelete ()
+function CategoryDelete ($id)
     {
+        $category = Category::FindOrFail($id);
 
+
+        Category::findOrFail($id)->delete();
+        $notifications = array(
+            'message' => 'Category Deleted SuccessFuly',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notifications);
     }//end method
 
 }

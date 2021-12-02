@@ -99,6 +99,6 @@ Route::prefix('category')->group(function () {
 
     Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
 
-    // Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
+    Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
 
 });

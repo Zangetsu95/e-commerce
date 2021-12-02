@@ -52,7 +52,7 @@
                                                     <a href="{{ route('category.edit', $item->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
-                                                    <a href="{{ route('brand.delete', $item->id) }}"
+                                                    <a href="{{ route('category.delete', $item->id) }}"
                                                         class="btn btn-danger" id="delete" title="Delete"><i
                                                             class="fa fa-trash"></i></a>
                                                 </td>
