@@ -28,7 +28,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Brand List</h3>
+                            <h3 class="box-title">Category List</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -36,11 +36,10 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Catehory Icon</th>
+                                            <th>Category Icon</th>
                                             <th>Category Name En</th>
                                             <th>Category Name Fr</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,14 +80,14 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-                                <form method="POST" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('category.store') }}">
                                     @csrf
 
                                     <div class="form-group">
                                         <h5>Category Name English <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="brand_name_en" class="form-control">
-                                            @error('brand_name_en')
+                                            <input type="text" name="category_name_en" class="form-control">
+                                            @error('category_name_en')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
@@ -97,8 +96,8 @@
                                     <div class="form-group">
                                         <h5>Category Name French <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="brand_name_fr" class="form-control">
-                                            @error('brand_name_fr')
+                                            <input type="text" name="category_name_fr" class="form-control">
+                                            @error('category_name_fr')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
@@ -107,8 +106,8 @@
                                     <div class="form-group">
                                         <h5>Category Icon <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="file" name="brand_image" class="form-control">
-                                            @error('brand_image')
+                                            <input type="text" name="category_icon" class="form-control">
+                                            @error('category_icon')
                                                 <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
@@ -116,7 +115,7 @@
 
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                            value="Add New "></input>
+                                            value="Add New ">
                                     </div>
 
                             </div>

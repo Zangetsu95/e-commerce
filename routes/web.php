@@ -93,12 +93,12 @@ Route::prefix('category')->group(function () {
 
     Route::get('/view', [CategoryController::class, 'CategoryView'])->name('view.category');
 
-    // Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('brand.store');
+    Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('category.store');
 
-    // Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('brand.edit');
+    // Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('Category.edit');
 
-    // Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('brand.update');
+    // Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('Category.update');
 
-    // Route::get('/delete/{id}', [CategoryController::class, 'BrandDelete'])->name('brand.delete');
+    // Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
 
 });
