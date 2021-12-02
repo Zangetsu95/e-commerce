@@ -53,8 +53,10 @@
                                                         style="width: 70px; height:40px">
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('brand.edit',$item->id)}}" class="btn btn-info">Edit</a>
-                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ route('brand.edit', $item->id) }}"
+                                                        class="btn btn-info"><i class="fa fa-pencil" title="Edit"></i></a>
+                                                    <a href="{{ route('brand.delete', $item->id) }}" class="btn btn-danger"
+                                                        id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -88,7 +90,7 @@
                                         <div class="controls">
                                             <input type="text" name="brand_name_en" class="form-control">
                                             @error('brand_name_en')
-                                            <span class="text-danger">{{$message}} </span>
+                                                <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -98,7 +100,7 @@
                                         <div class="controls">
                                             <input type="text" name="brand_name_fr" class="form-control">
                                             @error('brand_name_fr')
-                                            <span class="text-danger">{{$message}} </span>
+                                                <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -108,7 +110,7 @@
                                         <div class="controls">
                                             <input type="file" name="brand_image" class="form-control">
                                             @error('brand_image')
-                                            <span class="text-danger">{{$message}} </span>
+                                                <span class="text-danger">{{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
