@@ -43,13 +43,32 @@ class CategoryController extends Controller
 
     }//end method
 
-function CategoryEdit ()
+function CategoryEdit ($id)
     {
+        $category = Category::findorFail($id);
 
+        return view('backend.category.category_edit', compact('category'));
     }//end method
 
-function CategoryUpdate ()
+function CategoryUpdate (Request $request)
     {
+        $category_id = $request->id;
+        $old_icon = $request->old_image;
+
+        Category::FindOrFail($category_id)->update([
+            'category_name_en' => $request->category_name_en,
+            'category_name_fr' => $request->category_name_fr,
+            'category_slug_eng' => strtolower(str_replace('.', '-', $request->category_name_en)),
+            'category_slug_fr' => str_replace('.', '-', $request->category_name_fr),
+            'category_icon' => $request->category_icon,
+        ]);
+
+        $notifications = array(
+            'message' => 'Brand Updated SuccessFuly !',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('view.category')->with($notifications);
 
     }//end method
 
