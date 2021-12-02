@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Controllers\Backend\CategoryController;
 
 
 /*
@@ -83,5 +84,21 @@ Route::prefix('brand')->group(function () {
     Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('brand.update');
 
     Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('brand.delete');
+
+});
+
+/* Admin category All route */
+
+Route::prefix('category')->group(function () {
+
+    Route::get('/view', [CategoryController::class, 'CategoryView'])->name('view.category');
+
+    // Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('brand.store');
+
+    // Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('brand.edit');
+
+    // Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('brand.update');
+
+    // Route::get('/delete/{id}', [CategoryController::class, 'BrandDelete'])->name('brand.delete');
 
 });
