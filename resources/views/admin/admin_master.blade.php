@@ -68,40 +68,31 @@
 
 
     <script>
+
         @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
             toastr.options =
             {
             "closeButton" : true,
             "progressBar" : true
             }
-            toastr.success("{{ session('message') }}");
-        @endif
+            switch(type){
+            case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
 
-        @if (Session::has('error'))
-            toastr.options =
-            {
-            "closeButton" : true,
-            "progressBar" : true
-            }
-            toastr.error("{{ session('error') }}");
-        @endif
+            case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
 
-        @if (Session::has('info'))
-            toastr.options =
-            {
-            "closeButton" : true,
-            "progressBar" : true
-            }
-            toastr.info("{{ session('info') }}");
-        @endif
+            case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
 
-        @if (Session::has('warning'))
-            toastr.options =
-            {
-            "closeButton" : true,
-            "progressBar" : true
+            case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
             }
-            toastr.warning("{{ session('warning') }}");
         @endif
     </script>
 
