@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
 
@@ -10,28 +11,28 @@ class SubCategoryController extends Controller
 {
     function SubCategoryView()
     {
+        $category = Category::orderBy('category_name_en','ASC')->get();
         $subCategory = SubCategory::latest()->get();
-        return view('backend.category.subcategory_view', compact('subCategory'));
+        return view('backend.category.subcategory_view', compact('subCategory','category'));
     }
 
     function SubCategoryStore(Request $request)
     {
         $request->validate([
+            'category_id' => 'required',
             'subcategory_name_en' => 'required',
             'subcategory_name_fr' => 'required',
-            'subcategory_icon' => 'required',
         ], [
-            'subcategory_name_en.required' => 'Input Category English Name',
-            'subcategory_name_fr.required' => 'Input Category French Name',
-
+            'category_id.required' => 'Please select any option',
+            'subcategory_name_en.required' => 'Input SubCategory English Name',
         ]);
 
         SubCategory::insert([
-            'category_name_en' => $request->category_name_en,
-            'category_name_fr' => $request->category_name_fr,
-            'category_slug_en' => strtolower(str_replace('.', '-', $request->category_name_en)),
-            'category_slug_fr' => str_replace('.', '-', $request->category_name_fr),
-            'category_icon' => $request->category_icon,
+            'category_id' => $request->category_id,
+            'subcategory_name_en' => $request->subcategory_name_en,
+            'subcategory_name_fr' => $request->subcategory_name_fr,
+            'subcategory_slug_en' => strtolower(str_replace('.', '-', $request->subcategory_name_en)),
+            'subcategory_slug_fr' => str_replace('.', '-', $request->subcategory_name_fr),
         ]);
 
         $notifications = array(
@@ -44,30 +45,30 @@ class SubCategoryController extends Controller
 
     function SubCategoryEdit($id)
     {
+        $category = Category::orderBy('category_name_en','ASC')->get();
         $subCategory = SubCategory::findorFail($id);
 
-        return view('backend.category.category_edit', compact('subCategory'));
+        return view('backend.category.subcategory_edit', compact('subCategory','category'));
     } //end method
 
     function SubCategoryUpdate(Request $request)
     {
-        $category_id = $request->id;
-        $old_icon = $request->old_image;
+        $subCategory_id = $request->id;
 
-        SubCategory::FindOrFail($category_id)->update([
-            'category_name_en' => $request->category_name_en,
-            'category_name_fr' => $request->category_name_fr,
-            'category_slug_eng' => strtolower(str_replace('.', '-', $request->category_name_en)),
-            'category_slug_fr' => str_replace('.', '-', $request->category_name_fr),
-            'category_icon' => $request->category_icon,
+        SubCategory::FindOrFail($subCategory_id)->update([
+            'category_id' => $request->category_id,
+            'subcategory_name_en' => $request->subcategory_name_en,
+            'subcategory_name_fr' => $request->subcategory_name_fr,
+            'subcategory_slug_eng' => strtolower(str_replace('.', '-', $request->subcategory_name_en)),
+            'subcategory_slug_fr' => str_replace('.', '-', $request->subcategory_name_fr),
         ]);
 
         $notifications = array(
-            'message' => 'Brand Updated SuccessFuly !',
+            'message' => 'SubCategory Updated SuccessFuly !',
             'alert-type' => 'info'
         );
 
-        return redirect()->route('all.category')->with($notifications);
+        return redirect()->route('all.subcategory')->with($notifications);
     } //end method
 
     function SubCategoryDelete($id)
