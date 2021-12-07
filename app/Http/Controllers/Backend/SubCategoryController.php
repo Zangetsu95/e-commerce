@@ -4,29 +4,29 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\SubCategory;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
-    function CategoryView ()
+    function SubCategoryView()
     {
-        $category = Category::latest()->get();
-        return view('backend.category.category_view', compact('category'));
+        $subCategory = SubCategory::latest()->get();
+        return view('backend.category.subcategory_view', compact('subCategory'));
     }
 
-    function CategoryStore (Request $request)
+    function SubCategoryStore(Request $request)
     {
         $request->validate([
-            'category_name_en' => 'required',
-            'category_name_fr' => 'required',
-            'category_icon' => 'required',
+            'subcategory_name_en' => 'required',
+            'subcategory_name_fr' => 'required',
+            'subcategory_icon' => 'required',
         ], [
-            'category_name_en.required' => 'Input Category English Name',
-            'category_name_fr.required' => 'Input Category French Name',
+            'subcategory_name_en.required' => 'Input Category English Name',
+            'subcategory_name_fr.required' => 'Input Category French Name',
 
         ]);
 
-        Category::insert([
+        SubCategory::insert([
             'category_name_en' => $request->category_name_en,
             'category_name_fr' => $request->category_name_fr,
             'category_slug_en' => strtolower(str_replace('.', '-', $request->category_name_en)),
@@ -40,22 +40,21 @@ class CategoryController extends Controller
         );
 
         return redirect()->back()->with($notifications);
+    } //end method
 
-    }//end method
-
-function CategoryEdit ($id)
+    function SubCategoryEdit($id)
     {
-        $category = Category::findorFail($id);
+        $subCategory = SubCategory::findorFail($id);
 
-        return view('backend.category.category_edit', compact('category'));
-    }//end method
+        return view('backend.category.category_edit', compact('subCategory'));
+    } //end method
 
-function CategoryUpdate (Request $request)
+    function SubCategoryUpdate(Request $request)
     {
         $category_id = $request->id;
         $old_icon = $request->old_image;
 
-        Category::FindOrFail($category_id)->update([
+        SubCategory::FindOrFail($category_id)->update([
             'category_name_en' => $request->category_name_en,
             'category_name_fr' => $request->category_name_fr,
             'category_slug_eng' => strtolower(str_replace('.', '-', $request->category_name_en)),
@@ -69,22 +68,19 @@ function CategoryUpdate (Request $request)
         );
 
         return redirect()->route('all.category')->with($notifications);
+    } //end method
 
-    }//end method
-
-function CategoryDelete ($id)
+    function SubCategoryDelete($id)
     {
-        $category = Category::FindOrFail($id);
+        $subCategory = SubCategory::FindOrFail($id);
 
 
-        Category::findOrFail($id)->delete();
+        SubCategory::findOrFail($id)->delete();
         $notifications = array(
             'message' => 'Category Deleted SuccessFuly',
             'alert-type' => 'info'
         );
 
         return redirect()->back()->with($notifications);
-    }//end method
-
+    } //end method
 }
-
