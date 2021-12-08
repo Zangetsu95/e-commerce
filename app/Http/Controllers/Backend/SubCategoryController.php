@@ -12,9 +12,9 @@ class SubCategoryController extends Controller
 {
     function SubCategoryView()
     {
-        $category = Category::orderBy('category_name_en','ASC')->get();
+        $category = Category::orderBy('category_name_en', 'ASC')->get();
         $subCategory = SubCategory::latest()->get();
-        return view('backend.category.subcategory_view', compact('subCategory','category'));
+        return view('backend.category.subcategory_view', compact('subCategory', 'category'));
     }
 
     function SubCategoryStore(Request $request)
@@ -46,10 +46,10 @@ class SubCategoryController extends Controller
 
     function SubCategoryEdit($id)
     {
-        $category = Category::orderBy('category_name_en','ASC')->get();
+        $category = Category::orderBy('category_name_en', 'ASC')->get();
         $subCategory = SubCategory::findorFail($id);
 
-        return view('backend.category.subcategory_edit', compact('subCategory','category'));
+        return view('backend.category.subcategory_edit', compact('subCategory', 'category'));
     } //end method
 
     function SubCategoryUpdate(Request $request)
@@ -91,9 +91,15 @@ class SubCategoryController extends Controller
 
     function SubSubCategoryView()
     {
-        $category = Category::orderBy('category_name_en','ASC')->get();
+        $category = Category::orderBy('category_name_en', 'ASC')->get();
         $subSubCategory = SubSubCategory::latest()->get();
-        return view('backend.category.sub_subcategory_view', compact('subSubCategory','category'));
+        return view('backend.category.sub_subcategory_view', compact('subSubCategory', 'category'));
     }
+    
+    public function GetSubCategory($category_id)
+    {
 
+        $subcat = SubCategory::where('category_id', $category_id)->orderBy('subcategory_name_en', 'ASC')->get();
+        return json_encode($subcat);
+    }
 }
