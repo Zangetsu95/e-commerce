@@ -95,11 +95,40 @@ class SubCategoryController extends Controller
         $subSubCategory = SubSubCategory::latest()->get();
         return view('backend.category.sub_subcategory_view', compact('subSubCategory', 'category'));
     }
-    
+
     public function GetSubCategory($category_id)
     {
 
         $subcat = SubCategory::where('category_id', $category_id)->orderBy('subcategory_name_en', 'ASC')->get();
         return json_encode($subcat);
+    }
+
+    public function SubSubCategoryStore (Request $request)
+    {
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'subsubcategory_name_en' => 'required',
+            'subsubcategory_name_fr' => 'required',
+        ], [
+            'category_id.required' => 'Please select any option',
+            'subsubcategory_name_en.required' => 'Input Sub-SubCategory English Name',
+        ]);
+
+        SubSubCategory::insert([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'subsubcategory_name_en' => $request->subsubcategory_name_en,
+            'subsubcategory_name_fr' => $request->subsubcategory_name_fr,
+            'subsubcategory_slug_en' => strtolower(str_replace('.', '-', $request->subsubcategory_name_en)),
+            'subsubcategory_slug_fr' => str_replace('.', '-', $request->subsubcategory_name_fr),
+        ]);
+
+        $notifications = array(
+            'message' => 'Category inserted SuccessFuly !',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notifications);
     }
 }
