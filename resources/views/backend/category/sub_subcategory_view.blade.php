@@ -49,14 +49,14 @@
                                         @foreach ($subSubCategory as $item)
                                             <tr>
                                                 <td>{{ $item->category->category_name_en }}</td>
-                                                <td>{{ $item->subcategory->subcategory_name_en }}</td>
+                                                <td>{{ $item->subCategory->subcategory_name_en }}</td>
                                                 <td>{{ $item->subsubcategory_name_en }}</td>
                                                 <td>{{ $item->subsubcategory_name_fr }}</td>
                                                 <td>
                                                     <a href="{{ route('subsubcategory.edit', $item->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
-                                                    <a href="{{ route('subcategory.delete', $item->id) }}"
+                                                    <a href="{{ route('subsubcategory.delete', $item->id) }}"
                                                         class="btn btn-danger" id="delete" title="Delete"><i
                                                             class="fa fa-trash"></i></a>
                                                 </td>
