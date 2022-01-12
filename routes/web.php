@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 
 
 /*
@@ -127,5 +128,14 @@ Route::prefix('category')->group(function () {
     Route::post('/sub/sub/update', [SubCategoryController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
 
     Route::get('/sub/sub/delete/{id}', [SubCategoryController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
+
+});
+
+
+// Admin Product Routes
+Route::prefix('product')->group(function () {
+
+    Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
+
 
 });
