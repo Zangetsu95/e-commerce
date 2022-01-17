@@ -417,6 +417,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
+                            $('select[name="subsubcategory_id"]').html('');
                             var d = $('select[name="subcategory_id"]').empty();
                             $.each(data, function(key, value) {
                                 $('select[name="subcategory_id"]').append(
