@@ -51,7 +51,7 @@
                                                 <td>{{ $item->product_name_fr }}</td>
                                                 <td>{{ $item->product_qty }}</td>
                                                 <td>
-                                                    <a href="{{ route('category.edit', $item->id) }}"
+                                                    <a href="{{ route('product-edit', $item->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
                                                     <a href="{{ route('category.delete', $item->id) }}"

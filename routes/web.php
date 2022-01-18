@@ -141,5 +141,7 @@ Route::prefix('product')->group(function () {
 
     Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
 
+    Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product-edit');
+
 
 });
