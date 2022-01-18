@@ -10,6 +10,7 @@ use App\Models\SubSubCategory;
 use App\Models\Brand;
 use App\Models\Product;
 use Carbon\Carbon;
+use App\Models\MultiImg;
 use Image;
 
 class ProductController extends Controller
@@ -19,44 +20,44 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
 
-        return view('backend.product.product_add',compact('categories','brands'));
+        return view('backend.product.product_add', compact('categories', 'brands'));
     }
 
     public function StoreProduct(Request $request)
     {
 
-         //création d'un id + nom unique avec l'extension de l'image
-         $image = $request->file('brand_image');
-         $name_eng = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-         //l'extension laravel que nous avons installé
-         Image::make($image)->resize(917,1000)->save('upload/products/brand/thambnail/' . $name_eng);
-         $save_url = 'upload/products/thambnail' . $name_eng;
+        //création d'un id + nom unique avec l'extension de l'image
+        $image = $request->file('product_thambnail');
+        $name_eng = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        //l'extension laravel que nous avons installé
+        Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_eng);
+        $save_url = 'upload/products/thambnail' . $name_eng;
 
-        Product::insert([
+        $product_id  = Product::insert([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'subsubcategory_id' => $request->subsubcategory_id,
             'product_name_en' => $request->product_name_en,
-            'product_name_hin' => $request->product_name_hin,
+            'product_name_fr' => $request->product_name_fr,
             'product_slug_en' =>  strtolower(str_replace(' ', '-', $request->product_name_en)),
-            'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
+            'product_slug_fr' => str_replace(' ', '-', $request->product_name_fr),
             'product_code' => $request->product_code,
 
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,
-            'product_tags_hin' => $request->product_tags_hin,
+            'product_tags_fr' => $request->product_tags_fr,
             'product_size_en' => $request->product_size_en,
-            'product_size_hin' => $request->product_size_hin,
+            'product_size_fr' => $request->product_size_fr,
             'product_color_en' => $request->product_color_en,
-            'product_color_hin' => $request->product_color_hin,
+            'product_color_fr' => $request->product_color_fr,
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp_en' => $request->short_descp_en,
-            'short_descp_hin' => $request->short_descp_hin,
+            'short_descp_fr' => $request->short_descp_fr,
             'long_descp_en' => $request->long_descp_en,
-            'long_descp_hin' => $request->long_descp_hin,
+            'long_descp_fr' => $request->long_descp_fr,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
@@ -67,5 +68,39 @@ class ProductController extends Controller
             'status' => 1,
             'created_at' => Carbon::now(),
         ]);
-    }
+
+        ////////// Multiple Image Upload Start ///////////
+
+        $images = $request->file('multi_img');
+        foreach ($images as $img) {
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+
+
+            MultiImg::insert([
+
+                'product_id' => $product_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(),
+
+            ]);
+        }
+
+        ////////// Een Multiple Image Upload Start ///////////
+
+
+        $notification = array(
+            'message' => 'Product Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } // end method
+
+
+
+
+
+
 }
