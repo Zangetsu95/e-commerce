@@ -31,7 +31,7 @@ class ProductController extends Controller
         $name_eng = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         //l'extension laravel que nous avons installé
         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_eng);
-        $save_url = 'upload/products/thambnail' . $name_eng;
+        $save_url = 'upload/products/thambnail/' . $name_eng;
 
         $product_id  = Product::insert([
             'brand_id' => $request->brand_id,
@@ -95,10 +95,15 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage-product')->with($notification);
     } // end method
 
 
+    public function ManageProduct()
+    {
+        $products = Product::Latest()->get();
+        return view('backend.product.product_view',compact('products'));
+    }
 
 
 
