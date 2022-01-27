@@ -143,5 +143,6 @@ Route::prefix('product')->group(function () {
 
     Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product-edit');
 
+    Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
 
 });

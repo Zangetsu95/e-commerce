@@ -18,8 +18,10 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form method="POST" action="{{ route('product-store') }}" enctype="multipart/form-data">
+                            {{-- enctype="multipart/form-data" --}}
+                            <form method="POST" action="{{ route('product-update') }}">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $products->id }}">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
@@ -267,9 +269,25 @@
                                             </div> <!-- end col md 6 -->
 
                                         </div> <!-- end 5th row  -->
+
                                         <div class="row">
                                             <!-- start 6th row  -->
-                                            <div class="col-md-4">
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <h5>Product Selling Price <span class="text-danger">*</span></h5>
+                                                    <div class="controls">
+                                                        <input type="text" name="selling_price" class="form-control"
+                                                            required="" value="{{ $products->selling_price }}">
+                                                        @error('selling_price')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col md 4 -->
+
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Product Discount Price <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -282,6 +300,8 @@
                                                 </div>
 
                                             </div> <!-- end col md 4 -->
+
+
                                             <div class="col-md-4">
                                                 {{-- <div class="form-group">
                                                     <h5>Main Thambnail <span class="text-danger">*</span></h5>
@@ -324,8 +344,8 @@
                                                     <div class="controls">
                                                         <textarea name="short_descp_en" id="textarea"
                                                             class="form-control" required placeholder="Textarea text">
-                                                                {{ $products->short_descp_en }}
-                                                            </textarea>
+                                                                        {{ $products->short_descp_en }}
+                                                                    </textarea>
                                                     </div>
                                                 </div>
 
@@ -336,8 +356,8 @@
                                                     <div class="controls">
                                                         <textarea name="short_descp_fr" id="textarea"
                                                             class="form-control" required placeholder="Textarea text">
-                                                                {{ $products->short_descp_fr }}
-                                                            </textarea>
+                                                                        {{ $products->short_descp_fr }}
+                                                                    </textarea>
                                                     </div>
                                                 </div>
 
@@ -356,8 +376,8 @@
                                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <textarea id="editor1" name="long_descp_en" rows="10" cols="80">
-                                                                {{ $products->long_descp_en }}
-                                                        </textarea>
+                                                                        {{ $products->long_descp_en }}
+                                                                </textarea>
                                                     </div>
                                                 </div>
 
@@ -367,8 +387,8 @@
                                                     <h5>Long Description frdi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <textarea id="editor2" name="long_descp_fr" rows="10" cols="80">
-                                                                {{ $products->long_descp_en }}
-                                                         </textarea>
+                                                                        {{ $products->long_descp_en }}
+                                                                 </textarea>
                                                     </div>
                                                 </div>
 
@@ -386,12 +406,13 @@
                                                     <div class="controls">
                                                         <fieldset>
                                                             <input type="checkbox" id="checkbox_2" name="hot_deals"
-                                                                value="1" {{ $products->hot_deals == 1 ? 'checked' : ''}}>
+                                                                value="1"
+                                                                {{ $products->hot_deals == 1 ? 'checked' : '' }}>
                                                             <label for="checkbox_2">Hot Deals</label>
                                                         </fieldset>
                                                         <fieldset>
-                                                            <input type="checkbox" id="checkbox_3" name="featured"
-                                                                value="1" {{ $products->featured == 1 ? 'checked' : ''}}>
+                                                            <input type="checkbox" id="checkbox_3" name="featured" value="1"
+                                                                {{ $products->featured == 1 ? 'checked' : '' }}>
                                                             <label for="checkbox_3">Featured</label>
                                                         </fieldset>
                                                     </div>
@@ -403,12 +424,14 @@
                                                     <div class="controls">
                                                         <fieldset>
                                                             <input type="checkbox" id="checkbox_4" name="special_offer"
-                                                                value="1" {{ $products->special_offers == 1 ? 'checked' : ''}}>
+                                                                value="1"
+                                                                {{ $products->special_offers == 1 ? 'checked' : '' }}>
                                                             <label for="checkbox_4">Special Offer</label>
                                                         </fieldset>
                                                         <fieldset>
                                                             <input type="checkbox" id="checkbox_5" name="special_deals"
-                                                                value="1" {{ $products->specials_deals == 1 ? 'checked' : ''}}>
+                                                                value="1"
+                                                                {{ $products->specials_deals == 1 ? 'checked' : '' }}>
                                                             <label for="checkbox_5">Special Deals</label>
                                                         </fieldset>
                                                     </div>
