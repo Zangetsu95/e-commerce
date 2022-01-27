@@ -102,13 +102,13 @@ class ProductController extends Controller
     public function ManageProduct()
     {
         $products = Product::Latest()->get();
-        return view('backend.product.product_view',compact('products'));
+        return view('backend.product.product_view', compact('products'));
     }
 
 
     public function EditProduct($id)
     {
-        $multiImgs = MultiImg::where('product_id',$id)->get();
+        $multiImgs = MultiImg::where('product_id', $id)->get();
 
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -117,8 +117,7 @@ class ProductController extends Controller
 
         $products = Product::FindOrFail($id);
 
-        return view('backend.product.product_edit',compact('categories','brands','subCategory','subSubCategory','products','multiImgs'));
-
+        return view('backend.product.product_edit', compact('categories', 'brands', 'subCategory', 'subSubCategory', 'products', 'multiImgs'));
     }
 
     public function ProductDataUpdate(Request $request)
@@ -167,7 +166,38 @@ class ProductController extends Controller
         );
 
         return redirect()->route('manage-product')->with($notification);
-
     }
 
+    public function MultiImageUpdate(Request $request)
+    {
+        $imgs = $request->multi_img;
+
+        foreach ($imgs as $id => $img) {
+
+            // on va récuperer l'image avec l'id et la remplacer
+            $imgDel = MultiImg::findOrFail($id);
+            unlink($imgDel->photo_name);
+
+            //création d'un id + nom unique avec l'extension de l'image
+            $image = $request->file('product_thambnail');
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            //l'extension laravel que nous avons installé
+            Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+
+
+            MultiImg::where('id',$id)->update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }//end foreach
+
+        $notification = array(
+            'message' => 'Product Image Updated  Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

@@ -344,8 +344,8 @@
                                                     <div class="controls">
                                                         <textarea name="short_descp_en" id="textarea"
                                                             class="form-control" required placeholder="Textarea text">
-                                                                                                    {{ $products->short_descp_en }}
-                                                                                                </textarea>
+                                                                                                        {{ $products->short_descp_en }}
+                                                                                                    </textarea>
                                                     </div>
                                                 </div>
 
@@ -356,8 +356,8 @@
                                                     <div class="controls">
                                                         <textarea name="short_descp_fr" id="textarea"
                                                             class="form-control" required placeholder="Textarea text">
-                                                                                                    {{ $products->short_descp_fr }}
-                                                                                                </textarea>
+                                                                                                        {{ $products->short_descp_fr }}
+                                                                                                    </textarea>
                                                     </div>
                                                 </div>
 
@@ -376,8 +376,8 @@
                                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <textarea id="editor1" name="long_descp_en" rows="10" cols="80">
-                                                                                                    {{ $products->long_descp_en }}
-                                                                                            </textarea>
+                                                                                                        {{ $products->long_descp_en }}
+                                                                                                </textarea>
                                                     </div>
                                                 </div>
 
@@ -387,8 +387,8 @@
                                                     <h5>Long Description frdi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <textarea id="editor2" name="long_descp_fr" rows="10" cols="80">
-                                                                                                    {{ $products->long_descp_en }}
-                                                                                             </textarea>
+                                                                                                        {{ $products->long_descp_en }}
+                                                                                                 </textarea>
                                                     </div>
                                                 </div>
 
@@ -466,8 +466,8 @@
                             <h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
                         </div>
 
-                        <form method="" action="" enctype="multipart/form-data">
-
+                        <form method="POST" action="{{ route('update-product-image') }}" enctype="multipart/form-data">
+                            @csrf
                             <div class="row row-sm">
                                 @foreach ($multiImgs as $img)
                                     <div class="col-md-3">
@@ -484,7 +484,8 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">Change Image <span
                                                             class="tx-danger">*</span></label>
-                                                    <input class="form-control" type="file" name="multi_img[ $img->id ]">
+                                                    <input class="form-control" type="file"
+                                                        name="multi_img[ {{ $img->id }} ]">
                                                 </div>
                                                 </p>
                                             </div>
@@ -496,7 +497,7 @@
                             <div class="text-xs-right">
                                 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
                             </div>
-                            
+
                             <br><br>
 
                         </form>
@@ -504,7 +505,7 @@
                 </div>
             </div> <!-- // end row  -->
         </section>
-
+        {{-- End Multiple image update area --}}
 
 
     </div>
