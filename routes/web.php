@@ -147,4 +147,6 @@ Route::prefix('product')->group(function () {
 
     Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
 
+    Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
+
 });

@@ -179,7 +179,6 @@ class ProductController extends Controller
             unlink($imgDel->photo_name);
 
             //création d'un id + nom unique avec l'extension de l'image
-            $image = $request->file('product_thambnail');
             $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
             //l'extension laravel que nous avons installé
             Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
@@ -199,5 +198,34 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function ThambnailImageUpdate (Request $request)
+    {
+        $product_id = $request->id;
+        $oldImage = $request->old_img;
+        unlink($oldImage);
+
+
+         //création d'un id + nom unique avec l'extension de l'image
+         $image = $request->file('product_thambnail');
+         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+         //l'extension laravel que nous avons installé
+         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
+         $save_url = 'upload/products/thambnail/' . $name_gen;
+
+         Product::findOrFail($product_id)->update([
+            'product_thambnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+
+        $notification = array(
+            'message' => 'Product Image Thambnail Updated  Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
     }
 }
