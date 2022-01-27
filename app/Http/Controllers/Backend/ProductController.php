@@ -28,12 +28,12 @@ class ProductController extends Controller
 
         //création d'un id + nom unique avec l'extension de l'image
         $image = $request->file('product_thambnail');
-        $name_eng = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         //l'extension laravel que nous avons installé
-        Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_eng);
-        $save_url = 'upload/products/thambnail/' . $name_eng;
+        Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
+        $save_url = 'upload/products/thambnail/' . $name_gen;
 
-        $product_id  = Product::insert([
+        $product_id  = Product::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
@@ -87,7 +87,7 @@ class ProductController extends Controller
             ]);
         }
 
-        ////////// Een Multiple Image Upload Start ///////////
+        ////////// Een Multiple Image Upload End ///////////
 
 
         $notification = array(
@@ -108,6 +108,8 @@ class ProductController extends Controller
 
     public function EditProduct($id)
     {
+        $multiImgs = MultiImg::where('product_id',$id)->get();
+
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         $subCategory = SubCategory::latest()->get();
@@ -115,7 +117,7 @@ class ProductController extends Controller
 
         $products = Product::FindOrFail($id);
 
-        return view('backend.product.product_edit',compact('categories','brands','subCategory','subSubCategory','products'));
+        return view('backend.product.product_edit',compact('categories','brands','subCategory','subSubCategory','products','multiImgs'));
 
     }
 
