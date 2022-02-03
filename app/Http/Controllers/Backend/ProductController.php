@@ -185,12 +185,11 @@ class ProductController extends Controller
             $uploadPath = 'upload/products/multi-image/' . $make_name;
 
 
-            MultiImg::where('id',$id)->update([
+            MultiImg::where('id', $id)->update([
                 'photo_name' => $uploadPath,
                 'updated_at' => Carbon::now(),
             ]);
-
-        }//end foreach
+        } //end foreach
 
         $notification = array(
             'message' => 'Product Image Updated  Successfully',
@@ -200,21 +199,21 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function ThambnailImageUpdate (Request $request)
+    public function ThambnailImageUpdate(Request $request)
     {
         $product_id = $request->id;
         $oldImage = $request->old_img;
         unlink($oldImage);
 
 
-         //création d'un id + nom unique avec l'extension de l'image
-         $image = $request->file('product_thambnail');
-         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-         //l'extension laravel que nous avons installé
-         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
-         $save_url = 'upload/products/thambnail/' . $name_gen;
+        //création d'un id + nom unique avec l'extension de l'image
+        $image = $request->file('product_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        //l'extension laravel que nous avons installé
+        Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
+        $save_url = 'upload/products/thambnail/' . $name_gen;
 
-         Product::findOrFail($product_id)->update([
+        Product::findOrFail($product_id)->update([
             'product_thambnail' => $save_url,
             'updated_at' => Carbon::now(),
         ]);
@@ -226,7 +225,6 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
 
     public function MultiImageDelete($id)
@@ -241,12 +239,11 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
 
-    public function ProductActive ($id)
+    public function ProductActive($id)
     {
-        Product::findOrFail($id)->update(['status' => 1 ]);
+        Product::findOrFail($id)->update(['status' => 1]);
 
         $notification = array(
             'message' => 'Product Active  Successfully',
@@ -256,9 +253,9 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function ProductInactive ($id)
+    public function ProductInactive($id)
     {
-        Product::findOrFail($id)->update(['status' => 0 ]);
+        Product::findOrFail($id)->update(['status' => 0]);
 
         $notification = array(
             'message' => 'Product Inactive  Successfully',
@@ -266,5 +263,29 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function ProductDelete($id)
+    {
+        //delete the thambnail image
+        $product = Product::findOrFail($id);
+        unlink($product->product_thambnail);
+        Product::findOrFail($id)->delete();
+
+        //We must also delete the multiple image !
+        $images = MultiImg::where('product_id', $id)->get();// we get all the data
+        foreach ($images as $img) {
+
+            unlink($img->photo_name);
+            MultiImg::where('product_id',$id)->delete();
+        }
+
+        $notification = array(
+            'message' => 'Product Deleted  Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
     }
 }

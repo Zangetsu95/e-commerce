@@ -155,4 +155,7 @@ Route::prefix('product')->group(function () {
 
     Route::get('/inactive/{id}', [ProductController::class, 'ProductInactive'])->name('product-inactive');
 
+    Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+
+
 });
