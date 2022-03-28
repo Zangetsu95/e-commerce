@@ -250,7 +250,7 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
 
-        // return redirect()->back()->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function ProductInactive($id)
