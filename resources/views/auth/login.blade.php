@@ -31,7 +31,7 @@
                                             <input type="email" id="email"  name="email" placeholder="Email *" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" id="password" name="password " placeholder="Your password *" />
+                                            <input type="password" id="password" name="password" placeholder="Your password *" />
                                         </div>
                                         <div class="login_footer form-group mb-50">
                                             <div class="chek-form">
@@ -57,3 +57,4 @@
 </main>
 
 @endsection
+

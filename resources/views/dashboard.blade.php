@@ -1,43 +1,6 @@
 @extends('frontend.main_master')
 @section('content')
 
-
-    <div class="body-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"><br><br>
-                    <img class="card-img-top" style="border-radius: 50%"
-                        src="{{ !empty($user->profile_photo_path) ? url('upload/user_images/' . $user->profile_photo_path) : url('upload/no_image.jpg/') }}"
-                        height="100%" width="100%"><br><br>
-                    <ul class="list-group list-group-flush">
-
-                        <ul class="list-group list-group-flush">
-
-                            <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
-                            <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
-                            <a href="{{ route('change.password')}}" class="btn btn-primary btn-sm btn-block">Change Password</a>
-                            <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
-
-                        </ul>
-
-                    </ul>
-                </div><!-- end col md 2 -->
-
-                <div class="col-md-2">
-
-                </div><!-- end col md 2 -->
-
-                <div class="col-md-6">
-                    <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Hi....</span><strong>
-                                {{ Auth::user()->name }}</strong> Welcome To ShinSekaiManga</h3>
-                    </div>
-
-                </div><!-- end col md 6 -->
-
-            </div><!-- row -->
-        </div>
-    </div>
     <main class="main pages">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -53,6 +16,7 @@
                     <div class="col-lg-10 m-auto">
                         <div class="row">
                             <div class="col-md-3">
+
                                 <div class="dashboard-menu">
                                     <ul class="nav flex-column" role="tablist">
                                         <li class="nav-item">
@@ -81,13 +45,31 @@
                                     <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h3 class="mb-0">Hello Rosie!</h3>
+                                                <h3 class="mb-0">Hello <strong>
+                                                    {{ Auth::user()->name }}</strong> Welcome To ShinSekaiManga</h3>
                                             </div>
                                             <div class="card-body">
                                                 <p>
                                                     From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>,<br />
                                                     manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a>
                                                 </p>
+                                                <div class="col-md-2"><br><br>
+                                                    <img class="card-img-top" style="border-radius: 50%"
+                                                        src="{{ !empty($user->profile_photo_path) ? url('upload/user_images/' . $user->profile_photo_path) : url('upload/no_image.jpg/') }}"
+                                                        height="100%" width="100%"><br><br>
+                                                    <ul class="list-group list-group-flush">
+
+                                                        <ul class="list-group list-group-flush">
+
+                                                            <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
+                                                            <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
+                                                            <a href="{{ route('change.password')}}" class="btn btn-primary btn-sm btn-block">Change Password</a>
+                                                            <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
+
+                                                        </ul>
+
+                                                    </ul>
+                                                </div><!-- end col md 2 -->
                                             </div>
                                         </div>
                                     </div>
@@ -249,5 +231,6 @@
             </div>
         </div>
     </main>
+
 
 @endsection

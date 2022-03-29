@@ -1,43 +1,51 @@
 @extends('frontend.main_master')
 @section('content')
 
-<div class="breadcrumb">
-    <div class="container">
-        <div class="breadcrumb-inner">
-            <ul class="list-inline list-unstyled">
-                <li><a href="home.html">Home</a></li>
-                <li class='active'>Forget Password</li>
-            </ul>
-        </div><!-- /.breadcrumb-inner -->
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
-<div class="body-content">
-    <div class="container">
-        <div class="sign-in-page">
-            <div class="row">
-                <!-- Sign-in -->
-                <div class="col-md-6 col-sm-6 sign-in">
-                    <h4 class="">Forget Password</h4>
-                    <p class="">Forgot your password ? No problem !</p>
-
-                    <!-- FORM-->
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-                            <input type="email" id="email" name="email" class="form-control unicase-form-control text-input">
-                        </div>
-                        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Email Password Reset Link</button>
-                    </form>
-                    <!-- END FORM-->
+        <main class="main pages">
+            <div class="page-header breadcrumb-wrap">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                        <span></span> Pages <span></span> My Account
+                    </div>
                 </div>
-                <!-- Sign-in -->
+            </div>
+            <div class="page-content pt-150 pb-150">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
+                            <div class="row">
+                                <div class="col-lg-6 pr-30 d-none d-lg-block">
+                                    <img class="border-radius-15" src="{{ asset('frontend/assets/imgs/page/login-1.png')}}" alt="" />
+                                </div>
+                                <div class="col-lg-6 col-md-8">
+                                    <div class="login_wrap widget-taber-content background-white">
+                                        <div class="padding_eight_all bg-white">
+                                            <form method="POST" action="{{ route('password.email') }}">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <input type="email" id="email" name="email" placeholder="Email *" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-heading btn-block hover-up">Email Password Reset Link</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-            </div><!-- /.row -->
-        </div><!-- /.sigin-in-->
+
+
+
+
+
+
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
 
 
