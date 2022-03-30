@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 
 
 /*
@@ -73,7 +74,7 @@ Route::get('/user/change/password', [IndexController::class, 'UserChangePassword
 Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
 
-/* Brand All route */
+/* Admin Brand All route */
 
 Route::prefix('brand')->group(function () {
 
@@ -157,5 +158,21 @@ Route::prefix('product')->group(function () {
 
     Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
 
+
+});
+
+/* Admin Slider All route */
+
+Route::prefix('slider')->group(function () {
+
+    Route::get('/view', [SliderController::class, 'SliderView'])->name('manager-slider');
+
+    Route::post('/store', [SliderController::class, 'BrandStore'])->name('brand.store');
+
+    Route::get('/edit/{id}', [SliderController::class, 'BrandEdit'])->name('brand.edit');
+
+    Route::post('/update', [SliderController::class, 'BrandUpdate'])->name('brand.update');
+
+    Route::get('/delete/{id}', [SliderController::class, 'BrandDelete'])->name('brand.delete');
 
 });
