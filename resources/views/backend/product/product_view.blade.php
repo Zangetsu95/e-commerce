@@ -71,6 +71,7 @@
 
                                                 </td>
                                                 <td>
+                                                    {{-- Condtion for the active or inactive status --}}
                                                     @if ($item->status == 1)
                                                         <span class="badge badge-pill badge-success"> Active</span>
 
@@ -90,6 +91,7 @@
                                                         class="btn btn-danger" id="delete" title="Delete"><i
                                                             class="fa fa-trash"></i></a>
 
+                                                    {{-- conditon for the postion of the arrow --}}
                                                     @if ($item->status == 1)
 
                                                         <a href="{{ route('product-inactive', $item->id) }}"
