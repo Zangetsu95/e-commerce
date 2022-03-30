@@ -34,23 +34,24 @@ Route::group(['prefix' => 'admin', 'middlewlare' => ['admin:admin']], function (
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
 
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+Route::middleware(['auth:admin'])->group(function () {
 
-Route::get('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+        return view('admin.index');
+    })->name('dashboard');
 
-Route::get('admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
+    Route::get('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
-Route::get('admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+    Route::get('admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
 
-Route::post('admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    Route::get('admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
 
-Route::get('admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
+    Route::post('admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
 
-Route::post('update/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
+    Route::get('admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 
-
+    Route::post('update/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
+});// end middleware Admin
 
 /*User All route */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
@@ -157,8 +158,6 @@ Route::prefix('product')->group(function () {
     Route::get('/inactive/{id}', [ProductController::class, 'ProductInactive'])->name('product-inactive');
 
     Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
-
-
 });
 
 /* Admin Slider All route */
@@ -178,5 +177,4 @@ Route::prefix('slider')->group(function () {
     Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider-active');
 
     Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider-inactive');
-
 });
