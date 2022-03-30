@@ -74,11 +74,11 @@
                                                         class="btn btn-danger btn-sm" id="delete" title="Delete"><i
                                                             class="fa fa-trash"></i></a>
                                                     @if ($item->status == 1)
-                                                        <a href="{{ route('product-inactive', $item->id) }}"
+                                                        <a href="{{ route('slider-inactive', $item->id) }}"
                                                             class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"
                                                                 title="Inactive Now"></i></a>
                                                     @else
-                                                        <a href="{{ route('product-active', $item->id) }}"
+                                                        <a href="{{ route('slider-active', $item->id) }}"
                                                             class="btn btn-success btn-sm"><i class="fa fa-arrow-up"
                                                                 title="Active Now"></i></a>
                                                     @endif

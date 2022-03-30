@@ -14,7 +14,7 @@ class SliderController extends Controller
     public function SliderView()
     {
         $sliders = Slider::latest()->get();
-        return view('backend.slider.slider_view',compact('sliders'));
+        return view('backend.slider.slider_view', compact('sliders'));
     }
 
     public function SliderStore(Request $request)
@@ -50,7 +50,7 @@ class SliderController extends Controller
     public function SliderEdit($id)
     {
         $sliders = Slider::findOrFail($id);
-        return view('backend.slider.slider_edit',compact('sliders'));
+        return view('backend.slider.slider_edit', compact('sliders'));
     }
 
     public function SliderUpdate(Request $request)
@@ -108,6 +108,32 @@ class SliderController extends Controller
 
         $notifications = array(
             'message' => 'Slider Deleted SuccessFuly',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notifications);
+    }
+
+    public function SliderInactive($id)
+    {
+        //trouver notre id et modifier son status
+        Slider::findOrFail($id)->update(['status' => 0]);
+
+        $notifications = array(
+            'message' => 'Slider Inactive SuccessFuly',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notifications);
+    }
+
+    public function SliderActive($id)
+    {
+        //trouver notre id et modifier son status
+        Slider::findOrFail($id)->update(['status' => 1]);
+
+        $notifications = array(
+            'message' => 'Slider Inactive SuccessFuly',
             'alert-type' => 'info'
         );
 

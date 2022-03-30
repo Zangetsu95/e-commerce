@@ -175,4 +175,8 @@ Route::prefix('slider')->group(function () {
 
     Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
 
+    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider-active');
+
+    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider-inactive');
+
 });
