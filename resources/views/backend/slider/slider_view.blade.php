@@ -67,7 +67,7 @@
                                                     @endif
                                                 </td>
                                                 <td width="30%">
-                                                    <a href="{{ route('brand.edit', $item->id) }}"
+                                                    <a href="{{ route('slider.edit', $item->id) }}"
                                                         class="btn btn-info btn-sm"><i class="fa fa-pencil"
                                                             title="Edit"></i></a>
                                                     <a href="{{ route('brand.delete', $item->id) }}"
