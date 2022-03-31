@@ -443,19 +443,31 @@
                                     @endphp
 
                                     <li>
-                                        <a href="shop-grid-right.html">{{ $category->category_name_en }} <i
+                                        <a href="shop-grid-right.html">@if(session()->get('language') == 'french'){{ $category->category_name_fr }} @else {{ $category->category_name_en }} @endif <i
                                                 class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                            @foreach ($subCategories as $subCategory)
+                                                <li><a href="shop-fullwidth.html">
+                                                        @if (session()->get('language') == 'french')
+                                                            {{ $subCategory->subcategory_name_fr }}
+                                                        @else
+                                                            {{ $subCategory->subcategory_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                             <li>
+
                                                 <a href="#">Single Product <i class="fi-rs-angle-right"></i></a>
-                                                <ul class="level-menu">
+
+                                                {{-- <ul class="level-menu">
                                                     @foreach ($subCategories as $subCategory)
                                                         <li><a
                                                                 href="shop-product-right.html">{{ $subCategory->subcategory_name_en }}</a>
                                                         </li>
                                                     @endforeach
-                                                </ul>
+                                                </ul> --}}
+
                                             </li>
                                             <li>
                                                 <a href="#">Shop Invoice<i class="fi-rs-angle-right"></i></a>
