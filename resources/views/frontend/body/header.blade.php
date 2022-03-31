@@ -141,8 +141,13 @@
                             <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
                             <li>
                                 <a class="language-dropdown-active" href="#">
-                                    @if (session()->get('language') == 'french') Séléctioner la langue @else Choose a language @endif
-                                    <i class="fi-rs-angle-small-down"></i></a>
+                                    @if (session()->get('language') == 'french')
+                                        Séléctioner la langue
+                                    @else
+                                        Choose a language
+                                    @endif
+                                    <i class="fi-rs-angle-small-down"></i>
+                                </a>
                                 <ul class="language-dropdown">
                                     @if (session()->get('language') == 'french')
                                         <li>
@@ -399,12 +404,15 @@
                         </div>
                     </div>
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
+
+
                         <nav>
                             <ul>
-                                <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg"
+                                <li class="hot-deals"><img
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-hot.svg') }}"
                                         alt="hot deals" /><a href="shop-grid-right.html">Hot Deals</a></li>
                                 <li>
-                                    <a class="active" href="index.html">Home <i
+                                    <a class="active" href="{{ route('home') }}">Home <i
                                             class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="index.html">Home 1</a></li>
@@ -418,42 +426,52 @@
                                 <li>
                                     <a href="page-about.html">About</a>
                                 </li>
-                                <li>
-                                    <a href="shop-grid-right.html">Shop <i class="fi-rs-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                        <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                        <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                        <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                        <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                        <li>
-                                            <a href="#">Single Product <i class="fi-rs-angle-right"></i></a>
-                                            <ul class="level-menu">
-                                                <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                                <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                                <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                                <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                        <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                        <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                        <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                        <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                        <li>
-                                            <a href="#">Shop Invoice<i class="fi-rs-angle-right"></i></a>
-                                            <ul class="level-menu">
-                                                <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
-                                                <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
-                                                <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
-                                                <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
-                                                <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
-                                                <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
+
+                                @php
+                                    //Getting data from the category Table
+                                    $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
+
+                                @endphp
+
+                                @foreach ($categories as $category)
+                                    @php
+                                        //Getting data from the SUBCATEGORY Table
+                                        $subCategories = App\Models\SubCategory::where('category_id', $category->id)
+                                            ->orderBy('subcategory_name_en', 'ASC')
+                                            ->get();
+
+                                    @endphp
+
+                                    <li>
+                                        <a href="shop-grid-right.html">{{ $category->category_name_en }} <i
+                                                class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                            <li>
+                                                <a href="#">Single Product <i class="fi-rs-angle-right"></i></a>
+                                                <ul class="level-menu">
+                                                    @foreach ($subCategories as $subCategory)
+                                                        <li><a
+                                                                href="shop-product-right.html">{{ $subCategory->subcategory_name_en }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Shop Invoice<i class="fi-rs-angle-right"></i></a>
+                                                <ul class="level-menu">
+                                                    <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
+                                                    <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
+                                                    <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
+                                                    <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
+                                                    <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
+                                                    <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endforeach
+                                {{-- <li>
                                     <a href="#">Vendors <i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="vendors-grid.html">Vendors Grid</a></li>
@@ -557,7 +575,7 @@
                                         <li><a href="page-terms.html">Terms of Service</a></li>
                                         <li><a href="page-404.html">404 Page</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="page-contact.html">Contact</a>
                                 </li>
