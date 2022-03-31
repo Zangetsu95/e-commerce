@@ -1,5 +1,6 @@
 <!-- Quick view -->
-<div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+<div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -11,36 +12,50 @@
                             <!-- MAIN SLIDES -->
                             <div class="product-image-slider">
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-2.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-2.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-1.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-1.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-3.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-3.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-4.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-4.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-5.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-5.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-6.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-6.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                                 <figure class="border-radius-10">
-                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-7.jpg')}}" alt="product image" />
+                                    <img src="{{ asset('frontend/assets/imgs/shop/product-16-7.jpg') }}"
+                                        alt="product image" />
                                 </figure>
                             </div>
                             <!-- THUMBNAILS -->
                             <div class="slider-nav-thumbnails">
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-4.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-5.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-6.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-7.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-8.jpg')}}&" alt="product image" /></div>
-                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-9.jpg')}}&" alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-4.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-5.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-6.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-7.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-8.jpg') }}&"
+                                        alt="product image" /></div>
+                                <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-9.jpg') }}&"
+                                        alt="product image" /></div>
                             </div>
                         </div>
                         <!-- End Gallery -->
@@ -48,7 +63,8 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="detail-info pr-30 pl-30">
                             <span class="stock-status out-stock"> Sale Off </span>
-                            <h3 class="title-detail"><a href="shop-product-right.html" class="text-heading">Seeds of Change Organic Quinoa, Brown</a></h3>
+                            <h3 class="title-detail"><a href="shop-product-right.html" class="text-heading">Seeds of
+                                    Change Organic Quinoa, Brown</a></h3>
                             <div class="product-detail-rating">
                                 <div class="product-rate-cover text-end">
                                     <div class="product-rate d-inline-block">
@@ -73,7 +89,8 @@
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                 </div>
                                 <div class="product-extra-link2">
-                                    <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                    <button type="submit" class="button button-add-to-cart"><i
+                                            class="fi-rs-shopping-cart"></i>Add to cart</button>
                                 </div>
                             </div>
                             <div class="font-xs">
@@ -123,31 +140,21 @@
                         <ul>
                             <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
                             <li>
-                                <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
+                                <a class="language-dropdown-active" href="#">
+                                    @if (session()->get('language') == 'french') Séléctioner la langue @else Choose a language @endif
+                                    <i class="fi-rs-angle-small-down"></i></a>
                                 <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-fr.png')}}" alt="" />Français</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-dt.png')}}" alt="" />Deutsch</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-ru.png')}}" alt="" />Pусский</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="language-dropdown-active" href="#">USD <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-fr.png')}}" alt="" />INR</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-dt.png')}}" alt="" />MBP</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-ru.png')}}" alt="" />EU</a>
-                                    </li>
+                                    @if (session()->get('language') == 'french')
+                                        <li>
+                                            <a href="{{ route('english.language') }}">English</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('french.language') }}">Français</a>
+                                        </li>
+                                    @endif
+
+
                                 </ul>
                             </li>
                         </ul>
@@ -205,21 +212,24 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="shop-compare.html">
-                                    <img class="svgInject" alt="Nest" src="{{asset('frontend/assets/imgs/theme/icons/icon-compare.svg')}}" />
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-compare.svg') }}" />
                                     <span class="pro-count blue">3</span>
                                 </a>
                                 <a href="shop-compare.html"><span class="lable ml-0">Compare</span></a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.html">
-                                    <img class="svgInject" alt="Nest" src="{{asset('frontend/assets/imgs/theme/icons/icon-heart.svg')}}" />
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
                                     <span class="pro-count blue">6</span>
                                 </a>
                                 <a href="shop-wishlist.html"><span class="lable">Wishlist</span></a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html">
-                                    <img alt="Nest" src="{{asset('frontend/assets/imgs/theme/icons/icon-cart.svg')}}" />
+                                    <img alt="Nest"
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue">2</span>
                                 </a>
                                 <a href="shop-cart.html"><span class="lable">Cart</span></a>
@@ -227,7 +237,8 @@
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="{{asset('frontend/assets/imgs/shop/thumbnail-3.jpg')}}" /></a>
+                                                <a href="shop-product-right.html"><img alt="Nest"
+                                                        src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}" /></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
@@ -239,7 +250,8 @@
                                         </li>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="{{asset('frontend/assets/imgs/shop/thumbnail-2.jpg')}}" /></a>
+                                                <a href="shop-product-right.html"><img alt="Nest"
+                                                        src="{{ asset('frontend/assets/imgs/shop/thumbnail-2.jpg') }}" /></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
@@ -263,23 +275,26 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="page-account.html">
-                                    <img class="svgInject" alt="Nest" src="{{asset('frontend/assets/imgs/theme/icons/icon-user.svg')}}" />
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-user.svg') }}" />
                                 </a>
                                 @auth
-                                <a href="page-account.html"><span class="lable ml-0">Account</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                    <ul>
-                                        <li><a href="{{ route('dashboard')}}"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
-                                        {{-- <li><a href="{{ route('logout')}}"><i class="fi fi-rs-sign-out mr-10"></i>Log out</a></li> --}}
-                                    </ul>
-                                </div>
+                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                        <ul>
+                                            <li><a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My
+                                                    Account</a></li>
+                                            {{-- <li><a href="{{ route('logout')}}"><i class="fi fi-rs-sign-out mr-10"></i>Log out</a></li> --}}
+                                        </ul>
+                                    </div>
                                 @else
-                                <a href="page-account.html"><span class="lable ml-0">Account</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                    <ul>
-                                        <li><a href="{{ route('login')}}"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
-                                    </ul>
-                                </div>
+                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                        <ul>
+                                            <li><a href="{{ route('login') }}"><i
+                                                        class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
+                                        </ul>
+                                    </div>
                                 @endauth
                             </div>
                         </div>
@@ -297,43 +312,59 @@
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categories-button-active" href="#">
-                            <span class="fi-rs-apps"></span> <span class="et">Browse</span> All Categories
+                            <span class="fi-rs-apps"></span> <span class="et">Browse</span> All
+                            Categories
                             <i class="fi-rs-angle-down"></i>
                         </a>
                         <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
                             <div class="d-flex categori-dropdown-inner">
                                 <ul>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks and Dairies</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks and
+                                            Dairies</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg" alt="" />Clothing & beauty</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-2.svg" alt="" />Clothing &
+                                            beauty</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods & Toy</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods &
+                                            Toy</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-4.svg" alt="" />Baking
+                                            material</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a>
                                     </li>
                                 </ul>
                                 <ul class="end">
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-6.svg" alt="" />Wines & Drinks</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-6.svg" alt="" />Wines & Drinks</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-7.svg" alt="" />Fresh Seafood</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-7.svg" alt="" />Fresh Seafood</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-8.svg" alt="" />Fast food</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-8.svg" alt="" />Fast food</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-9.svg" alt="" />Vegetables</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-9.svg" alt="" />Vegetables</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-10.svg" alt="" />Bread and Juice</a>
+                                        <a href="shop-grid-right.html"> <img
+                                                src="assets/imgs/theme/icons/category-10.svg" alt="" />Bread and
+                                            Juice</a>
                                     </li>
                                 </ul>
                             </div>
@@ -341,38 +372,47 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-1.svg" alt="" />Milks and Dairies</a>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="assets/imgs/theme/icons/icon-1.svg" alt="" />Milks and
+                                                Dairies</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-2.svg" alt="" />Clothing & beauty</a>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="assets/imgs/theme/icons/icon-2.svg" alt="" />Clothing &
+                                                beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-3.svg" alt="" />Wines & Drinks</a>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="assets/imgs/theme/icons/icon-3.svg" alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-4.svg" alt="" />Fresh Seafood</a>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="assets/imgs/theme/icons/icon-4.svg" alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show more...</span></div>
+                            <div class="more_categories"><span class="icon"></span> <span
+                                    class="heading-sm-1">Show more...</span></div>
                         </div>
                     </div>
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                         <nav>
                             <ul>
-                                <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg" alt="hot deals" /><a href="shop-grid-right.html">Hot Deals</a></li>
+                                <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg"
+                                        alt="hot deals" /><a href="shop-grid-right.html">Hot Deals</a></li>
                                 <li>
-                                    <a class="active" href="index.html">Home <i class="fi-rs-angle-down"></i></a>
+                                    <a class="active" href="index.html">Home <i
+                                            class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="index.html">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                         <li><a href="index-3.html">Home 3</a></li>
                                         <li><a href="index-4.html">Home 4</a></li>
-                                <li><a href="index-5.html">Home 5</a></li>
-                                <li><a href="index-6.html">Home 6</a></li>
+                                        <li><a href="index-5.html">Home 5</a></li>
+                                        <li><a href="index-6.html">Home 6</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -462,7 +502,8 @@
                                         </li>
                                         <li class="sub-mega-menu sub-mega-menu-width-34">
                                             <div class="menu-banner-wrap">
-                                                <a href="shop-product-right.html"><img src="assets/imgs/banner/banner-menu.png" alt="Nest" /></a>
+                                                <a href="shop-product-right.html"><img
+                                                        src="assets/imgs/banner/banner-menu.png" alt="Nest" /></a>
                                                 <div class="menu-banner-content">
                                                     <h4>Hot deals</h4>
                                                     <h3>
@@ -552,7 +593,8 @@
                                 <ul>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest" src="assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                            <a href="shop-product-right.html"><img alt="Nest"
+                                                    src="assets/imgs/shop/thumbnail-3.jpg" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
@@ -564,7 +606,8 @@
                                     </li>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest" src="assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                            <a href="shop-product-right.html"><img alt="Nest"
+                                                    src="assets/imgs/shop/thumbnail-4.jpg" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
@@ -773,4 +816,3 @@
     </div>
 </div>
 <!--End header-->
-

@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Frontend\LanguageController;
 
 
 /*
@@ -178,3 +179,12 @@ Route::prefix('slider')->group(function () {
 
     Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider-inactive');
 });
+
+
+///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+// Multi LAnguage All Routes
+
+Route::get('/language/french', [LanguageController::class, 'French'])->name('french.language');
+
+Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
+
