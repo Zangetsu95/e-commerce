@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        //on récupre les sliders mais pas tout donc on fait une limite de 3
+        $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
+        return view('frontend.index',compact('sliders'));
     }
 
     public function UserLogout()
