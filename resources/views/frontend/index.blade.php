@@ -62,7 +62,7 @@
                                             <div class="product-cart-wrap mb-30">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="shop-product-right.html">
+                                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                             <img class="default-img"
                                                                 src=" {{ asset($product->product_thambnail) }} " alt="" />
                                                             <img class="hover-img"
@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="product-content-wrap">
                                                     <div class="product-category">
-                                                        <a href="shop-grid-right.html">
+                                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                             @if (session()->get('language') == 'french')
                                                                 {{ $product->product_name_fr }}
                                                             @else
@@ -92,7 +92,7 @@
                                                             @endif
                                                         </a>
                                                     </div>
-                                                    <h2><a href="shop-product-right.html">
+                                                    <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                             @if (session()->get('language') == 'french')
                                                                 {{ $product->product_name_fr }}
                                                             @else

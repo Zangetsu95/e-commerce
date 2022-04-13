@@ -188,3 +188,6 @@ Route::get('/language/french', [LanguageController::class, 'French'])->name('fre
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
+// PRODUCT DETAILS PAGE Url \\\\\\
+//comme on a utilisé le {{ url('')}} pas besoin de faire un name
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
