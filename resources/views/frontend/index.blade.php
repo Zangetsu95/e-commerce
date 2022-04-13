@@ -38,8 +38,15 @@
                                 @foreach ($categories as $category)
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link inactive" id="nav-tab-one" data-bs-toggle="tab"
-                                            data-bs-target="#category{{ $category->id }}" type="button" role="tab" aria-controls="tab-one"
-                                            aria-selected="true">{{ $category->category_name_en }}</button>
+                                            data-bs-target="#category{{ $category->id }}" type="button" role="tab"
+                                            aria-controls="tab-one"
+                                            aria-selected="true">
+                                            @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                            @else
+                                            {{ $category->category_name_en }}
+                                            @endif
+                                        </button>
                                     </li>
                                 @endforeach
 
@@ -77,10 +84,21 @@
                                                 </div>
                                                 <div class="product-content-wrap">
                                                     <div class="product-category">
-                                                        <a href="shop-grid-right.html">{{ $product->product_name_en }}</a>
+                                                        <a href="shop-grid-right.html">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $product->product_name_fr }}
+                                                            @else
+                                                                {{ $product->product_name_en }}
+                                                            @endif
+                                                        </a>
                                                     </div>
-                                                    <h2><a
-                                                            href="shop-product-right.html">{{ $product->product_name_en }}</a>
+                                                    <h2><a href="shop-product-right.html">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $product->product_name_fr }}
+                                                            @else
+                                                                {{ $product->product_name_en }}
+                                                            @endif
+                                                        </a>
                                                     </h2>
                                                     <div class="product-rate-cover">
                                                         <div class="product-rate d-inline-block">
@@ -92,15 +110,32 @@
                                                         <span class="font-small text-muted">By <a
                                                                 href="vendor-details-1.html">NestFood</a></span>
                                                     </div>
+                                                    {{-- Afficher le prix avec la réduction --}}
+                                                    @php
+                                                        $amount = $product->selling_price - $product->discount_price;
+                                                        $discount = ($amount/$product->selling_price) * 100;
+                                                    @endphp
+
                                                     <div class="product-card-bottom">
+                                                        @if($product->discount_price == NULL)
                                                         <div class="product-price">
-                                                            <span>$28.85</span>
-                                                            <span class="old-price">$32.8</span>
+                                                            <span>{{ $product->selling_price }}€</span>
                                                         </div>
                                                         <div class="add-cart">
                                                             <a class="add" href="shop-cart.html"><i
                                                                     class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                         </div>
+                                                        @else
+                                                        <div class="product-price">
+                                                            <span>{{ $amount }}€</span>
+                                                            <span class="old-price">{{ $product->selling_price }}€</span>
+                                                        </div>
+
+                                                        <div class="add-cart">
+                                                            <a class="add" href="shop-cart.html"><i
+                                                                class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,11 +155,11 @@
                                     <div class="tab-pane" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                                         <div class="row product-grid-4">
                                             @php
-                                            $catwiseProduct = App\Models\Product::where('category_id', $category->id)
-                                                ->orderBy('id', 'DESC')
-                                                ->get();
-                                        @endphp
-                                        {{-- FORELSE FIND PRODUCT FOR CATEGORY --}}
+                                                $catwiseProduct = App\Models\Product::where('category_id', $category->id)
+                                                    ->orderBy('id', 'DESC')
+                                                    ->get();
+                                            @endphp
+                                            {{-- FORELSE FIND PRODUCT FOR CATEGORY --}}
                                             @forelse ($catwiseProduct as $product)
                                                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                                                     <div class="product-cart-wrap mb-30">
@@ -187,7 +222,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @empty
+                                            @empty
                                                 <h5 class="text-danger"> NO product found</h5>
                                             @endforelse
                                             {{-- END FORELESE FIND PRODUCT FOR CATEGORY --}}
@@ -199,7 +234,7 @@
 
                                 </div>
                             @endforeach
-                                {{-- END FOREACH FIND ID CATEGORY --}}
+                            {{-- END FOREACH FIND ID CATEGORY --}}
                             <!--En tab one-->
                             {{-- <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
                                     <div class="row product-grid-4">
