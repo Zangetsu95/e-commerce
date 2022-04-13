@@ -194,10 +194,22 @@
                                                         <div class="product-content-wrap">
                                                             <div class="product-category">
                                                                 <a
-                                                                    href="shop-grid-right.html">{{ $product->product_name_en }}</a>
+                                                                    href="shop-grid-right.html">
+                                                                    @if (session()->get('language') == 'french')
+                                                                        {{ $product->product_name_fr }}
+                                                                    @else
+                                                                        {{ $product->product_name_en }}
+                                                                    @endif
+                                                                </a>
                                                             </div>
                                                             <h2><a
-                                                                    href="shop-product-right.html">{{ $product->product_name_en }}</a>
+                                                                    href="shop-product-right.html">
+                                                                    @if (session()->get('language') == 'french')
+                                                                        {{ $product->product_name_fr }}
+                                                                    @else
+                                                                        {{ $product->product_name_en }}
+                                                                    @endif
+                                                                </a>
                                                             </h2>
                                                             <div class="product-rate-cover">
                                                                 <div class="product-rate d-inline-block">
@@ -209,15 +221,30 @@
                                                                 <span class="font-small text-muted">By <a
                                                                         href="vendor-details-1.html">NestFood</a></span>
                                                             </div>
+                                                            @php
+                                                                $amount = $product->selling_price - $product->discount_price;
+                                                                $discount = ($amount/$product->selling_price) * 100;
+                                                            @endphp
                                                             <div class="product-card-bottom">
+                                                                @if($product->discount_price == NULL)
                                                                 <div class="product-price">
-                                                                    <span>$28.85</span>
-                                                                    <span class="old-price">$32.8</span>
+                                                                    <span>{{ $product->selling_price }}€</span>
                                                                 </div>
                                                                 <div class="add-cart">
                                                                     <a class="add" href="shop-cart.html"><i
                                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                                 </div>
+                                                                @else
+                                                                <div class="product-price">
+                                                                    <span>{{ $amount }}€</span>
+                                                                    <span class="old-price">{{ $product->selling_price }}€</span>
+                                                                </div>
+
+                                                                <div class="add-cart">
+                                                                    <a class="add" href="shop-cart.html"><i
+                                                                        class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                                </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
