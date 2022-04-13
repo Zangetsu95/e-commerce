@@ -1,5 +1,10 @@
 @extends('frontend.main_master')
 @section('content')
+
+@section('title')
+ShinSekai Manga World
+@endsection
+
     <main class="main">
         <section class="home-slider position-relative mb-30">
             <div class="home-slide-cover">

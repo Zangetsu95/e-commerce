@@ -1,11 +1,16 @@
 @extends('frontend.main_master')
 @section('content')
+
+@section('title')
+{{ $product->product_name_en}} Product Details
+@endsection
+
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a href="shop-grid-right.html">Vegetables & tubers</a> <span></span> Seeds of Change Organic
+                <a href="{{ route('home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                {{-- <span></span> <a href="shop-grid-right.html">Vegetables & tubers</a> <span></span> Seeds of Change Organic --}}
             </div>
         </div>
     </div>
@@ -59,7 +64,13 @@
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info pr-30 pl-30">
                                         <span class="stock-status out-stock"> Sale Off </span>
-                                        <h2 class="title-detail">Seeds of Change Organic Quinoa, Brown</h2>
+                                        <h2 class="title-detail">
+                                            @if (session()->get('language') == 'french')
+                                            {{ $product->product_name_fr }}
+                                            @else
+                                            {{ $product->product_name_en }}
+                                            @endif
+                                        </h2>
                                         <div class="product-detail-rating">
                                             <div class="product-rate-cover text-end">
                                                 <div class="product-rate d-inline-block">
@@ -68,17 +79,30 @@
                                                 <span class="font-small ml-5 text-muted"> (32 reviews)</span>
                                             </div>
                                         </div>
+                                        {{-- Afficher le prix avec la réduction --}}
+                                        @php
+                                            $amount = $product->selling_price - $product->discount_price;
+                                            $discount = $product->discount_price/$product->selling_price * 100;
+                                            $percentage = round($discount);
+                                        @endphp
+
                                         <div class="clearfix product-price-cover">
+                                            @if($product->discount_price == NULL)
                                             <div class="product-price primary-color float-left">
-                                                <span class="current-price text-brand">$38</span>
+                                                <span class="current-price text-brand">{{ $product->selling_price }}€</span>
+                                            </div>
+                                            @else
+                                            <div class="product-price primary-color float-left">
+                                                <span class="current-price text-brand">{{ $amount }}€</span>
                                                 <span>
-                                                    <span class="save-price font-md color3 ml-15">26% Off</span>
-                                                    <span class="old-price font-md ml-15">$52</span>
+                                                    <span class="save-price font-md color3 ml-15">{{ $percentage }}% </span>
+                                                    <span class="old-price font-md ml-15">{{ $product->selling_price }}€</span>
                                                 </span>
                                             </div>
+                                            @endif
                                         </div>
                                         <div class="short-desc mb-30">
-                                            <p class="font-lg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi.</p>
+
                                         </div>
                                         <div class="attr-detail attr-size mb-30">
                                             <strong class="mr-10">Size / Weight: </strong>
@@ -136,38 +160,11 @@
                                     </ul>
                                     <div class="tab-content shop_info_tab entry-main-content">
                                         <div class="tab-pane fade show active" id="Description">
-                                            <div class="">
-                                                <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending and much yikes off far quetzal goodness and from for grimaced goodness unaccountably and meadowlark near unblushingly crucial scallop tightly neurotic hungrily some and dear furiously this apart.</p>
-                                                <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly much hello on spoon-fed that alas rethought much decently richly and wow against the frequent fluidly at formidable acceptably flapped besides and much circa far over the bucolically hey precarious goldfinch mastodon goodness gnashed a jellyfish and one however because.</p>
-                                                <ul class="product-more-infor mt-30">
-                                                    <li><span>Type Of Packing</span> Bottle</li>
-                                                    <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                                    <li><span>Quantity Per Case</span> 100ml</li>
-                                                    <li><span>Ethyl Alcohol</span> 70%</li>
-                                                    <li><span>Piece In One</span> Carton</li>
-                                                </ul>
-                                                <hr class="wp-block-separator is-style-dots" />
-                                                <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello far meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted flirtatiously as beaver beheld above forward energetic across this jeepers beneficently cockily less a the raucously that magic upheld far so the this where crud then below after jeez enchanting drunkenly more much wow callously irrespective limpet.</p>
-                                                <h4 class="mt-30">Packaging & Delivery</h4>
-                                                <hr class="wp-block-separator is-style-wide" />
-                                                <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly scratched far while thus cackled sheepishly rigid after due one assenting regarding censorious while occasional or this more crane went more as this less much amid overhung anathematic because much held one exuberantly sheep goodness so where rat wry well concomitantly.</p>
-                                                <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously and and less rattlesnake contrary caustic wow this near alas and next and pled the yikes articulate about as less cackled dalmatian in much less well jeering for the thanks blindly sentimental whimpered less across objectively fanciful grimaced wildly some wow and rose jeepers outgrew lugubrious luridly irrationally attractively dachshund.</p>
-                                                <h4 class="mt-30">Suggested Use</h4>
-                                                <ul class="product-more-infor mt-30">
-                                                    <li>Refrigeration not necessary.</li>
-                                                    <li>Stir before serving</li>
-                                                </ul>
-                                                <h4 class="mt-30">Other Ingredients</h4>
-                                                <ul class="product-more-infor mt-30">
-                                                    <li>Organic raw pecans, organic raw cashews.</li>
-                                                    <li>This butter was produced using a LTG (Low Temperature Grinding) process</li>
-                                                    <li>Made in machinery that processes tree nuts but does not process peanuts, gluten, dairy or soy</li>
-                                                </ul>
-                                                <h4 class="mt-30">Warnings</h4>
-                                                <ul class="product-more-infor mt-30">
-                                                    <li>Oil separation occurs naturally. May contain pieces of shell.</li>
-                                                </ul>
-                                            </div>
+                                            @if (session()->get('language') == 'french')
+                                            {!! $product->long_descp_fr !!}
+                                            @else
+                                            {!! $product->long_descp_en !!}
+                                            @endif
                                         </div>
                                         <div class="tab-pane fade" id="Additional-info">
                                             <table class="font-md">
