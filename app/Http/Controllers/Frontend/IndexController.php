@@ -16,7 +16,13 @@ class IndexController extends Controller
 {
     public function index()
     {
-        //on récupre les sliders mais pas tout donc on fait une limite de 3
+        /*
+            chaque variable correspondt a une chose en particulier
+            on utilise le modèle adéquat avec le where pour matcher avec la DB
+            On organise ca soit par DESC ou ASC au choix
+            pour certaines variable on mettra une limite pour ne pas surchager
+            ->get() pour récuper les données on oublie pas de la mettre dans le compact()
+        */
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->get();
@@ -25,7 +31,20 @@ class IndexController extends Controller
         $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
         $special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
 
-        return view('frontend.index',compact('sliders','categories','products','featured','hot','special_offer','special_deals'));
+        /*
+            L'utilisation de la requête skip en laravel est utilisée pour sauter les données
+            return $skip_category->id;
+            die();
+            avec le skip on va montrer les produits actif qui match avec le category id du skip
+        */
+        $skip_category_0 = Category::skip(0)->first();
+        $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+
+        return view('frontend.index',compact(
+            'sliders','categories','products',
+            'featured','hot','special_offer','special_deals',
+            'skip_category_0','skip_product_0'
+        ));
     }
 
     public function UserLogout()
