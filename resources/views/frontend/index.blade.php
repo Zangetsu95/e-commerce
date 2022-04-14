@@ -270,15 +270,16 @@ ShinSekai Manga World
                         <!--End tab-content-->
                     </section>
 
+                    {{-- //////////////  FEATURED PRODUCT \\\\\\\\\\\\\\\\\\\\\\\\ --}}
                     <!--Products Tabs-->
                     <section class="section-padding pb-5">
                         <div class="section-title">
-                            <h3 class="">Deals Of The Day</h3>
+                            <h3 class="">Featured Product</h3>
+                            <a class="show-all" href="">
+                                All Deals
+                                <i class="fi-rs-angle-right"></i>
+                            </a>
                         </div>
-                        <a class="show-all" href="">
-                            All Deals
-                            <i class="fi-rs-angle-right"></i>
-                        </a>
                         <div class="row">
                             @foreach ( $featured as $product )
                             <div class="col-xl-3 col-lg-4 col-md-6">
@@ -347,7 +348,86 @@ ShinSekai Manga World
                         </div>
 
                     </section>
-                    <!--End Deals-->
+                    {{-- //////////////   END FEATURED PRODUCT \\\\\\\\\\\\\\\\\\\\\\\\ --}}
+
+                    {{-- //////////////  HOT DEALS PRODUCT \\\\\\\\\\\\\\\\\\\\\\\\ --}}
+                    <section class="section-padding pb-5">
+                        <div class="section-title">
+                            <h3 class="">Hot Deals Product</h3>
+                            <a class="show-all" href="">
+                                All Deals
+                                <i class="fi-rs-angle-right"></i>
+                            </a>
+                        </div>
+                        <div class="row">
+                            @foreach ( $hot as $product )
+                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="product-cart-wrap style-2">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img">
+                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                <img src="{{ asset($product->product_thambnail) }}" alt="" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="deals-countdown-wrap">
+                                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
+                                        </div>
+                                        <div class="deals-content">
+                                            <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                @if (session()->get('language') == 'french')
+                                                {{ $product->product_name_fr }}
+                                                @else
+                                                {{ $product->product_name_en }}
+                                                @endif
+                                            </a>
+                                            </h2>
+                                            <div class="product-rate-cover">
+                                                <div class="product-rate d-inline-block">
+                                                    <div class="product-rating" style="width: 90%"></div>
+                                                </div>
+                                                <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            </div>
+                                            {{-- <div>
+                                                <span class="font-small text-muted">By <a
+                                                        href="vendor-details-1.html">NestFood</a></span>
+                                            </div> --}}
+                                            @php
+                                            $amount = $product->selling_price - $product->discount_price;
+                                            $discount = ($amount/$product->selling_price) * 100;
+                                        @endphp
+                                        @if($product->discount_price == NULL)
+                                            <div class="product-card-bottom">
+                                                <div class="product-price">
+                                                    <span>{{ $product->selling_price }}€</span>
+                                                </div>
+                                                <div class="add-cart">
+                                                    <a class="add" href="shop-cart.html"><i
+                                                            class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="product-card-bottom">
+                                                <div class="product-price">
+                                                    <span>{{ $amount }}€</span>
+                                                    <span class="old-price">{{ $product->selling_price }}€</span>
+                                                </div>
+                                                <div class="add-cart">
+                                                    <a class="add" href="shop-cart.html"><i
+                                                            class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                    </section>
+                    {{-- //////////////  END HOT DEALS PRODUCT \\\\\\\\\\\\\\\\\\\\\\\\ --}}
                     {{-- <section class="banners">
                         <div class="row">
                             <div class="col-lg-4 col-md-6">
