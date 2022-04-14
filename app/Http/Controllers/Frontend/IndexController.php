@@ -28,22 +28,21 @@ class IndexController extends Controller
         $products = Product::where('status',1)->orderBy('id','DESC')->get();
         $featured = Product::where('featured',1)->orderBy('id','DESC')->limit(4)->get();
         $hot = Product::where('hot_deals',1)->orderBy('id','DESC')->limit(4)->get();
-        $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
-        $special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
+        // $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
+        // $special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
 
         /*
             L'utilisation de la requête skip en laravel est utilisée pour sauter les données
             return $skip_category->id;
             die();
             avec le skip on va montrer les produits actif qui match avec le category id du skip
+            $skip_category_0 = Category::skip(0)->first();
+            $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
         */
-        $skip_category_0 = Category::skip(0)->first();
-        $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
 
         return view('frontend.index',compact(
             'sliders','categories','products',
             'featured','hot','special_offer','special_deals',
-            'skip_category_0','skip_product_0'
         ));
     }
 
