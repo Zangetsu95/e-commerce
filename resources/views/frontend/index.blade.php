@@ -170,7 +170,7 @@ ShinSekai Manga World
                                                     <div class="product-cart-wrap mb-30">
                                                         <div class="product-img-action-wrap">
                                                             <div class="product-img product-img-zoom">
-                                                                <a href="shop-product-right.html">
+                                                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                                     <img class="default-img"
                                                                         src=" {{ asset($product->product_thambnail) }} "
                                                                         alt="" />
@@ -199,7 +199,7 @@ ShinSekai Manga World
                                                         <div class="product-content-wrap">
                                                             <div class="product-category">
                                                                 <a
-                                                                    href="shop-grid-right.html">
+                                                                    href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                                     @if (session()->get('language') == 'french')
                                                                         {{ $product->product_name_fr }}
                                                                     @else
@@ -208,7 +208,7 @@ ShinSekai Manga World
                                                                 </a>
                                                             </div>
                                                             <h2><a
-                                                                    href="shop-product-right.html">
+                                                                    href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                                     @if (session()->get('language') == 'french')
                                                                         {{ $product->product_name_fr }}
                                                                     @else
