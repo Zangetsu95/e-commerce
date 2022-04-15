@@ -254,10 +254,17 @@
                     </div>
                     @endforeach
                     <!--end product card-->
-
+                    <div class="pagination-area mt-20 mb-20">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                {{ $products->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </main>
 @endsection
