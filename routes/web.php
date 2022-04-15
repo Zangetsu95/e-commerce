@@ -182,12 +182,16 @@ Route::prefix('slider')->group(function () {
 
 
 ///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-// Multi LAnguage All Routes
+/* Multi LAnguage All Routes */
 
 Route::get('/language/french', [LanguageController::class, 'French'])->name('french.language');
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
-// PRODUCT DETAILS PAGE Url \\\\\\
+/* PRODUCT DETAILS PAGE Url */
 //comme on a utilisé le {{ url('')}} pas besoin de faire un name
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+
+/* Product Tags */
+Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
+

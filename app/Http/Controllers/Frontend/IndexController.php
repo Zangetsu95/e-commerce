@@ -134,4 +134,19 @@ class IndexController extends Controller
 
         return view('frontend.product.product_details',compact('product','multiImg'));
     }
+
+    public function TagWiseProduct($tag)
+    {
+        /*
+        On va prendre que les produits actifs
+        l'autre where veut dire quand le tag va matcher avec celui qu'on va cliquer
+        */
+        $products = Product::where('status',1)
+        ->where('product_tags_en',$tag)
+        ->where('product_tags_fr',$tag)
+        ->orderBy('id','DESC')
+        ->get();
+
+        return view('frontend.tags.tags_view',compact('products'));
+    }
 }

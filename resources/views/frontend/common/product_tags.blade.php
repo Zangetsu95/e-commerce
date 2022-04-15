@@ -14,8 +14,6 @@ $tags_fr = App\Models\Product::groupBy('product_tags_fr')
 
 @endphp
 
-
-
 <div class="col-lg-1-5 primary-sidebar sticky-sidebar pt-30">
     <div class="sidebar-widget widget-category-2 mb-30">
         <h5 class="section-title style-1 mb-30">Tags</h5>
@@ -24,7 +22,7 @@ $tags_fr = App\Models\Product::groupBy('product_tags_fr')
             @foreach ( $tags_fr as $tag )
 
             <li>
-                <a href="shop-grid-right.html">
+                <a href="{{ url('product/tag/'.$tag->product_tags_fr) }}">
                     {{ $tag->product_tags_fr }}
                 </a>
             </li>
@@ -32,7 +30,7 @@ $tags_fr = App\Models\Product::groupBy('product_tags_fr')
             @else
             @foreach ( $tags_en as $tag )
             <li>
-                <a href="shop-grid-right.html">
+                <a href="{{ url('product/tag/'.$tag->product_tags_en) }}">
                     {{ $tag->product_tags_en }}
                 </a>
             </li>
