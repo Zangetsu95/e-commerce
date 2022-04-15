@@ -146,7 +146,8 @@ class IndexController extends Controller
         ->where('product_tags_fr',$tag)
         ->orderBy('id','DESC')
         ->get();
+        $categories = Category::orderBy('category_name_en','ASC')->get();
 
-        return view('frontend.tags.tags_view',compact('products'));
+        return view('frontend.tags.tags_view',compact('products','categories'));
     }
 }
