@@ -154,7 +154,7 @@
                                                     <h5>Product Tags En <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_tags_en" class="form-control"
-                                                            value="Lorem,Ipsum,Amet" data-role="tagsinput" required="">
+                                                            value="" data-role="tagsinput" required="">
                                                         @error('product_tags_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -171,7 +171,7 @@
                                                     <h5>Product Tags Fr <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_tags_fr" class="form-control"
-                                                            value="Lorem,Ipsum,Amet" data-role="tagsinput" required="">
+                                                            value="" data-role="tagsinput" required="">
                                                         @error('product_tags_fr')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
