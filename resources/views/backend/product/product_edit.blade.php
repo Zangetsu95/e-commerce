@@ -342,8 +342,7 @@
                                                     <h5>Short Description English <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <textarea name="short_descp_en" id="textarea"
-                                                            class="form-control" required placeholder="Textarea text">
+                                                        <textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text">
                                                                                                         {{ $products->short_descp_en }}
                                                                                                     </textarea>
                                                     </div>
@@ -354,8 +353,7 @@
                                                 <div class="form-group">
                                                     <h5>Short Description fr <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <textarea name="short_descp_fr" id="textarea"
-                                                            class="form-control" required placeholder="Textarea text">
+                                                        <textarea name="short_descp_fr" id="textarea" class="form-control" required placeholder="Textarea text">
                                                                                                         {{ $products->short_descp_fr }}
                                                                                                     </textarea>
                                                     </div>
@@ -477,8 +475,9 @@
                                                 style="height: 130px; width: 280px;">
                                             <div class="card-body">
                                                 <h5 class="card-title">
-                                                    <a href="{{ route('product.multiple.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete"
-                                                        title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                                    <a href="{{ route('product.multiple.delete', $img->id) }}"
+                                                        class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i
+                                                            class="fa fa-trash"></i> </a>
                                                 </h5>
                                                 <p class="card-text">
                                                 <div class="form-group">
@@ -492,6 +491,23 @@
                                         </div>
                                     </div><!--  end col md 3		 -->
                                 @endforeach
+                                <input type="hidden" name="id" value="{{ $products->id }}">
+                                <div class="card mr-4" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            Add Additional Photo
+                                        </h5>
+                                        <p class="card-text">
+                                        <div class="form-group">
+                                            <label for="" class="form-control-label"> Change Image <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" name="multi_img_add[]" multiple>
+                                        </div>
+                                        </p>
+
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="text-xs-right">
@@ -518,7 +534,8 @@
                             <h4 class="box-title">Product Thambnail Image <strong>Update</strong></h4>
                         </div>
 
-                        <form method="POST" action="{{ route('update-product-thambnail') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('update-product-thambnail') }}"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="id" value="{{ $products->id }}">
@@ -526,25 +543,25 @@
 
                             <div class="row row-sm">
 
-                                    <div class="col-md-3">
+                                <div class="col-md-3">
 
-                                        <div class="card">
-                                            <img src="{{ asset($products->product_thambnail) }}" class="card-img-top"
-                                                style="height: 130px; width: 280px;">
-                                            <div class="card-body">
+                                    <div class="card">
+                                        <img src="{{ asset($products->product_thambnail) }}" class="card-img-top"
+                                            style="height: 130px; width: 280px;">
+                                        <div class="card-body">
 
-                                                <p class="card-text">
-                                                <div class="form-group">
-                                                    <label class="form-control-label">Change Image <span
-                                                            class="tx-danger">*</span></label>
-                                                    <input onchange="mainThamUrl(this)" class="form-control" type="file"
-                                                        name="product_thambnail" >
-                                                        <img src="" id="mainThmb">
-                                                </div>
-                                                </p>
+                                            <p class="card-text">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Change Image <span
+                                                        class="tx-danger">*</span></label>
+                                                <input onchange="mainThamUrl(this)" class="form-control" type="file"
+                                                    name="product_thambnail">
+                                                <img src="" id="mainThmb">
                                             </div>
+                                            </p>
                                         </div>
-                                    </div><!--  end col md 3		 -->
+                                    </div>
+                                </div><!--  end col md 3		 -->
 
                             </div>
 
@@ -657,6 +674,4 @@
             });
         });
     </script>
-
-
 @endsection

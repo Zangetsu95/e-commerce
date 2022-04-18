@@ -117,6 +117,7 @@ class ProductController extends Controller
 
         $products = Product::FindOrFail($id);
 
+
         return view('backend.product.product_edit', compact('categories', 'brands', 'subCategory', 'subSubCategory', 'products', 'multiImgs'));
     }
 
@@ -170,26 +171,47 @@ class ProductController extends Controller
 
     public function MultiImageUpdate(Request $request)
     {
-        $imgs = $request->multi_img;
+        //Add another pic for multiImage
+        $imgs_add = $request->multi_img_add;
+        $product_id = $request->id;
 
-        foreach ($imgs as $id => $img) {
+        if ($imgs_add) {
+            foreach ($imgs_add as $id => $img) {
+                //image intervention for thumnail
+                $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $name_gen);
+                $upload_path = 'upload/products/multi-image/' . $name_gen;
 
-            // on va récuperer l'image avec l'id et la remplacer
-            $imgDel = MultiImg::findOrFail($id);
-            unlink($imgDel->photo_name);
+                MultiImg::insert([
+                    'product_id' => $product_id,
+                    'photo_name' => $upload_path,
+                    'created_at' => Carbon::now(),
+                ]);
+            } //end for each
+            // UPDATE MULTI IMAGE \\\\\\\\\\\\\
+        } else {
+            
+            $imgs = $request->multi_img;
 
-            //création d'un id + nom unique avec l'extension de l'image
-            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-            //l'extension laravel que nous avons installé
-            Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
-            $uploadPath = 'upload/products/multi-image/' . $make_name;
+            foreach ($imgs as $id => $img) {
+
+                // on va récuperer l'image avec l'id et la remplacer
+                $imgDel = MultiImg::findOrFail($id);
+                unlink($imgDel->photo_name);
+
+                //création d'un id + nom unique avec l'extension de l'image
+                $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                //l'extension laravel que nous avons installé
+                Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
+                $uploadPath = 'upload/products/multi-image/' . $make_name;
 
 
-            MultiImg::where('id', $id)->update([
-                'photo_name' => $uploadPath,
-                'updated_at' => Carbon::now(),
-            ]);
-        } //end foreach
+                MultiImg::where('id', $id)->update([
+                    'photo_name' => $uploadPath,
+                    'updated_at' => Carbon::now(),
+                ]);
+            } //end foreach
+        }
 
         $notification = array(
             'message' => 'Product Image Updated  Successfully',
@@ -273,11 +295,11 @@ class ProductController extends Controller
         Product::findOrFail($id)->delete();
 
         //We must also delete the multiple image !
-        $images = MultiImg::where('product_id', $id)->get();// we get all the data
+        $images = MultiImg::where('product_id', $id)->get(); // we get all the data
         foreach ($images as $img) {
 
             unlink($img->photo_name);
-            MultiImg::where('product_id',$id)->delete();
+            MultiImg::where('product_id', $id)->delete();
         }
 
         $notification = array(
@@ -286,6 +308,5 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
 }
