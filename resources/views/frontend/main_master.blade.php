@@ -96,58 +96,76 @@
         @endif
     </script>
 
-    <!-- Add to Cart Modal -->
+    <!-- Add to Cart Product Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Product Name </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+
                 <div class="modal-body">
+
                     <div class="row">
+
                         <div class="col-md-4">
+
                             <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
+
+                                <img src=" " class="card-img-top" alt="..." style="height: 200px; width: 200px;">
+
                             </div>
-                        </div>
 
-                        {{-- End col --}}
+                        </div><!-- // end col md -->
 
 
                         <div class="col-md-4">
+
                             <ul class="list-group">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A fourth item</li>
-                                <li class="list-group-item">And a fifth one</li>
+                                <li class="list-group-item">Product Price: </li>
+                                <li class="list-group-item">Product Code:</li>
+                                <li class="list-group-item">Category:</li>
+                                <li class="list-group-item">Discount:</li>
+                                <li class="list-group-item">Stock</li>
                             </ul>
-                        </div>
-                        {{-- End col --}}
+                        </div><!-- // end col md -->
                         <div class="col-md-4">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        {{-- End col --}}
-                    </div>
-                </div>
-                {{-- End col --}}
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Choose Color</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div> <!-- // end form group -->
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Choose Size</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div> <!-- // end form group -->
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Quantity</label>
+                                <input type="number" class="form-control" id="exampleFormControlInput1" value="1"
+                                    min="1">
+                            </div> <!-- // end form group -->
+                            <button type="submit" class="btn btn-primary mb-3">Add to Cart</button>
+                        </div><!-- // end col md -->
+                    </div> <!-- // end row -->
+                </div> <!-- // end modal Body -->
             </div>
         </div>
-        <!-- En row -->
     </div>
-    <!--End cart modal  -->
+    <!-- End Add to Cart Product Modal -->
 
 
 </body>
