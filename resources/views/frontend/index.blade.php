@@ -126,8 +126,8 @@ ShinSekai Manga World
                                                         <div class="product-price">
                                                             <span>{{ $product->selling_price }}€</span>
                                                         </div>
-                                                        <div class="add-cart">
-                                                            <a class="add" href="shop-cart.html"><i
+                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                            <a class="add" ><i
                                                                     class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                         </div>
                                                         @else
@@ -136,8 +136,8 @@ ShinSekai Manga World
                                                             <span class="old-price">{{ $product->selling_price }}€</span>
                                                         </div>
 
-                                                        <div class="add-cart">
-                                                            <a class="add" href="shop-cart.html"><i
+                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                            <a class="add" ><i
                                                                 class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                         </div>
                                                         @endif
@@ -235,8 +235,8 @@ ShinSekai Manga World
                                                                 <div class="product-price">
                                                                     <span>{{ $product->selling_price }}€</span>
                                                                 </div>
-                                                                <div class="add-cart">
-                                                                    <a class="add" href="shop-cart.html"><i
+                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                                    <a class="add" ><i
                                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                                 </div>
                                                                 @else
@@ -245,8 +245,8 @@ ShinSekai Manga World
                                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                                 </div>
 
-                                                                <div class="add-cart">
-                                                                    <a class="add" href="shop-cart.html"><i
+                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                                    <a class="add" ><i
                                                                         class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                                 </div>
                                                                 @endif
@@ -323,8 +323,8 @@ ShinSekai Manga World
                                                 <div class="product-price">
                                                     <span>{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart">
-                                                    <a class="add" href="shop-cart.html"><i
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                    <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
                                             </div>
@@ -334,8 +334,8 @@ ShinSekai Manga World
                                                     <span>{{ $amount }}€</span>
                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart">
-                                                    <a class="add" href="shop-cart.html"><i
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                    <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
                                             </div>
@@ -402,8 +402,8 @@ ShinSekai Manga World
                                                 <div class="product-price">
                                                     <span>{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart">
-                                                    <a class="add" href="shop-cart.html"><i
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                    <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
                                             </div>
@@ -413,8 +413,8 @@ ShinSekai Manga World
                                                     <span>{{ $amount }}€</span>
                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart">
-                                                    <a class="add" href="shop-cart.html"><i
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                    <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
                                             </div>
