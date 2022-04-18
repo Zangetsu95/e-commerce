@@ -102,7 +102,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><span id="pname" ></span> </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span> </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -111,7 +111,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card" style="width: 18rem;">
-                                <img src=" " class="card-img-top" alt="..." style="height: 150px; width: 150px;" id="pimage">
+                                <img src=" " class="card-img-top" alt="..." style="height: 150px; width: 150px;"
+                                    id="pimage">
                             </div>
                         </div><!-- // end col md -->
                         <br>
@@ -124,25 +125,16 @@
                                 <li class="list-group-item">Stock</li>
                             </ul>
                         </div><!-- // end col md -->
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div class="col-md-4" >
+                            <div class="form-group" id="colorArea">
                                 <label for="exampleFormControlSelect1">Choose Color</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select class="form-control" id="exampleFormControlSelect1" name="color">
+
                                 </select>
                             </div> <!-- // end form group -->
-                            <div class="form-group">
+                            <div class="form-group" id="sizeArea">
                                 <label for="exampleFormControlSelect1">Choose Size</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select class="form-control" id="exampleFormControlSelect1" name="size">
                                 </select>
                             </div> <!-- // end form group -->
                             <div class="form-group">
@@ -160,18 +152,17 @@
     <!-- End Add to Cart Product Modal -->
 
     <script type="text/javascript">
-
         //dans le header on va mettre un token pour éviter les attaques csrf
         $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-        }
-    })
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
         //Start product View With Modal
 
-    // le onclick est démodé il faudrai essayer un adventlistener !
-    //la fonction va prendre l'id du produt grace au onclick et on va récuper toute les données
-    // qu'on a mit dans notre controller grace a la route
+        // le onclick est démodé il faudrai essayer un adventlistener !
+        //la fonction va prendre l'id du produt grace au onclick et on va récuper toute les données
+        // qu'on a mit dans notre controller grace a la route
         function productView(id) {
             //alert(id)
             $.ajax({
@@ -179,7 +170,7 @@
                 url: '/product/view/modal/' + id,
                 dataType: 'json',
                 success: function(data) {
-                    // console.log(data)
+                    console.log(data)
 
                     //fait référence a l'id du span pour le nom du produit
                     //dans le controller on a choisit les données qu'on veut par exemple le nom du produit
@@ -189,7 +180,35 @@
                     $('#pcode').text(data.product.product_code);
                     $('#pcategory').text(data.product.category.category_name_en);
                     $('#pbrand').text(data.product.brand.brand_name_en);
-                    $('#pimage').attr('src','/'+data.product.product_thambnail	);
+                    $('#pimage').attr('src', '/' + data.product.product_thambnail);
+
+                    //Color
+                    //on prend la color qu'on a mit dans le controller
+                    //on choisit le formulaire
+                    if (data.product.category.category_name_en === 'Clothes') {
+                        $('select[name="color"]').empty();
+                        $.each(data.color, function(key, value) {
+                            $('select[name="color"]').append('<option value=" ' + value + ' "> ' +
+                                value + ' </option>')
+                        })
+                        $('#colorArea').show()
+                    }else{
+                        $('#colorArea').hide()
+                    }
+
+                    //size
+                    if (data.product.category.category_name_en === 'Clothes') {
+                        $('select[name="size"]').empty();
+                        $.each(data.size, function(key, value) {
+                            $('select[name="size"]').append('<option value=" ' + value + ' "> ' +
+                                value + ' </option>')
+                        })
+                        $('#sizeArea').show()
+                    }else{
+                        $('select[name="size"]').empty();
+                        $('#sizeArea').hide()
+                    }
+
                 }
             })
 

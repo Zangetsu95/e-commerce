@@ -161,13 +161,10 @@ class IndexController extends Controller
         $size = $product->product_size_en;
         $product_size = explode(',',$size);
 
-        $discount = $product->selling_price - $product->discount_price;
-
         return response()->json(array(
             'product' => $product,
             'color' => $product_color,
             'size' => $product_size,
-            'discount' => $discount
         ));
     }
 }
