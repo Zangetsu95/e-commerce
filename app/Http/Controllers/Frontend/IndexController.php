@@ -150,4 +150,24 @@ class IndexController extends Controller
 
         return view('frontend.tags.tags_view',compact('products','categories'));
     }
+
+    public function ProductViewAjax($id)
+    {
+        $product = Product::with('category','brand')->findOrFail($id);
+
+        $color_en = $product->product_color_en;
+        $product_color = explode(',',$color_en);
+
+        $size = $product->product_size_en;
+        $product_size = explode(',',$size);
+
+        $discount = $product->selling_price - $product->discount_price;
+
+        return response()->json(array(
+            'product' => $product,
+            'color' => $product_color,
+            'size' => $product_size,
+            'discount' => $discount
+        ));
+    }
 }

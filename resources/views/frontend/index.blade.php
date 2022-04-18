@@ -126,7 +126,7 @@ ShinSekai Manga World
                                                         <div class="product-price">
                                                             <span>{{ $product->selling_price }}€</span>
                                                         </div>
-                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                             <a class="add" ><i
                                                                     class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                         </div>
@@ -136,7 +136,7 @@ ShinSekai Manga World
                                                             <span class="old-price">{{ $product->selling_price }}€</span>
                                                         </div>
 
-                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                        <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                             <a class="add" ><i
                                                                 class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                         </div>
@@ -235,7 +235,7 @@ ShinSekai Manga World
                                                                 <div class="product-price">
                                                                     <span>{{ $product->selling_price }}€</span>
                                                                 </div>
-                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                                     <a class="add" ><i
                                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                                 </div>
@@ -245,7 +245,7 @@ ShinSekai Manga World
                                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                                 </div>
 
-                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                                     <a class="add" ><i
                                                                         class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                                 </div>
@@ -323,7 +323,7 @@ ShinSekai Manga World
                                                 <div class="product-price">
                                                     <span>{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                     <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
@@ -334,7 +334,7 @@ ShinSekai Manga World
                                                     <span>{{ $amount }}€</span>
                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                     <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
@@ -402,7 +402,7 @@ ShinSekai Manga World
                                                 <div class="product-price">
                                                     <span>{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                     <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>
@@ -413,7 +413,7 @@ ShinSekai Manga World
                                                     <span>{{ $amount }}€</span>
                                                     <span class="old-price">{{ $product->selling_price }}€</span>
                                                 </div>
-                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
                                                     <a class="add" ><i
                                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                                 </div>

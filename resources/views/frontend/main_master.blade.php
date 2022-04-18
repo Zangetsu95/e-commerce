@@ -6,6 +6,7 @@
     <title>@yield('title') </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
@@ -101,34 +102,25 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Product Name </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><span id="pname" ></span> </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
-
                     <div class="row">
-
                         <div class="col-md-4">
-
                             <div class="card" style="width: 18rem;">
-
-                                <img src=" " class="card-img-top" alt="..." style="height: 200px; width: 200px;">
-
+                                <img src=" " class="card-img-top" alt="..." style="height: 150px; width: 150px;" id="pimage">
                             </div>
-
                         </div><!-- // end col md -->
-
-
+                        <br>
                         <div class="col-md-4">
-
                             <ul class="list-group">
-                                <li class="list-group-item">Product Price: </li>
-                                <li class="list-group-item">Product Code:</li>
-                                <li class="list-group-item">Category:</li>
-                                <li class="list-group-item">Discount:</li>
+                                <li class="list-group-item"> Product Price : <strong id="price"></strong>€ </li>
+                                <li class="list-group-item">Product Code : <strong id="pcode"></strong></li>
+                                <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
+                                <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
                                 <li class="list-group-item">Stock</li>
                             </ul>
                         </div><!-- // end col md -->
@@ -167,6 +159,42 @@
     </div>
     <!-- End Add to Cart Product Modal -->
 
+    <script type="text/javascript">
+
+        //dans le header on va mettre un token pour éviter les attaques csrf
+        $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    })
+        //Start product View With Modal
+
+    // le onclick est démodé il faudrai essayer un adventlistener !
+    //la fonction va prendre l'id du produt grace au onclick et on va récuper toute les données
+    // qu'on a mit dans notre controller grace a la route
+        function productView(id) {
+            //alert(id)
+            $.ajax({
+                type: 'GET',
+                url: '/product/view/modal/' + id,
+                dataType: 'json',
+                success: function(data) {
+                    // console.log(data)
+
+                    //fait référence a l'id du span pour le nom du produit
+                    //dans le controller on a choisit les données qu'on veut par exemple le nom du produit
+                    //on fera donc data.product.product_name_en
+                    $('#pname').text(data.product.product_name_en);
+                    $('#price').text(data.product.selling_price);
+                    $('#pcode').text(data.product.product_code);
+                    $('#pcategory').text(data.product.category.category_name_en);
+                    $('#pbrand').text(data.product.brand.brand_name_en);
+                    $('#pimage').attr('src','/'+data.product.product_thambnail	);
+                }
+            })
+
+        }
+    </script>
 
 </body>
 

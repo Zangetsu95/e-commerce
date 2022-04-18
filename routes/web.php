@@ -195,3 +195,5 @@ Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDeta
 /* Product Tags */
 Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
 
+/* Product View Modal AJAX */
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
