@@ -2,16 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\AdminProfileController;
-use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
+use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\CartController;
 
 
 /*
@@ -197,3 +200,6 @@ Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
 
 /* Product View Modal AJAX */
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+
+/* Product add to cart AJAX */
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);

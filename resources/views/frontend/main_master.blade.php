@@ -103,8 +103,8 @@
             <div class="modal-content" style="width: 800px;right:100px">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span> </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" style="display: none" aria-label="Close" id="closeModel">
+                        <span aria-hidden="false">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -119,38 +119,40 @@
                         <div class="col-md-4">
                             <ul class="list-group">
                                 <li class="list-group-item">Product Price: <strong class="text-danger">
-                                    <span id="pprice"></span>€
-                                </strong>
+                                        <span id="pprice"></span>€
+                                    </strong>
                                     <del id="oldprice"></del>
                                 </li>
                                 <li class="list-group-item">Product Code : <strong id="pcode"></strong></li>
                                 <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
                                 <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
                                 <li class="list-group-item">Stock
-                                    <span class="badge badge-pill badge-success" id="aviable" style="background: green;color:white" ></span>
-                                    <span class="badge badge-pill badge-danger" id="stockout" style="background: red;color:white" ></span>
+                                    <span class="badge badge-pill badge-success" id="aviable"
+                                        style="background: green;color:white"></span>
+                                    <span class="badge badge-pill badge-danger" id="stockout"
+                                        style="background: red;color:white"></span>
 
                                 </li>
                             </ul>
                         </div><!-- // end col md -->
-                        <div class="col-md-4" >
+                        <div class="col-md-4">
                             <div class="form-group" id="colorArea">
-                                <label for="exampleFormControlSelect1">Choose Color</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="color">
+                                <label for="color">Choose Color</label>
+                                <select class="form-control" id="color" name="color">
 
                                 </select>
                             </div> <!-- // end form group -->
                             <div class="form-group" id="sizeArea">
-                                <label for="exampleFormControlSelect1">Choose Size</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="size">
+                                <label for="size">Choose Size</label>
+                                <select class="form-control" id="id" name="size">
                                 </select>
                             </div> <!-- // end form group -->
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Quantity</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput1" value="1"
-                                    min="1">
+                                <label for="qty">Quantity</label>
+                                <input type="number" class="form-control" id="qty" value="1" min="1">
                             </div> <!-- // end form group -->
-                            <button type="submit" class="btn btn-primary mb-3">Add to Cart</button>
+                            <input type="hidden" id="product_id">
+                            <button type="submit" class="btn btn-primary mb-3" onclick="addToCart()">Add to Cart</button>
                         </div><!-- // end col md -->
                     </div> <!-- // end row -->
                 </div> <!-- // end modal Body -->
@@ -160,6 +162,8 @@
     <!-- End Add to Cart Product Modal -->
 
     <script type="text/javascript">
+        // PRODUCT VIEW MODAL \\
+
         //dans le header on va mettre un token pour éviter les attaques csrf
         $.ajaxSetup({
             headers: {
@@ -178,7 +182,7 @@
                 url: '/product/view/modal/' + id,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data)
+                    //console.log(data)
 
                     //fait référence a l'id du span pour le nom du produit
                     //dans le controller on a choisit les données qu'on veut par exemple le nom du produit
@@ -190,27 +194,31 @@
                     $('#pbrand').text(data.product.brand.brand_name_en);
                     $('#pimage').attr('src', '/' + data.product.product_thambnail);
 
+                    $('#product_id').val(id);
+                    $('#qty').val(1);
+
+
                     //on prend la color qu'on a mit dans le controller
                     //on choisit le formulaire
 
                     // PRODUCT PRICE \\
 
-                    if(data.product.discount_price == null){
-                    $('#pprice').text('');
-                    $('#oldprice').text('');
-                    $('#pprice').text(data.product.selling_price);
-                    }else{
-                    $('#pprice').text(data.discount);
-                    $('#oldprice').text(data.product.selling_price);
+                    if (data.product.discount_price == null) {
+                        $('#pprice').text('');
+                        $('#oldprice').text('');
+                        $('#pprice').text(data.product.selling_price);
+                    } else {
+                        $('#pprice').text(data.discount);
+                        $('#oldprice').text(data.product.selling_price);
                     }
 
                     /// STOCK \\\
-                    if(data.product.product_qty > 0){
+                    if (data.product.product_qty > 0) {
                         $('#aviable').text('');
                         $('#stockout').text('');
                         $('#aviable').text('aviable');
 
-                    }else{
+                    } else {
                         $('#aviable').text('');
                         $('#stockout').text('');
                         $('#stockout').text('stockout');
@@ -226,7 +234,7 @@
                                 value + ' </option>');
                         })
                         $('#colorArea').show();
-                    }else{
+                    } else {
                         $('#colorArea').hide();
                     }
 
@@ -238,15 +246,45 @@
                                 value + ' </option>');
                         })
                         $('#sizeArea').show();
-                    }else{
+                    } else {
                         $('select[name="size"]').empty();
                         $('#sizeArea').hide();
                     }
 
                 }
             })
+        // END PRODUCT VIEW MODAL \\
 
         }
+        //START ADD TO CART \\
+
+        function addToCart(){
+        var product_name = $('#pname').text();
+        var id = $('#product_id').val();
+        var color = $('#color option:selected').text();
+        var size = $('#size option:selected').text();
+        var quantity = $('#qty').val();
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data:{
+                color:color,
+                size:size,
+                quantity:quantity,
+                product_name:product_name,
+            },
+            url: "/cart/data/store/"+id,
+            success:function(data){
+                if($("#closeModel").click()){
+                    $('#exampleModal').removeClass('show');
+                }
+
+                console.log(data);
+            }
+        })
+    }
+
+        //END ADD TO CART \\
     </script>
 
 </body>
