@@ -106,7 +106,8 @@
             <div class="modal-content" style="width: 800px;right:100px">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span> </h5>
-                    <button type="button" class="close" data-dismiss="modal" style="display: none" aria-label="Close" id="closeModel">
+                    <button type="button" class="close" data-dismiss="modal" style="display: none"
+                        aria-label="Close" id="closeModel">
                         <span aria-hidden="false">&times;</span>
                     </button>
                 </div>
@@ -139,12 +140,12 @@
                             </ul>
                         </div><!-- // end col md -->
                         <div class="col-md-4">
-                            <div class="form-group" id="colorArea">
+                            {{-- <div class="form-group" id="colorArea">
                                 <label for="color">Choose Color</label>
                                 <select class="form-control" id="color" name="color">
 
                                 </select>
-                            </div> <!-- // end form group -->
+                            </div> <!-- // end form group --> --}}
                             <div class="form-group" id="sizeArea">
                                 <label for="size">Choose Size</label>
                                 <select class="form-control" id="id" name="size">
@@ -155,7 +156,8 @@
                                 <input type="number" class="form-control" id="qty" value="1" min="1">
                             </div> <!-- // end form group -->
                             <input type="hidden" id="product_id">
-                            <button type="submit" class="btn btn-primary mb-3" onclick="addToCart()">Add to Cart</button>
+                            <button type="submit" class="btn btn-primary mb-3" onclick="addToCart()">Add to
+                                Cart</button>
                         </div><!-- // end col md -->
                     </div> <!-- // end row -->
                 </div> <!-- // end modal Body -->
@@ -230,16 +232,16 @@
 
 
                     //// COLOR \\\\
-                    if (data.product.category.category_name_en === 'Clothes') {
-                        $('select[name="color"]').empty();
-                        $.each(data.color, function(key, value) {
-                            $('select[name="color"]').append('<option value=" ' + value + ' "> ' +
-                                value + ' </option>');
-                        })
-                        $('#colorArea').show();
-                    } else {
-                        $('#colorArea').hide();
-                    }
+                    // if (data.product.category.category_name_en === 'Clothes') {
+                    //     $('select[name="color"]').empty();
+                    //     $.each(data.color, function(key, value) {
+                    //         $('select[name="color"]').append('<option value=" ' + value + ' "> ' +
+                    //             value + ' </option>');
+                    //     })
+                    //     $('#colorArea').show();
+                    // } else {
+                    //     $('#colorArea').hide();
+                    // }
 
                     //// SIZE \\\\
                     if (data.product.category.category_name_en === 'Clothes') {
@@ -256,55 +258,74 @@
 
                 }
             })
-        // END PRODUCT VIEW MODAL \\
+            // END PRODUCT VIEW MODAL \\
 
         }
         //START ADD TO CART \\
 
-        function addToCart(){
-        var product_name = $('#pname').text();
-        var id = $('#product_id').val();
-        var color = $('#color option:selected').text();
-        var size = $('#size option:selected').text();
-        var quantity = $('#qty').val();
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            data:{
-                color:color,
-                size:size,
-                quantity:quantity,
-                product_name:product_name,
-            },
-            url: "/cart/data/store/"+id,
-            success:function(data){
-                if($("#closeModel").click()){
-                    $('#exampleModal').removeClass('show');
-                    const Toast = Swal.mixin({
-                      toast: true,
-                      position: 'top-end',
-                      icon: 'success',
-                      showConfirmButton: false,
-                      timer: 3000
-                    })
-                if ($.isEmptyObject(data.error)) {
-                    Toast.fire({
-                        type: 'success',
-                        title: data.success
-                    })
-                }else{
-                    Toast.fire({
-                        type: 'error',
-                        title: data.error
-                    })
-                }
+        function addToCart() {
+            var product_name = $('#pname').text();
+            var id = $('#product_id').val();
+            var color = $('#color option:selected').text();
+            var size = $('#size option:selected').text();
+            var quantity = $('#qty').val();
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    color: color,
+                    size: size,
+                    quantity: quantity,
+                    product_name: product_name,
+                },
+                url: "/cart/data/store/" + id,
+                success: function(data) {
+                    if ($("#closeModel").click()) {
+                        $('#exampleModal').removeClass('show');
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error
+                            })
+                        }
 
-                }
+                    }else{
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error
+                            })
+                        }
+                    }
 
-                console.log(data);
-            }
-        })
-    }
+                    console.log(data);
+                }
+            })
+        }
 
         //END ADD TO CART \\
     </script>

@@ -47,7 +47,7 @@
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info pr-30 pl-30">
                                         <span class="stock-status out-stock"> Sale Off </span>
-                                        <h2 class="title-detail">
+                                        <h2 class="title-detail" id="pname">
                                             @if (session()->get('language') == 'french')
                                             {{ $product->product_name_fr }}
                                             @else
@@ -87,29 +87,34 @@
                                         <div class="short-desc mb-30">
 
                                         </div>
-                                        <div class="attr-detail attr-size mb-30">
-                                            <strong class="mr-10">Size / Weight: </strong>
+                                        <div class="attr-detail attr-size mb-30" id="size">
+                                            @if ($product->category->category_name_en === "Clothes")
+                                            <strong class="mr-10">Size  </strong>
                                             <ul class="list-filter size-filter font-small">
-                                                <li><a href="#">50g</a></li>
-                                                <li class="active"><a href="#">60g</a></li>
-                                                <li><a href="#">80g</a></li>
-                                                <li><a href="#">100g</a></li>
-                                                <li><a href="#">150g</a></li>
+                                                @foreach ( $product_size_en as $item )
+
+                                                <li><a href="#">{{ $item }}</a></li>
+                                                @endforeach
                                             </ul>
+                                            @endif
                                         </div>
                                         <div class="detail-extralink mb-50">
                                             <div class="detail-qty border radius">
                                                 <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
+                                                <span><input class="qty-val" type="text" id="qty" value="1" min="1"></span>
                                                 <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
+
+                                        <input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
+
                                             <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                                <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                {{-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                             </div>
                                         </div>
-                                        <div class="font-xs">
+
+                                        {{-- <div class="font-xs">
                                             <ul class="mr-50 float-start">
                                                 <li class="mb-5">Type: <span class="text-brand">Organic</span></li>
                                                 <li class="mb-5">MFG:<span class="text-brand"> Jun 4.2021</span></li>
@@ -120,7 +125,7 @@
                                                 <li class="mb-5">Tags: <a href="#" rel="tag">Snack</a>, <a href="#" rel="tag">Organic</a>, <a href="#" rel="tag">Brown</a></li>
                                                 <li>Stock:<span class="in-stock text-brand ml-5">8 Items In Stock</span></li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!-- Detail Info -->
                                 </div>
