@@ -67,6 +67,9 @@
     <!-- Template  JS -->
     <script src="{{ asset('frontend/assets/js/main.js?v=4.0') }}"></script>
     <script src="{{ asset('frontend/assets/js/shop.js?v=4.0') }}"></script>
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <!-- Toast js script -->
     <script>
@@ -277,6 +280,25 @@
             success:function(data){
                 if($("#closeModel").click()){
                     $('#exampleModal').removeClass('show');
+                    const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+
                 }
 
                 console.log(data);
