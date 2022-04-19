@@ -312,7 +312,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -326,49 +326,49 @@
                                 <ul>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks and
+                                                src="" alt="" />Milks and
                                             Dairies</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-2.svg" alt="" />Clothing &
+                                                src="" alt="" />Clothing &
                                             beauty</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods &
+                                                src="" alt="" />Pet Foods &
                                             Toy</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-4.svg" alt="" />Baking
+                                                src="" alt="" />Baking
                                             material</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a>
+                                                src="" alt="" />Fresh Fruit</a>
                                     </li>
                                 </ul>
                                 <ul class="end">
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-6.svg" alt="" />Wines & Drinks</a>
+                                                src="" alt="" />Wines & Drinks</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-7.svg" alt="" />Fresh Seafood</a>
+                                                src="" alt="" />Fresh Seafood</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-8.svg" alt="" />Fast food</a>
+                                                src="" alt="" />Fast food</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-9.svg" alt="" />Vegetables</a>
+                                                src="" alt="" />Vegetables</a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html"> <img
-                                                src="assets/imgs/theme/icons/category-10.svg" alt="" />Bread and
+                                                src="g" alt="" />Bread and
                                             Juice</a>
                                     </li>
                                 </ul>
@@ -378,23 +378,23 @@
                                     <ul>
                                         <li>
                                             <a href="shop-grid-right.html"> <img
-                                                    src="assets/imgs/theme/icons/icon-1.svg" alt="" />Milks and
+                                                    src="" alt="" />Milks and
                                                 Dairies</a>
                                         </li>
                                         <li>
                                             <a href="shop-grid-right.html"> <img
-                                                    src="assets/imgs/theme/icons/icon-2.svg" alt="" />Clothing &
+                                                    src="" alt="" />Clothing &
                                                 beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
                                             <a href="shop-grid-right.html"> <img
-                                                    src="assets/imgs/theme/icons/icon-3.svg" alt="" />Wines & Drinks</a>
+                                                    src="" alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
                                             <a href="shop-grid-right.html"> <img
-                                                    src="assets/imgs/theme/icons/icon-4.svg" alt="" />Fresh Seafood</a>
+                                                    src="" alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -596,7 +596,7 @@
                     </div>
                 </div>
                 <div class="hotline d-none d-lg-flex">
-                    <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline" />
+                    <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
                     <p>1900 - 888<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
@@ -610,13 +610,13 @@
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a href="shop-wishlist.html">
-                                <img alt="Nest" src="assets/imgs/theme/icons/icon-heart.svg" />
+                                <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="shop-cart.html">
-                                <img alt="Nest" src="assets/imgs/theme/icons/icon-cart.svg" />
+                                <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                 <span class="pro-count white">2</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -624,7 +624,7 @@
                                     <li>
                                         <div class="shopping-cart-img">
                                             <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                                    src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
@@ -637,7 +637,7 @@
                                     <li>
                                         <div class="shopping-cart-img">
                                             <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                                    src="{{ asset('frontend/assets/imgs/shop/thumbnail-4.jpg') }}" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
@@ -669,7 +669,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -835,11 +835,11 @@
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
             </div>
             <div class="site-copyright">Copyright 2021 © Nest. All rights reserved. Powered by AliThemes.</div>
         </div>

@@ -494,7 +494,7 @@ ShinSekai Manga World
                     <div class="carausel-8-columns" id="carausel-8-columns">
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-1.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -503,7 +503,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-2.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -513,7 +513,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-3.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -522,7 +522,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-4.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -531,7 +531,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-5.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -540,7 +540,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-6.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -549,7 +549,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-7.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -558,7 +558,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-8.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -567,7 +567,7 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-9.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6>
@@ -576,14 +576,14 @@ ShinSekai Manga World
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-10.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6><a href="shop-grid-right.html">Fastfood</a></h6>
                         </div>
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="assets/imgs/theme/icons/category-11.svg"
+                                <a href="shop-grid-right.html"><img src=""
                                         alt="" /></a>
                             </figure>
                             <h6><a href="shop-grid-right.html">Ice cream</a></h6>
@@ -691,7 +691,7 @@ ShinSekai Manga World
                         <div class="product-list-small animated animated">
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-7.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
@@ -712,7 +712,7 @@ ShinSekai Manga World
                             </article>
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-8.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
@@ -733,7 +733,7 @@ ShinSekai Manga World
                             </article>
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-9.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
@@ -759,7 +759,7 @@ ShinSekai Manga World
                         <div class="product-list-small animated animated">
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-10.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
@@ -781,7 +781,7 @@ ShinSekai Manga World
                             </article>
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-11.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
@@ -803,7 +803,7 @@ ShinSekai Manga World
                             </article>
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src="assets/imgs/shop/thumbnail-12.jpg"
+                                    <a href="shop-product-right.html"><img src=""
                                             alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
