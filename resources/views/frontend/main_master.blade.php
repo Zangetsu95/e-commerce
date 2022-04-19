@@ -100,7 +100,7 @@
     <!-- Add to Cart Product Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 800px;right:100px">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span> </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,7 +111,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card" style="width: 18rem;">
-                                <img src=" " class="card-img-top" alt="..." style="height: 150px; width: 150px;"
+                                <img src=" " class="card-img-top" alt="..." style="height: 200px; width: 200px;"
                                     id="pimage">
                             </div>
                         </div><!-- // end col md -->
