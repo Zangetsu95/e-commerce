@@ -210,3 +210,5 @@ Route::get('/product/mini/cart', [CartController::class, 'AddToMiniCart']);
 /* Remove mini  cart AJAX */
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 
+/* Add to Whislist AJAX */
+Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishList']);

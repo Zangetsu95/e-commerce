@@ -397,6 +397,24 @@
         //MINI CART REMOVE END FUNCTION \\
     </script>
 
+    {{-- WHISLIT --}}
+    <script type="text/javascript">
+
+        function addToWishList(product_id){
+            $.ajax({
+                type:"POST",
+                dataType :'json',
+                url:"/add-to-wishlist"+product_id,
+
+                success:function(data){
+                    
+                }
+            })
+        }
+
+
+    </script>
+    {{-- END WHISLIT --}}
 </body>
 
 </html>
