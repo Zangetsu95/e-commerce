@@ -399,14 +399,13 @@
 
     {{-- WHISLIT --}}
     <script type="text/javascript">
-
-        function addToWishList(product_id){
+        function addToWishList(product_id) {
             $.ajax({
-                type:"POST",
-                dataType :'json',
-                url:"/add-to-wishlist/"+product_id,
+                type: "POST",
+                dataType: 'json',
+                url: "/add-to-wishlist/" + product_id,
 
-                success:function(data){
+                success: function(data) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -429,10 +428,63 @@
                 }
             })
         }
-
-
     </script>
     {{-- END WHISLIT --}}
+
+    {{-- LOAD WISHLIST DATA --}}
+    <script type="text/javascript">
+        function wishlist() {
+            $.ajax({
+                type: 'GET',
+                url: '/get-wishlist-product',
+                dataType: 'json',
+                success: function(response) {
+                    var rows = ""
+                    $.each(response, function(key, value) {
+                        rows += `<tr class="pt-30">
+                                    <td class="custome-checkbox pl-30">
+                                        <input class="form-check-input" type="checkbox" name="checkbox"
+                                            id="exampleCheckbox1" value="" />
+                                        <label class="form-check-label" for="exampleCheckbox1"></label>
+                                    </td>
+                                    <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thambnail}"
+                                            alt="#" /></td>
+                                    <td class="product-des product-name">
+                                        <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name_en}</a></h6>
+                                        <div class="product-rate-cover">
+                                            <div class="product-rate d-inline-block">
+                                                <div class="product-rating" style="width: 90%"></div>
+                                            </div>
+                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        </div>
+                                    </td>
+                                    <td class="price" data-title="Price">
+                                        ${value.product.discount_price == null
+                                        ? `${value.product.selling_price}€`
+                                        :
+                                        `${(value.product.selling_price) - (value.product.discount_price)}€ <span class="text-danger">(${value.product.selling_price}€)</span>`
+                                        }
+                                    </td>
+                                    <td class="text-center detail-info" data-title="Stock">
+                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Add Cart" id="${value.product_id}" onclick="productView(this.id)">Add to cart</button>
+
+                                    </td>
+                                    <td class="action text-center" data-title="Remove">
+                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                    </td>
+                                </tr>`
+                    });
+
+                    $('#wishlist').html(rows);
+                }
+            })
+        }
+        wishlist();
+    </script>
+    {{-- END LOAD WISHLIST DATA --}}
 </body>
 
 </html>
