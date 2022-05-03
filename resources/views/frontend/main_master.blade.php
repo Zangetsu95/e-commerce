@@ -280,6 +280,7 @@
                 },
                 url: "/cart/data/store/" + id,
                 success: function(data) {
+                    miniCart()
                     if ($("#closeModel").click()) {
                         $('#exampleModal').removeClass('show');
                         const Toast = Swal.mixin({
@@ -301,7 +302,7 @@
                             })
                         }
 
-                    }else{
+                    } else {
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -330,18 +331,36 @@
         //END ADD TO CART \\
     </script>
 
-    <script>
-        function miniCart(){
+    <script type="text/javascript">
+        function miniCart() {
             $.ajax({
-                type:'GET',
-                url:'/product/mini/cart'
-                dataType:'json',
-                success:function(response){
-                    console.log(response)
+                type: 'GET',
+                url: '/product/mini/cart',
+                dataType: 'json',
+                success: function(response) {
+                    // console.log(response)
+                    var miniCart = ""
+                    $('span[id=cartSubTotal]').text(response.cartTotal)
+                    $('span[id=cartQty]').text(response.cartQty)
+
+                    $.each(response.carts, function(key, value) {
+                        miniCart += `<div class="shopping-cart-img">
+                                            <a href="shop-product-right.html"><img alt="Nest"
+                                                    src="/${value.options.image}" /></a>
+                                        </div>
+                                        <div class="shopping-cart-title">
+                                            <h4><a href="shop-product-right.html">${value.name}</a></h4>
+                                            <h3><span>1 × </span>${value.price} * ${value.qty}</h3>
+                                        </div>
+                                        <div class="shopping-cart-delete">
+                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                        </div>`
+                    });
+                    $('#miniCart').html(miniCart);
                 }
             })
         }
-
+        miniCart();
     </script>
 
 </body>

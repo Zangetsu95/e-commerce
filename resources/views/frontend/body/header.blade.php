@@ -235,41 +235,20 @@
                                 <a class="mini-cart-icon" href="shop-cart.html">
                                     <img alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue" id="cartQty"></span>
                                 </a>
                                 <a href="shop-cart.html"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="{{ asset('frontend/assets/imgs/shop/thumbnail-2.jpg') }}" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
+                                        <li id="miniCart">
+                                            {{-- MINI CART AJAX --}}
+
+                                            {{-- END MINI CART AJAX --}}
                                         </li>
                                     </ul>
                                     <div class="shopping-cart-footer">
                                         <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
+                                            <h4>Total <span id="cartSubTotal"></span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
                                             <a href="shop-cart.html" class="outline">View cart</a>
@@ -312,7 +291,8 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
+                            alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -325,50 +305,40 @@
                             <div class="d-flex categori-dropdown-inner">
                                 <ul>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Milks and
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Milks and
                                             Dairies</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Clothing &
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Clothing &
                                             beauty</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Pet Foods &
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Pet Foods &
                                             Toy</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Baking
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Baking
                                             material</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Fresh Fruit</a>
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Fresh Fruit</a>
                                     </li>
                                 </ul>
                                 <ul class="end">
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Wines & Drinks</a>
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Wines & Drinks</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Fresh Seafood</a>
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Fresh Seafood</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Fast food</a>
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Fast food</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="" alt="" />Vegetables</a>
+                                        <a href="shop-grid-right.html"> <img src="" alt="" />Vegetables</a>
                                     </li>
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="g" alt="" />Bread and
+                                        <a href="shop-grid-right.html"> <img src="g" alt="" />Bread and
                                             Juice</a>
                                     </li>
                                 </ul>
@@ -377,24 +347,20 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="" alt="" />Milks and
+                                            <a href="shop-grid-right.html"> <img src="" alt="" />Milks and
                                                 Dairies</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="" alt="" />Clothing &
+                                            <a href="shop-grid-right.html"> <img src="" alt="" />Clothing &
                                                 beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="" alt="" />Wines & Drinks</a>
+                                            <a href="shop-grid-right.html"> <img src="" alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="" alt="" />Fresh Seafood</a>
+                                            <a href="shop-grid-right.html"> <img src="" alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -443,8 +409,14 @@
                                     @endphp
 
                                     <li>
-                                        <a href="shop-grid-right.html">@if(session()->get('language') == 'french'){{ $category->category_name_fr }} @else {{ $category->category_name_en }} @endif <i
-                                                class="fi-rs-angle-down"></i></a>
+                                        <a href="shop-grid-right.html">
+                                            @if (session()->get('language') == 'french')
+                                                {{ $category->category_name_fr }}
+                                            @else
+                                                {{ $category->category_name_en }}
+                                            @endif
+                                            <i class="fi-rs-angle-down"></i>
+                                        </a>
                                         <ul class="sub-menu">
                                             @foreach ($subCategories as $subCategory)
                                                 <li><a href="shop-fullwidth.html">
@@ -610,42 +582,26 @@
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a href="shop-wishlist.html">
-                                <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
+                                <img alt="Nest"
+                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="shop-cart.html">
-                                <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
+                                <img alt="Nest"
+                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                 <span class="pro-count white">2</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                 <ul>
                                     <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}" /></a>
+                                        <div id="miniCart">
+
                                         </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
-                                            <h3><span>1 × </span>$800.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="{{ asset('frontend/assets/imgs/shop/thumbnail-4.jpg') }}" /></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
-                                            <h3><span>1 × </span>$3500.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
+                                        {{-- MINI CART AJAX --}}
+
+                                        {{-- END MINI CART AJAX --}}
                                     </li>
                                 </ul>
                                 <div class="shopping-cart-footer">
@@ -835,11 +791,16 @@
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}"
+                        alt="" /></a>
             </div>
             <div class="site-copyright">Copyright 2021 © Nest. All rights reserved. Powered by AliThemes.</div>
         </div>
