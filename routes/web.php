@@ -207,3 +207,6 @@ Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 /* Get Data for the mini  cart AJAX */
 Route::get('/product/mini/cart', [CartController::class, 'AddToMiniCart']);
 
+/* Remove mini  cart AJAX */
+Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+

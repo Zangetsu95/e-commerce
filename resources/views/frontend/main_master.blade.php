@@ -350,10 +350,10 @@
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">${value.name}</a></h4>
-                                            <h3><span>1 × </span>${value.price} * ${value.qty}</h3>
+                                            <h3><span> </span>${value.price}€ * ${value.qty}</h3>
                                         </div>
                                         <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            <a id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fi-rs-cross-small" ></i></a>
                                         </div>`
                     });
                     $('#miniCart').html(miniCart);
@@ -361,6 +361,40 @@
             })
         }
         miniCart();
+        //MINI CART REMOVE FUNCTION \\
+
+        function miniCartRemove(rowId) {
+            $.ajax({
+                type: 'GET',
+                url: '/minicart/product-remove/' + rowId,
+                dataType: 'json',
+                success: function(data) {
+                    miniCart();
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
+                    // End Message
+                }
+            });
+        }
+
+        //MINI CART REMOVE END FUNCTION \\
     </script>
 
 </body>
