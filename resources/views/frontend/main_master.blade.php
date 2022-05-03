@@ -473,7 +473,7 @@
 
                                     </td>
                                     <td class="action text-center" data-title="Remove">
-                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                        <a id="${value.id}" onclick="wishListRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a>
                                     </td>
                                 </tr>`
                     });
@@ -483,6 +483,41 @@
             })
         }
         wishlist();
+
+        // REMOVE WISHLIST \\
+        function wishListRemove(id) {
+            $.ajax({
+                type: 'GET',
+                url: '/wishlist-remove/' + id,
+                dataType: 'json',
+                success: function(data) {
+                    wishlist();
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error
+                        })
+                    }
+                    // End Message
+                }
+            });
+        }
+
+        // END REMOVE WISHLIST \\
     </script>
     {{-- END LOAD WISHLIST DATA --}}
 </body>
