@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
-
+/*
+    got to https://packagist.org/packages/bumbummen99/shoppingcart to see more explanaiton
+*/
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id)
@@ -45,5 +47,18 @@ class CartController extends Controller
             ]);
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
+    }
+
+    function AddToMiniCart()
+    {
+        $carts = Cart::content();
+        $cartQty =Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => round($cartTotal),
+        ));
     }
 }
