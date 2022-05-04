@@ -37,8 +37,8 @@ Cart Page
                                 <th scope="col" colspan="2">Product</th>
                                 <th scope="col">Unit Price</th>
                                 <th scope="col">Quantity</th>
-                                {{-- <th scope="col">Subtotal</th> --}}
-                                {{-- <th scope="col" class="end">Remove</th> --}}
+                                <th scope="col">SubTotal</th>
+                                <th scope="col" class="end">Remove</th>
                             </tr>
                         </thead>
                         <tbody id="cartPage">
@@ -372,8 +372,8 @@ Cart Page
                                     <td class="cart_total_label">
                                         <h6 class="text-muted">Total</h6>
                                     </td>
-                                    <td class="cart_total_amount">
-                                        <h4 class="text-brand text-end">$12.31</h4>
+                                    <td class="cart_total_amount" id="subTotal">
+
                                     </td>
                                 </tr>
                             </tbody>
