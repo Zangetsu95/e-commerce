@@ -559,9 +559,9 @@
                                 <td class="text-center detail-info" data-title="Stock">
                                         <div class="detail-extralink mr-15">
                                             <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"  id="${value.rowId}" onclick="cartDecrement(this.id)"></i></a>
                                                 <span class="qty-val">${value.qty}</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up" id="${value.rowId}" onclick="cartIncrement(this.id)"></i></a>
                                             </div>
                                         </div>
                                     </td>
@@ -614,6 +614,24 @@
         }
 
         // END REMOVE CART PAGE \\
+
+        // CART INCREMENT \\
+
+        function cartIncrement(rowId){
+            $.ajax({
+                type:'GET',
+                url:"/cart-increment/"+rowId,
+                dataType:'json',
+                success:function(data){
+                    cart();
+                    miniCart();
+                }
+            });
+        }
+
+        // End CART INCREMENT \\
+
+
     </script>
     {{-- END LOAD CARTPAGE DATA --}}
 </body>
