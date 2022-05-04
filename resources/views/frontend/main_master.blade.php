@@ -568,12 +568,10 @@
                                 <td>
                                     <strong>${value.subtotal}€</strong>
                                 </td>
-                                <td class="action text-center" data-title="Remove"><a href="#" class="text-body"><i class="fi-rs-trash"></i></a></td>
-                            </tr>
-`
+                                <td class="action text-center" data-title="Remove"><a id="${value.rowId}" onclick="cartPageRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a></td>
+                            </tr>`
                         totalCart += `<h4 class="text-brand text-end">€</h4>`
                     });
-
                     $('#cartPage').html(rows);
                     $('#subTotal').html(totalCart);
                 }
@@ -582,13 +580,14 @@
         cart();
 
         // REMOVE CARTPAGE \\
-        function carPageRemove(id) {
+        function cartPageRemove(id) {
             $.ajax({
                 type: 'GET',
-                url: '/user/wishlist-remove/' + id,
+                url: '/user/cart-remove/' + id,
                 dataType: 'json',
                 success: function(data) {
-                    cartPage();
+                    cart();
+                    miniCart();
                     // Start Message
                     const Toast = Swal.mixin({
                         toast: true,
