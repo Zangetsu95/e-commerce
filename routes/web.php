@@ -244,3 +244,6 @@ Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProd
 
 Route::get('/cart-increment/{id}', [CartPageController::class, 'CartIncrement']);
 
+Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement']);
+
+
