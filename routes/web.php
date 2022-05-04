@@ -235,4 +235,9 @@ Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']
 });
 
 
+/* cart page routes */
+Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
 
+Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+
+Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
