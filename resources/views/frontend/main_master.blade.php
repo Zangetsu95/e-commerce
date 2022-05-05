@@ -628,6 +628,7 @@
                 url: "/cart-increment/" + rowId,
                 dataType: 'json',
                 success: function(data) {
+                    couponCalculation();
                     cart();
                     miniCart();
                 }
@@ -644,6 +645,7 @@
                 url: "/cart-decrement/" + rowId,
                 dataType: 'json',
                 success: function(data) {
+                    couponCalculation();
                     cart();
                     miniCart();
                 }
