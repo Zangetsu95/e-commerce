@@ -666,6 +666,8 @@
                 },
                 url: "{{ url('/coupon-apply') }}",
                 success: function(data) {
+                    couponCalculation();
+                    $('#couponField').hide();
                     // Start Message
                     const Toast = Swal.mixin({
                         toast: true,
@@ -701,7 +703,7 @@
                     if (data.total) {
                         $('#couponCalField').html(
                             `<td class="cart_total_label">
-                                        <h6 class="text-muted">Total : ${data.total}</h6>
+                                        <h6 text-heading text-end>Total : ${data.total}</h6>
                                     </td>
                                     <td class="cart_total_amount">
                             </td>`
@@ -713,8 +715,8 @@
                                     </td>
                                     <td class="cart_total_amount">
                             </td>
-                            <td>
-                                <h6 class="text-muted">Name Coupon : ${data.coupon_name}</h6>
+                            <td id="couponField" >
+                                <h6 class="text-muted"><a onclick="couponRemove()">Name Coupon : ${data.coupon_name}</a></h6>
                             </td>
                             <td>
                                 <h6 text-heading text-end>Discount : ${data.discount_amount}€</h6>
@@ -734,6 +736,46 @@
         couponCalculation();
     </script>
     {{-- END APPLY COUPOON --}}
+
+    {{-- REMOVE COUPON --}}
+    <script type="text/javascript">
+        function couponRemove() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/coupon-remove') }}",
+                dataType: 'json',
+                success: function(data) {
+                    couponCalculation();
+                    $('#couponField').show();
+                    $('#coupon_name').val('');
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error
+                        })
+                    }
+                    // End Message
+                }
+            });
+        }
+    </script>
+    {{-- END REMOVE COUPON --}}
+
 
 </body>
 
