@@ -110,13 +110,13 @@
                             </div> --}}
                             <div class="form-group col-lg-6">
                                 <div class="controls">
-                                    <select name="division_id" class="form-control" required="">
-                                        <option value="" selected="" disabled="">Select Division</option>
+                                    <select name="district_id" class="form-control" required="">
+                                        <option value="" selected="" disabled="">Select District</option>
                                         @foreach ($divisions as $item)
                                             <option value="{{ $item->id }}">{{ $item->district_name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('division_id')
+                                    @error('district_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -129,13 +129,13 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <div class="controls">
-                                    <select name="division_id" class="form-control" required="">
-                                        <option value="" selected="" disabled="">Select Division</option>
+                                    <select name="state_id" class="form-control" required="">
+                                        <option value="" selected="" disabled="">Select State</option>
                                         @foreach ($divisions as $item)
                                             <option value="{{ $item->id }}">{{ $item->state_name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('division_id')
+                                    @error('state_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -296,4 +296,50 @@
         </div>
     </div>
 </main>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="division_id"]').on('change', function() {
+            var division_id = $(this).val();
+            if (division_id) {
+                $.ajax({
+                    url: "{{ url('/district-get/ajax') }}/" + division_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="state_id"]').empty();
+                        var d = $('select[name="district_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="district_id"]').append(
+                                '<option value="' + value.id + '">' + value
+                                .district_name + '</option>');
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+        $('select[name="district_id"]').on('change', function() {
+            var district_id = $(this).val();
+            if (district_id) {
+                $.ajax({
+                    url: "{{ url('/state-get/ajax') }}/" + district_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        var d = $('select[name="state_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="state_id"]').append('<option value="' +
+                                value.id + '">' + value.state_name + '</option>'
+                                );
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+
+    });
+</script>
 @endsection
