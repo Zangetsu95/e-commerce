@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -198,6 +199,19 @@ Route::prefix('coupons')->group(function () {
     Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon-update');
 
     Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon-delete');
+});
+
+Route::prefix('shipping')->group(function () {
+
+    Route::get('/division/view', [ShippingAreaController::class, 'DivisionView'])->name('manage-division');
+
+    Route::post('/division/store', [ShippingAreaController::class, 'DivisionStore'])->name('division-store');
+
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'CouponEdit'])->name('division-edit');
+
+    Route::post('/update/{id}', [ShippingAreaController::class, 'CouponUpdate'])->name('division-update');
+
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'CouponDelete'])->name('division-delete');
 });
 
 
