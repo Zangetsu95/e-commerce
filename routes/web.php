@@ -229,6 +229,21 @@ Route::prefix('district')->group(function () {
     Route::get('/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district-delete');
 });
 
+/*ADMIN SHIPPING DISTRICT */
+Route::prefix('state')->group(function () {
+
+    Route::get('/state/view', [ShippingAreaController::class, 'StateView'])->name('manage-state');
+
+    Route::post('/state/store', [ShippingAreaController::class, 'DistrictStore'])->name('district-store');
+
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district-edit');
+
+    Route::post('/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district-update');
+
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district-delete');
+});
+
+
 
 ///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
