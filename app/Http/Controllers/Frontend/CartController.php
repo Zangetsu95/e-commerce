@@ -12,6 +12,7 @@ use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
+use App\Models\ShipDivision;
 
 /*
     got to https://packagist.org/packages/bumbummen99/shoppingcart to see more explanaiton
@@ -170,8 +171,9 @@ class CartController extends Controller
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
+                $divisions = ShipDivision::orderBy('division_name','ASC')->get();
 
-                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal'));
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal','divisions'));
             } else {
 
                 $notification = array(
