@@ -74,7 +74,8 @@
                 </div>
                 <div class="row">
                     <h4 class="mb-30">Billing Details</h4>
-                    <form method="post">
+                    <form method="post" action="{{ route('checkout-store') }}">
+                        @csrf
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <input type="text" name="shipping_name" value="{{ Auth::user()->name }}" required=""
@@ -158,7 +159,7 @@
                                 <input class="form-check-input" required="" type="radio" name="payment_option"
                                     id="exampleRadios3" checked="">
                                 <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
-                                    data-target="#bankTranfer" aria-controls="bankTranfer">Direct Bank Transfer</label>
+                                    data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                             </div>
                             <div class="custome-radio">
                                 <input class="form-check-input" required="" type="radio" name="payment_option"

@@ -319,3 +319,6 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
 
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+
+Route::get('/checkout/Store', [CheckoutController::class, 'CheckoutStore'])->name('checkout-store');
+
