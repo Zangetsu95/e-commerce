@@ -322,6 +322,9 @@ Cart Page
                         </div>
                     </div> --}}
                     <div class="col-lg-5">
+                        @if (Session::has('coupon'))
+
+                        @else
                         <div class="p-40">
                             <h4 class="mb-10">Apply Coupon</h4>
                             <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
@@ -330,6 +333,7 @@ Cart Page
                                     <button class="btn" type="submit" onclick="applyCoupon()"><i class="fi-rs-label mr-10"></i>Apply</button>
                                 </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -366,11 +370,11 @@ Cart Page
                                         <div class="divider-2 mt-10 mb-10"></div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="couponCalField">
                                     <td class="cart_total_label">
                                         <h6 class="text-muted">Total</h6>
                                     </td>
-                                    <td class="cart_total_amount" id="subTotal">
+                                    <td class="cart_total_amount">
 
                                     </td>
                                 </tr>

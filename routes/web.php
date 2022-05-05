@@ -307,3 +307,6 @@ Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement'])
 /* COUPON ROUTE */
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
 
+Route::post('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+
+

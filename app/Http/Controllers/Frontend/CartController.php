@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Session;
 /*
     got to https://packagist.org/packages/bumbummen99/shoppingcart to see more explanaiton
 */
+
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id)
@@ -44,7 +45,7 @@ class CartController extends Controller
                 'id' => $id,
                 'name' => $request->product_name,
                 'qty' => $request->quantity,
-                'price' =>$product->selling_price - $product->discount_price,
+                'price' => $product->selling_price - $product->discount_price,
                 'weight' => 1,
                 'options' => [
                     'image' => $product->product_thambnail,
@@ -59,7 +60,7 @@ class CartController extends Controller
     function AddToMiniCart()
     {
         $carts = Cart::content();
-        $cartQty =Cart::count();
+        $cartQty = Cart::count();
         $cartTotal = Cart::total();
 
         return response()->json(array(
@@ -75,7 +76,7 @@ class CartController extends Controller
         return response()->json(['success' => 'Product Remove from Cart']);
     }
 
-    function AddToWishList(Request $request,$product_id)
+    function AddToWishList(Request $request, $product_id)
     {
         /**
          * The function will check if we are logged
@@ -83,23 +84,21 @@ class CartController extends Controller
          * else we will receive a error message
          */
 
-        if(Auth::check()){
-            $exists = Wishlist::where('user_id',Auth::id())->where('product_id',$product_id)->first();
+        if (Auth::check()) {
+            $exists = Wishlist::where('user_id', Auth::id())->where('product_id', $product_id)->first();
 
             //For not adding the same product
-            if(!$exists){
+            if (!$exists) {
                 Wishlist::insert([
                     'user_id' => Auth::id(),
                     'product_id' => $product_id,
                     'created_at' => Carbon::now(),
                 ]);
                 return response()->json(['success' => 'Successfully Add to your wishlist !']);
-
-            }else{
+            } else {
                 return response()->json(['error' => 'This product is Already in your wishlist !']);
             }
-
-        }else{
+        } else {
             return response()->json(['error' => 'You must be Loggin !']);
         }
     }
@@ -107,23 +106,40 @@ class CartController extends Controller
     public function CouponApply(Request $request)
     {
         //la condition va vérifier le nom du coupon et la date
-        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+        $coupon = Coupon::where('coupon_name', $request->coupon_name)->where('coupon_validity', '>=', Carbon::now()->format('Y-m-d'))->first();
         if ($coupon) {
 
-            Session::put('coupon',[
+            Session::put('coupon', [
                 'coupon_name' => $coupon->coupon_name,
                 'coupon_discount' => $coupon->coupon_discount,
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
-                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100)
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount / 100),
+                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount / 100)
             ]);
 
             return response()->json(array(
 
                 'success' => 'Coupon Applied Successfully'
             ));
-
-        }else{
+        } else {
             return response()->json(['error' => 'Invalid Coupon']);
+        }
+    }
+
+    public function CouponCalculation()
+    {
+        //on récupere les données de la session
+        if (Session::has('coupon')) {
+            return response()->json(array(
+                'subtotal' => Cart::total(),
+                'coupon_name' => session()->get('coupon')['coupon_name'],
+                'coupon_discount' => session()->get('coupon')['coupon_discount'],
+                'discount_amount' => session()->get('coupon')['discount_amount'],
+                'total_amount' => session()->get('coupon')['total_amount'],
+            ));
+        } else {
+            return response()->json(array(
+                'total' => Cart::total(),
+            ));
         }
     }
 }
