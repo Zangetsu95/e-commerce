@@ -9,6 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redis;
 
 /*
     got to https://packagist.org/packages/bumbummen99/shoppingcart to see more explanaiton
@@ -99,5 +100,10 @@ class CartController extends Controller
         }else{
             return response()->json(['error' => 'You must be Loggin !']);
         }
+    }
+
+    public function CouponApply(Request $request)
+    {
+        
     }
 }

@@ -622,12 +622,12 @@
 
         // CART INCREMENT \\
 
-        function cartIncrement(rowId){
+        function cartIncrement(rowId) {
             $.ajax({
-                type:'GET',
-                url:"/cart-increment/"+rowId,
-                dataType:'json',
-                success:function(data){
+                type: 'GET',
+                url: "/cart-increment/" + rowId,
+                dataType: 'json',
+                success: function(data) {
                     cart();
                     miniCart();
                 }
@@ -638,12 +638,12 @@
 
         // CART INCREMENT \\
 
-        function cartDecrement(rowId){
+        function cartDecrement(rowId) {
             $.ajax({
-                type:'GET',
-                url:"/cart-decrement/"+rowId,
-                dataType:'json',
-                success:function(data){
+                type: 'GET',
+                url: "/cart-decrement/" + rowId,
+                dataType: 'json',
+                success: function(data) {
                     cart();
                     miniCart();
                 }
@@ -651,10 +651,28 @@
         }
 
         // End CART INCREMENT \\
-
-
     </script>
     {{-- END LOAD CARTPAGE DATA --}}
+
+    {{-- APPLY COUPOON --}}
+    <script type="text/javascript">
+        function applyCoupon() {
+            var coupon_name = $('#couponName').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    coupon_name: coupon_name
+                },
+                url: "{{ url('/coupon-apply') }}",
+                success: function(data) {
+                    
+                }
+            })
+        }
+    </script>
+    {{-- END APPLY COUPOON --}}
+
 </body>
 
 </html>
