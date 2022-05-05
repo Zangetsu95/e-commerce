@@ -58,7 +58,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 
     Route::post('update/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
-});// end middleware Admin
+}); // end middleware Admin
 
 /*User All route */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
@@ -193,6 +193,11 @@ Route::prefix('coupons')->group(function () {
 
     Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon-store');
 
+    Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon-edit');
+
+    Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon-update');
+
+    Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon-delete');
 });
 
 
@@ -227,21 +232,20 @@ Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishL
 
 
 
-Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace' => 'User'],function(){
-/* Wishlist Page */
-Route::get('/wishlist', [WishlistController::class, 'ViewWishList'])->name('wishlist');
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function () {
+    /* Wishlist Page */
+    Route::get('/wishlist', [WishlistController::class, 'ViewWishList'])->name('wishlist');
 
-Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishListProduct']);
+    Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishListProduct']);
 
-Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishListProduct']);
+    Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishListProduct']);
 
-/* View Cart */
-Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
+    /* View Cart */
+    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
 
-Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+    Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
 
-Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
-
+    Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
 });
 
 
@@ -255,5 +259,3 @@ Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProd
 Route::get('/cart-increment/{id}', [CartPageController::class, 'CartIncrement']);
 
 Route::get('/cart-decrement/{id}', [CouponController::class, 'CartDecrement']);
-
-
