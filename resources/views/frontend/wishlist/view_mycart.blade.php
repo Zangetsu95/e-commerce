@@ -371,12 +371,7 @@ Cart Page
                                     </td>
                                 </tr>
                                 <tr id="couponCalField">
-                                    <td class="cart_total_label">
-                                        <h6 class="text-muted">Total</h6>
-                                    </td>
-                                    <td class="cart_total_amount">
-
-                                    </td>
+                                    
                                 </tr>
                             </tbody>
                         </table>

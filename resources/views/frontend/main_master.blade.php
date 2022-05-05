@@ -694,12 +694,44 @@
 
         function couponCalculation() {
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: "{{ url('/coupon-calculation') }}",
                 dataType: 'json',
-                success: function(data) {}
+                success: function(data) {
+                    if (data.total) {
+                        $('#couponCalField').html(
+                            `<td class="cart_total_label">
+                                        <h6 class="text-muted">Total : ${data.total}</h6>
+                                    </td>
+                                    <td class="cart_total_amount">
+                            </td>`
+                        )
+                    } else {
+                        $('#couponCalField').html(
+                            `<td class="cart_total_label">
+                                    <h6 text-heading text-end>Total : ${data.subtotal}€</h6>
+                                    </td>
+                                    <td class="cart_total_amount">
+                            </td>
+                            <td>
+                                <h6 class="text-muted">Name Coupon : ${data.coupon_name}</h6>
+                            </td>
+                            <td>
+                                <h6 text-heading text-end>Discount : ${data.discount_amount}€</h6>
+                            </td>
+                            <td class="cart_total_label">
+                                    <h6 text-heading text-end>Total : ${data.total_amount}€</h6>
+                                    </td>
+                                    <td class="cart_total_amount">
+                            </td>
+                            `
+                        )
+                    }
+
+                }
             })
         }
+        couponCalculation();
     </script>
     {{-- END APPLY COUPOON --}}
 
