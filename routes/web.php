@@ -207,11 +207,11 @@ Route::prefix('shipping')->group(function () {
 
     Route::post('/division/store', [ShippingAreaController::class, 'DivisionStore'])->name('division-store');
 
-    Route::get('/edit/{id}', [ShippingAreaController::class, 'CouponEdit'])->name('division-edit');
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division-edit');
 
-    Route::post('/update/{id}', [ShippingAreaController::class, 'CouponUpdate'])->name('division-update');
+    Route::post('/update/{id}', [ShippingAreaController::class, 'DivisionUpdate'])->name('division-update');
 
-    Route::get('/delete/{id}', [ShippingAreaController::class, 'CouponDelete'])->name('division-delete');
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division-delete');
 });
 
 
