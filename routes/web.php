@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\CouponController;
 
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -186,6 +187,13 @@ Route::prefix('slider')->group(function () {
 });
 
 
+Route::prefix('coupons')->group(function () {
+
+    Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+
+});
+
+
 ///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
 
@@ -244,6 +252,6 @@ Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProd
 
 Route::get('/cart-increment/{id}', [CartPageController::class, 'CartIncrement']);
 
-Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement']);
+Route::get('/cart-decrement/{id}', [CouponController::class, 'CartDecrement']);
 
 
