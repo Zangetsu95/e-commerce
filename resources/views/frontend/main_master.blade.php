@@ -69,6 +69,8 @@
     <script src="{{ asset('frontend/assets/js/shop.js?v=4.0') }}"></script>
     <!-- SWEET ALERT -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Toastr -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
     <!-- Toast js script -->
@@ -338,7 +340,7 @@
                 url: '/product/mini/cart',
                 dataType: 'json',
                 success: function(response) {
-                    // console.log(response)
+                    console.log(response)
                     var miniCart = ""
                     $('span[id=cartSubTotal]').text(response.cartTotal)
                     $('span[id=cartQty]').text(response.cartQty)
