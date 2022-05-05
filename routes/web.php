@@ -187,7 +187,7 @@ Route::prefix('slider')->group(function () {
     Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider-inactive');
 });
 
-
+/*ADMIN COUPONS */
 Route::prefix('coupons')->group(function () {
 
     Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
@@ -201,6 +201,7 @@ Route::prefix('coupons')->group(function () {
     Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon-delete');
 });
 
+/*ADMIN SHIPPING DIVISION */
 Route::prefix('shipping')->group(function () {
 
     Route::get('/division/view', [ShippingAreaController::class, 'DivisionView'])->name('manage-division');
@@ -212,6 +213,20 @@ Route::prefix('shipping')->group(function () {
     Route::post('/update/{id}', [ShippingAreaController::class, 'DivisionUpdate'])->name('division-update');
 
     Route::get('/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division-delete');
+});
+
+/*ADMIN SHIPPING DISTRICT */
+Route::prefix('district')->group(function () {
+
+    Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
+
+    Route::post('/district/store', [ShippingAreaController::class, 'DistrictStore'])->name('district-store');
+
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district-edit');
+
+    Route::post('/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district-update');
+
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district-delete');
 });
 
 
