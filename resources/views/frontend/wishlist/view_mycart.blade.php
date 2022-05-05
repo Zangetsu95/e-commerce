@@ -325,12 +325,10 @@ Cart Page
                         <div class="p-40">
                             <h4 class="mb-10">Apply Coupon</h4>
                             <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
-                            <form action="#" >
                                 <div class="d-flex justify-content-between">
-                                    <input id="couponName" class="font-medium mr-15 coupon" name="Coupon" placeholder="Enter Your Coupon">
-                                    <button class="btn" onclick="applyCoupon()"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                    <input id="coupon_name" class="font-medium mr-15 coupon" name="Coupon" placeholder="Enter Your Coupon">
+                                    <button class="btn" type="submit" onclick="applyCoupon()"><i class="fi-rs-label mr-10"></i>Apply</button>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>

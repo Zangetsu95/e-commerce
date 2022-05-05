@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
+use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 
 /*
     got to https://packagist.org/packages/bumbummen99/shoppingcart to see more explanaiton
@@ -104,6 +106,24 @@ class CartController extends Controller
 
     public function CouponApply(Request $request)
     {
-        
+        //la condition va vérifier le nom du coupon et la date
+        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+        if ($coupon) {
+
+            Session::put('coupon',[
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
+                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100)
+            ]);
+
+            return response()->json(array(
+
+                'success' => 'Coupon Applied Successfully'
+            ));
+
+        }else{
+            return response()->json(['error' => 'Invalid Coupon']);
+        }
     }
 }
