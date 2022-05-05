@@ -238,9 +238,9 @@ Route::prefix('state')->group(function () {
 
     Route::get('/edit/{id}', [ShippingAreaController::class, 'StateEdit'])->name('state-edit');
 
-    Route::post('/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district-update');
+    Route::post('/update/{id}', [ShippingAreaController::class, 'StateUpdate'])->name('state-update');
 
-    Route::get('/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district-delete');
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'StateDelete'])->name('state-delete');
 });
 
 
