@@ -297,6 +297,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
 
     Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe');
 
+    
 
 });
 
