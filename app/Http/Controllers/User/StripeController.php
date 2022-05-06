@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
+use Illuminate\Contracts\Mail\Mailable;
 
 class StripeController extends Controller
 {
@@ -88,6 +91,19 @@ class StripeController extends Controller
             ]);
         }
 
+        //Send mail
+        $invoice = Order::findOrFail($order_id);
+        $data = [
+            'invoice_no' => $invoice->invoice_no,
+            'amount' => $total_amount,
+            'name' => $invoice->name,
+            'email' => $invoice->email,
+        ];
+
+        //on envoit $data dans le model Mail:orderMail
+        Mail::to($request->email)->send(new OrderMail($data));
+
+
         //ne pas oublier de supprimer le coupon de la session si on avait mit un
         if (Session::has('coupon')) {
             Session::forget();
@@ -104,7 +120,3 @@ class StripeController extends Controller
         return redirect()->route('dashboard')->with($notification);
     }
 }
-
-
-
-
