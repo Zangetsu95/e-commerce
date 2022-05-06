@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\StripeController;
 
 
 /*
@@ -291,6 +292,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
 
     Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
+
+    /*Stripe payment */
+
+    Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe');
+
+
 });
 
 

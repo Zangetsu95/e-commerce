@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?v=4.0') }}" />
     <!-- Toast js script -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    {{-- STRIPE --}}
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
