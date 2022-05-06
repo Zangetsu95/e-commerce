@@ -102,6 +102,14 @@
                                 <div class="payment ml-30">
                                     <form action="{{ route('stripe') }}" method="post" id="payment-form">
                                         @csrf
+                                        <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+                                        <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                                        <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+                                        <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+                                        <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                                        <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+                                        <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                                        <input type="hidden" name="notes" value="{{ $data['notes'] }}">
                                         <div class="form-row">
                                             <label for="card-element">
                                                 Credit or debit card
@@ -132,7 +140,9 @@
 
 <script type="text/javascript">
     // Create a Stripe client.
-    var stripe = Stripe('pk_test_51KhHQpEAgR4E4ZKpGrxH1jhGPYORAwRJ2XPj2PQ77i0tPBCRd6g9gZ214yDNDb71qAAg6yJi2nhyB2GHXaAQXKBX00a6qZQzqN');
+    var stripe = Stripe(
+        'pk_test_51KhHQpEAgR4E4ZKpGrxH1jhGPYORAwRJ2XPj2PQ77i0tPBCRd6g9gZ214yDNDb71qAAg6yJi2nhyB2GHXaAQXKBX00a6qZQzqN'
+        );
     // Create an instance of Elements.
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.

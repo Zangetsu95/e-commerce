@@ -103,7 +103,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <input type="text" name="shipping_phone" value="{{ Auth::user()->email }}" required=""
+                                <input type="text" name="shipping_email" value="{{ Auth::user()->email }}" required=""
                                     placeholder="Email *">
                             </div>
                             {{-- <div class="form-group col-lg-6">
