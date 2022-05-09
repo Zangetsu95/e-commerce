@@ -119,6 +119,32 @@
                                         style="background: #418DB9;">{{ $order->status }} </span>
                                 </th>
                             </tr>
+                            <tr>
+                                <th> Order : </th>
+                                <th>
+                                    @if ($order->status == 'Pending')
+                                        <a href="{{ route('pending-confirm', $order->id) }}" id="confirm"
+                                            class="btn btn-block btn-success">Confirm Order</a>
+
+                                    @elseif($order->status == 'confirm')
+                                        <a href="{{ route('confirm-processing', $order->id) }}" id="processing"
+                                            class="btn btn-block btn-success">Processing Order</a>
+
+                                    @elseif ($order->status == 'processing')
+                                        <a href="{{ route('processing-picked', $order->id) }}" id="picked"
+                                            class="btn btn-block btn-success">Picked Order</a>
+
+                                    @elseif ($order->status == 'picked')
+                                        <a href="{{ route('picked-shipped', $order->id) }}" id="shipped"
+                                            class="btn btn-block btn-success">Shipped Order</a>
+
+                                    @elseif($order->status == 'shipped')
+                                        <a href="{{ route('shipped-delivered', $order->id) }}"
+                                            class="btn btn-block btn-success" id="delivered">Delivered Order</a>
+
+                                    @endif
+                                </th>
+                            </tr>
                         </table>
                     </div>
                 </div> <!--  // cod md -6 -->
@@ -191,7 +217,7 @@
                                         </td>
 
                                         <td width="10%">
-                                            <label for=""> {{ $item->price }}€ (  {{ $item->price * $item->qty }}€ )
+                                            <label for=""> {{ $item->price }}€ ( {{ $item->price * $item->qty }}€ )
                                             </label>
                                         </td>
 
