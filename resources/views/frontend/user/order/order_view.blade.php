@@ -44,8 +44,10 @@
                                                 </td>
                                                 <td>{{ $order->amount }}€</td>
                                                 <td>
-                                                    <a href="{{ url('user/order_details/'.$order->id) }}" class="btn-small d-block">View</a>
-                                                    <a href="#" class="btn-small d-block" style="color: red">Invoice</a>
+                                                    <a href="{{ url('user/order_details/' . $order->id) }}"
+                                                        class="btn-small d-block">View</a>
+                                                    <a href="{{ url('user/invoice_download/' . $order->id) }}"
+                                                        class="btn-small d-block" style="color: red">Invoice</a>
                                                 </td>
                                             </tr>
                                         @endforeach
