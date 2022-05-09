@@ -1,71 +1,87 @@
-@extends('frontend.main_master')
-@section('content')
-    <div class="body-content">
-        <div class="container">
+@extends('admin.admin_master')
+@section('admin')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="container-full">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Order Details</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Order Details</li>
+
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main content -->
+        <section class="content">
             <div class="row">
-                <div class="col-md-2"><br><br>
-                    <ul class="list-group list-group-flush">
+                <div class="col-md-6 col-12">
+                    <div class="box box-bordered border-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title"><strong>Shipping Details</strong> </h4>
+                        </div>
 
-                        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Dashboard</a>
-                    </ul>
-                </div><!-- end col md 2 -->
-
-                <div class="col-md-2">
-
-                </div><!-- end col md 2 -->
-                <br>
-                <div class="col-xs-6">
-                    <h2 class="sub-header">Subtitle</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table">
                             <tr>
-                                <th><strong> Shipping Name : </strong></th>
+                                <th> Shipping Name : </th>
                                 <th> {{ $order->name }} </th>
                             </tr>
 
                             <tr>
-                                <th><strong> Shipping Phone : </strong></th>
+                                <th> Shipping Phone : </th>
                                 <th> {{ $order->phone }} </th>
                             </tr>
 
                             <tr>
-                                <th><strong> Shipping Email : </strong></th>
+                                <th> Shipping Email : </th>
                                 <th> {{ $order->email }} </th>
                             </tr>
 
                             <tr>
-                                <th><strong> Division : </strong></th>
+                                <th> Division : </th>
                                 <th> {{ $order->division->division_name }} </th>
                             </tr>
 
                             <tr>
-                                <th><strong> District : </strong></th>
+                                <th> District : </th>
                                 <th> {{ $order->district->district_name }} </th>
                             </tr>
 
                             <tr>
-                                <th> <strong> State : </strong></th>
+                                <th> State : </th>
                                 <th>{{ $order->state->state_name }} </th>
                             </tr>
 
                             <tr>
-                                <th> <strong> Post Code : <strong></th>
+                                <th> Post Code : </th>
                                 <th> {{ $order->post_code }} </th>
                             </tr>
 
                             <tr>
-                                <th> <strong> Order Date : </strong> </th>
+                                <th> Order Date : </th>
                                 <th> {{ $order->order_date }} </th>
                             </tr>
+
                         </table>
+
                     </div>
-                </div>
-                <br>
-                <div class="col-xs-6">
-                    <h2 class="sub-header">Order Details</h2>
-                    <h3><span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h3>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
+                </div> <!--  // cod md -6 -->
+
+                <div class="col-md-6 col-12">
+                    <div class="box box-bordered border-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title"><strong>Order Details</strong><span class="text-danger"> Invoice :
+                                    {{ $order->invoice_no }}</span></h4>
+                        </div>
+
+                        <table class="table">
                             <tr>
                                 <th> Name : </th>
                                 <th> {{ $order->user->name }} </th>
@@ -92,49 +108,56 @@
                             </tr>
 
                             <tr>
+                                <th> Order Total : </th>
+                                <th>{{ $order->amount }}€ </th>
+                            </tr>
+
+                            <tr>
                                 <th> Order : </th>
                                 <th>
                                     <span class="badge badge-pill badge-warning"
                                         style="background: #418DB9;">{{ $order->status }} </span>
                                 </th>
-
+                            </tr>
                         </table>
                     </div>
-                </div>
+                </div> <!--  // cod md -6 -->
+                <div class="col-md-12 col-12">
+                    <div class="box box-bordered border-primary">
+                        <div class="box-header with-border">
 
-                <div class="col-xs-6">
-                    <h2 class="sub-header">Product</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
+                        </div>
+
+                        <table class="table">
                             <tbody>
 
-                                <tr style="background: #e2e2e2;">
-                                    <td class="col-md-1">
+                                <tr>
+                                    <td width="10%">
                                         <label for=""> Image</label>
                                     </td>
 
-                                    <td class="col-md-1">
+                                    <td width="20%">
                                         <label for=""> Product Name </label>
                                     </td>
 
-                                    <td class="col-md-1">
+                                    <td width="10%">
                                         <label for=""> Product Code</label>
                                     </td>
 
 
-                                    <td class="col-md-1">
+                                    <td width="10%">
                                         <label for=""> Color </label>
                                     </td>
 
-                                    <td class="col-md-1">
+                                    <td width="10%">
                                         <label for=""> Size </label>
                                     </td>
 
-                                    <td class="col-md-1">
+                                    <td width="10%">
                                         <label for=""> Quantity </label>
                                     </td>
 
-                                    <td class="col-md-1">
+                                    <td width="10%">
                                         <label for=""> Price </label>
                                     </td>
 
@@ -142,62 +165,45 @@
 
                                 @foreach ($orderItem as $item)
                                     <tr>
-                                        <td class="col-md-1">
+                                        <td width="10%">
                                             <label for=""><img src="{{ asset($item->product->product_thambnail) }}"
                                                     height="50px;" width="50px;"> </label>
                                         </td>
 
-                                        <td class="col-md-1">
+                                        <td width="20%">
                                             <label for=""> {{ $item->product->product_name_en }}</label>
                                         </td>
 
-
-                                        <td class="col-md-1">
+                                        <td width="10%">
                                             <label for=""> {{ $item->product->product_code }}</label>
                                         </td>
 
-                                        <td class="col-md-1">
+                                        <td width="10%">
                                             <label for=""> {{ $item->color }}</label>
                                         </td>
 
-                                        <td class="col-md-1">
+                                        <td width="10%">
                                             <label for=""> {{ $item->size }}</label>
                                         </td>
 
-                                        <td class="col-md-1">
+                                        <td width="10%">
                                             <label for=""> {{ $item->qty }}</label>
                                         </td>
 
-                                        <td class="col-md-1">
-                                            <label for=""> {{ $item->price }}€ ( {{ $item->price * $item->qty }} €)
+                                        <td width="10%">
+                                            <label for=""> {{ $item->price }}€ (  {{ $item->price * $item->qty }}€ )
                                             </label>
                                         </td>
 
                                     </tr>
                                 @endforeach
-
-
-
-
-
                             </tbody>
-
                         </table>
                     </div>
-                </div>
-
-                @if ($order->status !== "delivered")
-
-                @else
-
-                <div class="col-xs-6">
-                    <h2 class="sub-header">Order Return Reason :</h2>
-                    <div class="table-responsive">
-                        <textarea name="return+reason" id="" class="form-control" cols="30" rows="05">Explain the reason ?</textarea>
-                    </div>
-                </div>
-                @endif
-
-
+                </div> <!--  // cod md -12 -->
             </div>
-        @endsection
+            <!-- /. end row -->
+        </section>
+        <!-- /.content -->
+    </div>
+@endsection
