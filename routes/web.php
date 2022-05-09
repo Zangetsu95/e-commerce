@@ -17,10 +17,12 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\UserController;
 
 
 /*
@@ -297,7 +299,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
 
     Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe');
 
-    
+    /* My orders */
+
+    Route::get('/orders', [AllUserController::class, 'MyOrders'])->name('my-orders');
 
 });
 
