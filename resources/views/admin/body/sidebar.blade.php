@@ -122,7 +122,8 @@ $route = Route::current()->getName();
                             href="{{ route('manage-division') }}"><i class="ti-more"></i>Ship Divisions</a>
                     </li>
                     <li class="{{ $route == 'manage-district' ? 'active' : '' }}"><a
-                            href="{{ route('manage-district') }}"><i class="ti-more"></i>Ship District</a></li>
+                            href="{{ route('manage-district') }}"><i class="ti-more"></i>Ship District</a>
+                    </li>
                     <li class="{{ $route == 'manage-state' ? 'active' : '' }}"><a
                             href="{{ route('manage-state') }}"><i class="ti-more"></i>Ship state</a></li>
 
@@ -143,6 +144,28 @@ $route = Route::current()->getName();
                     <li class="{{ $route == 'pending-orders' ? 'active' : '' }}"><a
                             href="{{ route('pending-orders') }}"><i class="ti-more"></i>Pending Orders</a>
                     </li>
+                    <li class="{{ $route == 'confirmed-orders' ? 'active' : '' }}"><a
+                            href="{{ route('confirmed-orders') }}"><i class="ti-more"></i>Confirmed Orders</a>
+                    </li>
+
+                    <li class="{{ $route == 'processing-orders' ? 'active' : '' }}"><a
+                            href="{{ route('processing-orders') }}"><i class="ti-more"></i>Processing
+                            Orders</a></li>
+
+                    <li class="{{ $route == 'picked-orders' ? 'active' : '' }}"><a
+                            href="{{ route('picked-orders') }}"><i class="ti-more"></i> Picked Orders</a></li>
+
+                    <li class="{{ $route == 'shipped-orders' ? 'active' : '' }}"><a
+                            href="{{ route('shipped-orders') }}"><i class="ti-more"></i> Shipped Orders</a>
+                    </li>
+
+                    <li class="{{ $route == 'delivered-orders' ? 'active' : '' }}"><a
+                            href="{{ route('delivered-orders') }}"><i class="ti-more"></i> Delivered
+                            Orders</a></li>
+
+                    <li class="{{ $route == 'cancel-orders' ? 'active' : '' }}"><a
+                            href="{{ route('cancel-orders') }}"><i class="ti-more"></i> Cancel Orders</a></li>
+
                 </ul>
             </li>
 
