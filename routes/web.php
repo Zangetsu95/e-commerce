@@ -304,6 +304,16 @@ Route::prefix('reports')->group(function(){
 });
 
 
+/* ADMIN GET ALL USERS */
+Route::prefix('allusers')->group(function(){
+
+    Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+
+
+
+});
+
+
 
 ///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
