@@ -347,11 +347,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
 
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
 
-    /* Return product & showing return  product */
+    /* Return product & showing return  product + cancel */
 
     Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return-order');
 
     Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('orders-list-return');
+
+    Route::get('/cancel/order', [AllUserController::class, 'CancelOrder'])->name('cancel-orders');
+
 
 });
 

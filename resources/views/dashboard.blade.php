@@ -29,7 +29,7 @@
                                             <a class="nav-link" id="orders-tab"  href="{{ route('orders-list-return') }}"  aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Return Orders</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="orders-tab"  href="{{ route('my-orders') }}"  aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Cancel Orders</a>
+                                            <a class="nav-link" id="orders-tab"  href="{{ route('cancel-orders') }}"  aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Cancel Orders</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="track-orders-tab"  href="" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>

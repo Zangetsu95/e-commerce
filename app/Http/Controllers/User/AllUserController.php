@@ -19,11 +19,11 @@ class AllUserController extends Controller
 {
 
 
-   /**
-    * It returns the order
-    * @returns The return value of the function is the value of the last expression in the function
-    * body.
-    */
+    /**
+     * It returns the order
+     * @returns The return value of the function is the value of the last expression in the function
+     * body.
+     */
     /**
      * We are going to the table order and looking at the user id = the user connected
      */
@@ -73,14 +73,14 @@ class AllUserController extends Controller
     }
 
 
-   /**
-    * It returns the order.
-    * @param {Request} request - The request object.
-    * @param order_id - The ID of the order you want to return.
-    * @returns The return value of the function is the value of the last expression in the function
-    * body.
-    */
-    public function ReturnOrder(Request $request,$order_id)
+    /**
+     * It returns the order.
+     * @param {Request} request - The request object.
+     * @param order_id - The ID of the order you want to return.
+     * @returns The return value of the function is the value of the last expression in the function
+     * body.
+     */
+    public function ReturnOrder(Request $request, $order_id)
     {
         Order::findOrFail($order_id)->update([
             'return_date' => Carbon::now()->format('d F Y'),
@@ -102,7 +102,16 @@ class AllUserController extends Controller
      */
     public function ReturnOrderList()
     {
-        $orders = Order::where('user_id',Auth::id())->where('return_reason','!=',NULL)->orderBy('id','DESC')->get();
-        return view('frontend.user.order.return_order_view',compact('orders'));
+        $orders = Order::where('user_id', Auth::id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
+        return view('frontend.user.order.return_order_view', compact('orders'));
+    }
+
+    /**
+     * It returns the view of the cancel order.
+     */
+    public function CancelORder()
+    {
+        $orders = Order::where('user_id', Auth::id())->where('status', 'cancel')->orderBy('id', 'DESC')->get();
+        return view('frontend.user.order.cancel_order_view', compact('orders'));
     }
 }
