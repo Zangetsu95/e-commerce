@@ -1,5 +1,6 @@
 <?php
 
+/* Importing all the controllers that we have created. */
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
@@ -345,6 +346,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+    /* Return product & showing return  product */
+
+    Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return-order');
+
+    Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('orders-list-return');
 
 });
 

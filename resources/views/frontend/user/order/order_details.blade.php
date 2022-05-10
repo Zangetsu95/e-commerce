@@ -186,18 +186,43 @@
                     </div>
                 </div>
 
-                @if ($order->status !== "delivered")
-
+                @if ($order->status !== 'delivered')
+                    <br>
+                    <br>
                 @else
+                    @php
+                        /* Checking if the order has been returned or not. */
+                        $order = App\Models\Order::where('id', $order->id)
+                            ->where('return_reason', '=', null)
+                            ->first();
+                    @endphp
 
-                <div class="col-xs-6">
-                    <h2 class="sub-header">Order Return Reason :</h2>
-                    <div class="table-responsive">
-                        <textarea name="return+reason" id="" class="form-control" cols="30" rows="05">Explain the reason ?</textarea>
-                    </div>
-                </div>
+
+
+                    @if ($order)
+                        <br>
+                        <br>
+                        <form action="{{ route('return-order', $order->id) }}" method="POST">
+                            @csrf
+                            <div class="col-xs-6">
+                                <h2 class="sub-header">Order Return Reason :</h2>
+                                <div class="table-responsive">
+                                    <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Explain the reason ?</textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </form>
+                    @else
+                    <h3 style="background: red">You Have send return request for this product</h3>
+                    @endif
+
+
                 @endif
 
 
             </div>
+            <br>
+            <br>
+            <br>
         @endsection

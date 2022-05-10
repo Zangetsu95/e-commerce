@@ -1,5 +1,6 @@
 <?php
 
+/* Importing the classes that we will use in this controller. */
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
@@ -10,11 +11,18 @@ use Illuminate\Support\Facades\Session;
 
 class CartPageController extends Controller
 {
+    /**
+     * It returns the view of the mycart page.
+     * @returns A view
+     */
     public function MyCart()
     {
         return view('frontend.wishlist.view_mycart');
     }
 
+   /**
+    * It returns a JSON response containing the cart content, the cart quantity and the cart total
+    */
     public function GetCartProduct()
     {
         $carts = Cart::content();
@@ -28,10 +36,16 @@ class CartPageController extends Controller
         ));
     }
 
+   /**
+    * It removes the product from the cart.
+    * @param rowId - The unique identifier for the cart item.
+    * @returns A JSON object with a success message.
+    */
     public function RemoveCartProduct($rowId)
     {
         Cart::remove($rowId);
 
+        //si la session a un coupon alors on le supprime
         if (Session::has('coupon')) {
             Session::forget('coupon');
         }
@@ -39,6 +53,10 @@ class CartPageController extends Controller
         return response()->json(['success' => 'Product Remove from Your Cart']);
     }
 
+    /**
+     * It increments the quantity of a product in the cart
+     * @param rowId - The rowId of the item you want to increment.
+     */
     public function CartIncrement($rowId)
     {
         $row = Cart::get($rowId);
@@ -62,6 +80,11 @@ class CartPageController extends Controller
         return response()->json(['increment']);
     }
 
+   /**
+    * It decrements the quantity of the product in the cart
+    * @param rowId - The unique identifier for the cart item.
+    * @returns The response is being returned as a JSON object.
+    */
     public function CartDecrement($rowId)
     {
         $row = Cart::get($rowId);
