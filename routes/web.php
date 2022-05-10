@@ -98,6 +98,10 @@ Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipp
 
 Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped-delivered');
 
+/* invoice download */
+
+Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDownloadAdmin'])->name('invoice-download');
+
 });
 
 /*User All route */

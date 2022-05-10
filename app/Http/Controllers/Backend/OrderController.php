@@ -9,12 +9,14 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Auth;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 
 class OrderController extends Controller
 {
 
+    /* FUNCTION CHANGE STATUS */
     public function PendingOrders()
     {
         $orders = Order::where('status', 'pending')->orderBy('id', 'DESC')->get();
@@ -88,7 +90,7 @@ class OrderController extends Controller
         );
 
         return redirect()->route('confirmed-orders')->with($notification);
-    } // end method
+    }
 
 
 
@@ -103,7 +105,7 @@ class OrderController extends Controller
         );
 
         return redirect()->route('processing-orders')->with($notification);
-    } // end method
+    }
 
 
     public function PickedToShipped($order_id)
@@ -117,7 +119,7 @@ class OrderController extends Controller
         );
 
         return redirect()->route('picked-orders')->with($notification);
-    } // end method
+    }
 
 
     public function ShippedToDelivered($order_id)
@@ -131,6 +133,27 @@ class OrderController extends Controller
         );
 
         return redirect()->route('shipped-orders')->with($notification);
-    } // end method
+    }
 
+    /* END FUNCTION CHANGE STATUS */
+
+    /* FUNCTION INVOICE DOWLOAD */
+
+    public function InvoiceDownloadAdmin($order_id)
+    {
+        //on va aller cherche l'oder spécifique qui correspond a l'id et a son utilisateur
+        $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
+        $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
+
+        // return view('frontend.user.order.order_invoice', compact('order', 'orderItem'));
+
+        //setpaper pour le format de page
+        //set options tempdir & chroot pour acceder a l'image en local
+        $pdf = PDF::loadView('backend.orders.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+    }
 }
