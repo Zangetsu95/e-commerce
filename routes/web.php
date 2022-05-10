@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
 
 
 use App\Http\Controllers\Frontend\LanguageController;
@@ -25,7 +26,6 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
-use App\Http\Controllers\User\UserController;
 
 
 /*
@@ -285,6 +285,22 @@ Route::prefix('state')->group(function () {
     Route::post('/update/{id}', [ShippingAreaController::class, 'StateUpdate'])->name('state-update');
 
     Route::get('/delete/{id}', [ShippingAreaController::class, 'StateDelete'])->name('state-delete');
+});
+
+
+/* ADMIN REPORTS */
+Route::prefix('reports')->group(function(){
+
+    Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
+
+    Route::post('/search/by/date', [ReportController::class, 'ReportDate'])->name('search-date');
+
+    Route::post('/search/by/month', [ReportController::class, 'ReportMonth'])->name('search-month');
+
+    Route::post('/view', [ReportController::class, 'ReportYear'])->name('search-year');
+
+
+
 });
 
 
