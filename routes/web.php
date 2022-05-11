@@ -1,6 +1,7 @@
 <?php
 
 /* Importing all the controllers that we have created. */
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\BlogController;
 
 
 use App\Http\Controllers\Frontend\LanguageController;
@@ -70,39 +72,38 @@ Route::middleware(['auth:admin'])->group(function () {
 
 // Admin Order All Routes
 
-Route::prefix('orders')->group(function(){
+Route::prefix('orders')->group(function () {
 
-Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+    Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
 
-Route::get('/pending/orders/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending-order-details');
+    Route::get('/pending/orders/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending-order-details');
 
-Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
+    Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
 
-Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
+    Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
 
-Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
+    Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
 
-Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
+    Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
 
-Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
+    Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
 
-Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
+    Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
 
-/*Change status for order */
-Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingConfirm'])->name('pending-confirm');
+    /*Change status for order */
+    Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingConfirm'])->name('pending-confirm');
 
-Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm-processing');
+    Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm-processing');
 
-Route::get('/processing/picked/{order_id}', [OrderController::class, 'ProcessingToPicked'])->name('processing-picked');
+    Route::get('/processing/picked/{order_id}', [OrderController::class, 'ProcessingToPicked'])->name('processing-picked');
 
-Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked-shipped');
+    Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked-shipped');
 
-Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped-delivered');
+    Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped-delivered');
 
-/* invoice download */
+    /* invoice download */
 
-Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDownloadAdmin'])->name('invoice-download');
-
+    Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDownloadAdmin'])->name('invoice-download');
 });
 
 /*User All route */
@@ -289,7 +290,7 @@ Route::prefix('state')->group(function () {
 
 
 /* ADMIN REPORTS */
-Route::prefix('reports')->group(function(){
+Route::prefix('reports')->group(function () {
 
     Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
 
@@ -298,24 +299,32 @@ Route::prefix('reports')->group(function(){
     Route::post('/search/by/month', [ReportController::class, 'ReportMonth'])->name('search-month');
 
     Route::post('/view', [ReportController::class, 'ReportYear'])->name('search-year');
-
-
-
 });
 
 
 /* ADMIN GET ALL USERS */
-Route::prefix('allusers')->group(function(){
+Route::prefix('allusers')->group(function () {
 
     Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+});
 
+/* ADMIN GET ALL USERS */
+Route::prefix('blog')->group(function () {
 
+    Route::get('/category', [BlogController::class, 'BlogCategory'])->name('blog-category');
+
+    Route::post('/store', [BlogController::class, 'BlogCategoryStore'])->name('blog-category-store');
+
+    Route::get('/category/edit/{id}', [BlogController::class, 'BlogCategoryEdit'])->name('blog-category-edit');
+
+    Route::post('/update', [BlogController::class, 'BlogCategoryUpdate'])->name('blog-category-update');
+
+    Route::get('/delete/{id}', [BlogController::class, 'BlogCategoryDelete'])->name('blog-category-delete');
 
 });
 
 
-
-///////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
 
 Route::get('/language/french', [LanguageController::class, 'French'])->name('french.language');
@@ -380,8 +389,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('orders-list-return');
 
     Route::get('/cancel/order', [AllUserController::class, 'CancelOrder'])->name('cancel-orders');
-
-
 });
 
 
@@ -412,4 +419,3 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/Store', [CheckoutController::class, 'CheckoutStore'])->name('checkout-store');
-
