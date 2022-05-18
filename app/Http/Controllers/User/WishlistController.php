@@ -27,6 +27,10 @@ class WishlistController extends Controller
         return response()->json($wishlist);
     }
 
+    /**
+     * It removes a product from the wishlist.
+     * @param id - The id of the product you want to remove from the wishlist.
+     */
     public function RemoveWishListProduct($id)
     {
         Wishlist::where('user_id',Auth::id())->where('id',$id)->delete();

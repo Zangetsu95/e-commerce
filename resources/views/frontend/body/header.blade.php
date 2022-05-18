@@ -295,7 +295,7 @@
                             alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
-                    <div class="main-categori-wrap d-none d-lg-block">
+                    {{-- <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categories-button-active" href="#">
                             <span class="fi-rs-apps"></span> <span class="et">Browse</span> All
                             Categories
@@ -368,7 +368,7 @@
                             <div class="more_categories"><span class="icon"></span> <span
                                     class="heading-sm-1">Show more...</span></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
 
 
@@ -381,16 +381,11 @@
                                     <a class="active" href="{{ route('home') }}">Home <i
                                             class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                        <li><a href="index-4.html">Home 4</a></li>
-                                        <li><a href="index-5.html">Home 5</a></li>
-                                        <li><a href="index-6.html">Home 6</a></li>
+                                        <li><a href="{{ route('blog-home') }}">About</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="page-about.html">About</a>
+                                    <a href="{{ route('blog-home') }}">Blog</a>
                                 </li>
 
                                 @php

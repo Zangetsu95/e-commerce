@@ -19,10 +19,11 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\BlogController;
 
-
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\HomeBlogController;
+
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
@@ -311,6 +312,8 @@ Route::prefix('allusers')->group(function () {
 /* ADMIN GET ALL USERS */
 Route::prefix('blog')->group(function () {
 
+    /* Blog CATEGORY */
+
     Route::get('/category', [BlogController::class, 'BlogCategory'])->name('blog-category');
 
     Route::post('/store', [BlogController::class, 'BlogCategoryStore'])->name('blog-category-store');
@@ -321,6 +324,23 @@ Route::prefix('blog')->group(function () {
 
     Route::get('/delete/{id}', [BlogController::class, 'BlogCategoryDelete'])->name('blog-category-delete');
 
+    Route::get('/category/edit/{id}', [BlogController::class, 'BlogCategoryEdit'])->name('blog-category-edit');
+
+    Route::post('/category/update', [BlogController::class, 'BlogCategoryUpdate'])->name('blog-category-update');
+
+    /* Blog POST */
+
+    Route::get('/add/post', [BlogController::class, 'AddBlogPost'])->name('blog-add');
+
+    Route::get('/all/post', [BlogController::class, 'AllBlogPost'])->name('blog-list');
+
+    Route::post('/post/store', [BlogController::class, 'BlogPostStore'])->name('blog-store');
+
+    Route::get('/post/edit/{id}', [BlogController::class, 'BlogPostEdit'])->name('blog-post-edit');
+
+    Route::post('/post/update', [BlogController::class, 'BlogPostUpdate'])->name('blog-post-update');
+
+    Route::get('/post/delete/{id}', [BlogController::class, 'BlogPostDelete'])->name('blog-post-delete');
 });
 
 
@@ -419,3 +439,12 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/Store', [CheckoutController::class, 'CheckoutStore'])->name('checkout-store');
+
+
+/* Blog Frontend */
+
+Route::get('/blog', [HomeBlogController::class, 'GetBlog'])->name('blog-home');
+
+Route::get('/blog/details/{id}', [HomeBlogController::class, 'GetBlogDetails'])->name('post-details');
+
+Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'BlogCategoryPost']);

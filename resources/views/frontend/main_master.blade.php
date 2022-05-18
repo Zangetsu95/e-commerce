@@ -403,6 +403,7 @@
 
     {{-- WHISLIT --}}
     <script type="text/javascript">
+       /* The above code is adding a product to the wishlist. */
         function addToWishList(product_id) {
             $.ajax({
                 type: "POST",
@@ -452,7 +453,7 @@
                                         <label class="form-check-label" for="exampleCheckbox1"></label>
                                     </td>
                                     <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thambnail}"
-                                            alt="#" /></td>
+                                            alt="#" /></td>§
                                     <td class="product-des product-name">
                                         <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name_en}</a></h6>
                                         <div class="product-rate-cover">

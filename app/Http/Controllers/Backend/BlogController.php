@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog\BlogPostCategory;
-use App\Models\Category;
+use App\Models\BlogPost;
 use Carbon\Carbon;
+use Image;
 
 class BlogController extends Controller
 {
@@ -61,17 +62,17 @@ class BlogController extends Controller
     }
 
 
-   /**
-    * This function is used to edit the blog category.
-    * @param id - The id of the blog category you want to edit.
-    * @returns The blog category is being returned.
-    */
+    /**
+     * This function is used to edit the blog category.
+     * @param id - The id of the blog category you want to edit.
+     * @returns The blog category is being returned.
+     */
     public function BlogCategoryEdit($id)
     {
 
         /* Finding the blog category by the id. */
-        $blogcategory = BlogPostCategory::findOrFail($id);
-        return view('backend.blog.category.category_edit', compact('blogcategory'));
+        $blogCategory = BlogPostCategory::findOrFail($id);
+        return view('backend.blog.category.category_edit', compact('blogCategory'));
     }
 
 
@@ -84,12 +85,12 @@ class BlogController extends Controller
     public function BlogCategoryUpdate(Request $request)
     {
 
-       /* Getting the id from the request object. */
-        $blogcategory_id = $request->id;
+        /* Getting the id from the request object. */
+        $blogCategory_id = $request->id;
 
 
-       /* Updating the blog category. */
-        BlogPostCategory::findOrFail($blogcategory_id)->update([
+        /* Updating the blog category. */
+        BlogPostCategory::findOrFail($blogCategory_id)->update([
             'blog_category_name_en' => $request->blog_category_name_en,
             'blog_category_name_fr' => $request->blog_category_name_fr,
             'blog_category_slug_en' => strtolower(str_replace(' ', '-', $request->blog_category_name_en)),
@@ -123,5 +124,105 @@ class BlogController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    //// BLOG POST  \\\\\\\\\\
+
+
+    public function AllBlogPost()
+    {
+        $blogPost = BlogPost::with('blogCategory')->latest()->get();
+        return view('backend.blog.post.post_list', compact('blogPost'));
+    }
+
+
+    /**
+     * It returns the view of the blog post.
+     */
+    public function AddBlogPost()
+    {
+        $blogPost = Blogpost::latest()->get();
+        $blogCategory = BlogPostCategory::latest()->get();
+
+        return view('backend.blog.post.post_add', compact('blogPost', 'blogCategory'));
+    }
+
+    /**
+     * It takes the input from the form and validates it. If the validation is successful, it uploads
+     * the image to the server and saves the image path to the database.
+     * @param {Request} request - The request object.
+     * @returns ```
+     * return redirect()->route('blog-list')->with();
+     * ```
+     */
+    public function BlogPostStore(Request $request)
+    {
+        $request->validate([
+            'post_title_en' => 'required',
+            'post_title_fr' => 'required',
+            'post_image' => 'required',
+        ], [
+            'post_title_en.required' => 'Input Post Title English Name',
+            'post_title_fr.required' => 'Input Post Title Hindi Name',
+        ]);
+
+        $image = $request->file('post_image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(780, 433)->save('upload/post/' . $name_gen);
+        $save_url = 'upload/post/' . $name_gen;
+
+        BlogPost::insert([
+            'category_id' => $request->category_id,
+            'post_title_en' => $request->post_title_en,
+            'post_title_fr' => $request->post_title_fr,
+            'post_slug_en' => strtolower(str_replace(' ', '-', $request->post_title_en)),
+            'post_slug_fr' => str_replace(' ', '-', $request->post_title_fr),
+            'post_image' => $save_url,
+            'post_details_en' => $request->post_details_en,
+            'post_details_fr' => $request->post_details_fr,
+            'created_at' => Carbon::now()
+
+        ]);
+
+        $notification = array(
+            'message' => 'Blog Post Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('blog-list')->with($notification);
+    }
+
+    public function BlogPostEdit($id)
+    {
+        $blogPost = BlogPost::findOrFail($id);
+        $blogCategory = BlogPostCategory::findOrFail($id);
+
+        return view('backend.blog.post.post_edit',compact('blogPost','blogCategory'));
+    }
+
+    public function BlogPostUpdate(Request $request)
+    {
+
+        /* Getting the id from the request object. */
+        $blogPost_id = $request->id;
+
+
+        /* Updating the blog category. */
+        BlogPost::findOrFail($blogPost_id)->update([
+            'post_title_en' => $request->post_title_en,
+            'post_title_fr' => $request->post_title_fr,
+            'post_image' => $request->post_image,
+            'post_details_en' => $request->post_details_en,
+            'post_details_fr' => $request->post_details_fr,
+
+
+        ]);
+
+        $notification = array(
+            'message' => 'Blog Post Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('blog-category')->with($notification);
     }
 }

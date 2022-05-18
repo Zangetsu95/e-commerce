@@ -20,6 +20,11 @@ use App\Models\ShipDivision;
 
 class CartController extends Controller
 {
+    /**
+     * It adds the product to the cart.
+     * @param {Request} request - The request object.
+     * @param id - Unique ID of the item.
+     */
     public function AddToCart(Request $request, $id)
     {
 
@@ -27,9 +32,13 @@ class CartController extends Controller
             Session::forget('coupon');
         }
 
+        /* Finding the product by the id. */
         $product = Product::findOrFail($id);
 
 
+        /* Checking if the product has a discount price. If it does, it will add the product to the
+        cart with the discounted price. If it doesn't, it will add the product to the cart with the
+        regular price. */
         if ($product->discount_price == NULL) {
             Cart::add([
                 'id' => $id,

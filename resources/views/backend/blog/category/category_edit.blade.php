@@ -17,12 +17,12 @@
                             <div class="table-responsive">
                                 <form method="post" action="{{ route('blog-category-update') }}">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{ $blogcategory->id }}">
+                                    <input type="hidden" name="id" value="{{ $blogCategory->id }}">
                                     <div class="form-group">
                                         <h5>Blog Category English <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="blog_category_name_en" class="form-control"
-                                                value="{{ $blogcategory->blog_category_name_en }}">
+                                                value="{{ $blogCategory->blog_category_name_en }}">
                                             @error('blog_category_name_en')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -32,7 +32,7 @@
                                         <h5>Blog Category French <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="blog_category_name_fr" class="form-control"
-                                                value="{{ $blogcategory->blog_category_name_fr }}">
+                                                value="{{ $blogCategory->blog_category_name_fr }}">
                                             @error('blog_category_name_fr')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
