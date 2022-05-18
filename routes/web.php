@@ -345,13 +345,19 @@ Route::prefix('blog')->group(function () {
 });
 
 
-route::prefix('settings')->group(function(){
+/* WebSite Settings */
+route::prefix('settings')->group(function () {
     Route::get('/web', [WebSettingsController::class, 'WebSettings'])->name('site-settings');
 
-    Route::post('/update', [WebSettingsController::class, 'WebSettingsUpdate'])->name('site-settings-update');
-
+    Route::post('/web/update', [WebSettingsController::class, 'WebSettingsUpdate'])->name('site-settings-update');
 });
 
+/* SEO Settings */
+route::prefix('settings')->group(function () {
+    Route::get('/seo', [WebSettingsController::class, 'SeoSettings'])->name('seo-settings');
+
+    Route::post('/seo/update', [WebSettingsController::class, 'SeoSettingsUpdate'])->name('seo-settings-update');
+});
 
 //////////////////////////////////////////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */

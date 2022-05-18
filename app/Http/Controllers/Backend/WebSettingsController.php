@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WebSetting;
+use App\Models\Seo;
 use Image;
 
 class WebSettingsController extends Controller
@@ -39,7 +40,7 @@ class WebSettingsController extends Controller
             /* Creating a unique name for the image and saving it in the upload/logo folder. */
             $image = $request->file('logo');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(200,200)->save('upload/logo/' . $name_gen);
+            Image::make($image)->resize(200, 200)->save('upload/logo/' . $name_gen);
             $save_url = 'upload/logo/' . $name_gen;
 
             /* Updating the data in the database. */
@@ -88,4 +89,35 @@ class WebSettingsController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    public function SeoSettings()
+    {
+        $seo = Seo::find(1);
+
+        return view('backend.settings.seo_update', compact('seo'));
+    }
+
+
+    public function SeoSettingsUpdate(Request $request)
+    {
+
+        $seo_id = $request->id;
+
+        Seo::findOrFail($seo_id)->update([
+            'meta_title' => $request->meta_title,
+            'meta_author' => $request->meta_author,
+            'meta_keyword' => $request->meta_keyword,
+            'meta_description' => $request->meta_description,
+            'google_analytics' => $request->google_analytics,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Seo Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    } // end mehtod
+
 }
