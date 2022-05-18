@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\WebSettingsController;
 
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -341,6 +342,14 @@ Route::prefix('blog')->group(function () {
     Route::post('/post/update', [BlogController::class, 'BlogPostUpdate'])->name('blog-post-update');
 
     Route::get('/post/delete/{id}', [BlogController::class, 'BlogPostDelete'])->name('blog-post-delete');
+});
+
+
+route::prefix('settings')->group(function(){
+    Route::get('/web', [WebSettingsController::class, 'WebSettings'])->name('site-settings');
+
+    Route::post('/update', [WebSettingsController::class, 'WebSettingsUpdate'])->name('site-settings-update');
+
 });
 
 
