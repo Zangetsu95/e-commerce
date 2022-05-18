@@ -28,6 +28,7 @@
                                             <th>Date</th>
                                             <th>Status</th>
                                             <th>Total</th>
+                                            <th>Order Reason</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -38,13 +39,26 @@
                                                 <td>{{ $order->order_date }}</td>
                                                 <td>
                                                     <label for="">
+                                                        @if($order->return_order == 0)
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #418DB9;">{{ $order->status }} </span>
+                                                    <span class="badge badge-pill badge-warning"
+                                                        style="background: #e360f4;">You didn't ask a request yet ! </span>
+                                                        @elseif($order->return_order == 1)
                                                         <span class="badge badge-pill badge-warning"
                                                             style="background: #418DB9;">{{ $order->status }} </span>
                                                         <span class="badge badge-pill badge-warning"
                                                             style="background: #c81d1d;">Return Requested </span>
+                                                        @elseif ($order->return_order == 2)
+                                                        <span class="badge badge-pill badge-warning"
+                                                            style="background: #418DB9;">{{ $order->status }} </span>
+                                                        <span class="badge badge-pill badge-warning"
+                                                            style="background: #21a339;">We confirm your request !  </span>
+                                                        @endif
                                                     </label>
                                                 </td>
                                                 <td>{{ $order->amount }}€</td>
+                                                <td>{{ $order->return_reason }}€</td>
                                                 <td>
                                                     <a href="{{ url('user/order_details/' . $order->id) }}"
                                                         class="btn-small d-block">View</a>

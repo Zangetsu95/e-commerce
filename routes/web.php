@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\WebSettingsController;
+use App\Http\Controllers\Backend\ReturnController;
 
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -355,6 +356,13 @@ route::prefix('settings')->group(function () {
 /* SEO Settings */
 route::prefix('settings')->group(function () {
     Route::get('/seo', [WebSettingsController::class, 'SeoSettings'])->name('seo-settings');
+
+    Route::post('/seo/update', [WebSettingsController::class, 'SeoSettingsUpdate'])->name('seo-settings-update');
+});
+
+/* Return Product */
+route::prefix('return')->group(function () {
+    Route::get('/admin/request', [ReturnController::class, 'ReturnRequest'])->name('return-request');
 
     Route::post('/seo/update', [WebSettingsController::class, 'SeoSettingsUpdate'])->name('seo-settings-update');
 });

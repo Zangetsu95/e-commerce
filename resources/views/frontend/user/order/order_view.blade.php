@@ -38,8 +38,39 @@
                                                 <td>{{ $order->order_date }}</td>
                                                 <td>
                                                     <label for="">
+                                                        @if($order->status == 'pending')
                                                         <span class="badge badge-pill badge-warning"
-                                                            style="background: #418DB9;">{{ $order->status }} </span>
+                                                            style="background: #41b1f1;">{{ $order->status }} </span>
+
+                                                        @elseif($order->status == 'confirm')
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #41f164;">{{ $order->status }} </span>
+
+                                                        @elseif($order->status == 'processing')
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #f29513;">{{ $order->status }} </span>
+
+                                                        @elseif($order->status == 'picked')
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #d0e720;">{{ $order->status }} </span>
+
+                                                        @elseif($order->status == 'shipped')
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #e758d2;">{{ $order->status }} </span>
+
+                                                        @elseif($order->status == 'delivered')
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #833939;">{{ $order->status }} </span>
+                                                        @if($order->return_order == 1)
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #c81d1d;">Return Requested </span>
+                                                        @endif
+                                                        
+                                                        @else
+                                                        <span class="badge badge-pill badge-warning"
+                                                        style="background: #b90101;"> Cancel </span>
+
+                                                        @endif
                                                     </label>
                                                 </td>
                                                 <td>{{ $order->amount }}€</td>

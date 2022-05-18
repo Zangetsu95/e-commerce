@@ -175,7 +175,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ $settings->logo }}" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset($settings->logo) }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
