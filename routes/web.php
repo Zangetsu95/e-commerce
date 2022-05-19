@@ -31,6 +31,7 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\ReviewController;
 
 
 /*
@@ -474,3 +475,7 @@ Route::get('/blog', [HomeBlogController::class, 'GetBlog'])->name('blog-home');
 Route::get('/blog/details/{id}', [HomeBlogController::class, 'GetBlogDetails'])->name('post-details');
 
 Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'BlogCategoryPost']);
+
+/* Review a product */
+
+Route::post('/review/add', [ReviewController::class, 'AddReview'])->name('review-add');
