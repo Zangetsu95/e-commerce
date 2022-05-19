@@ -364,7 +364,10 @@ route::prefix('settings')->group(function () {
 route::prefix('return')->group(function () {
     Route::get('/admin/request', [ReturnController::class, 'ReturnRequest'])->name('return-request');
 
-    Route::post('/seo/update', [WebSettingsController::class, 'SeoSettingsUpdate'])->name('seo-settings-update');
+    Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnApprove'])->name('return-approve');
+
+    Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all-request');
+
 });
 
 //////////////////////////////////////////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

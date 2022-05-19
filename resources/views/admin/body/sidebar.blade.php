@@ -175,8 +175,8 @@ $route = Route::current()->getName();
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'return-request' ? 'active' : '' }}"><a
                             href="{{ route('return-request') }}"><i class="ti-more"></i>Return Request</a></li>
-                            {{-- <li class="{{ $route == 'all-request' ? 'active' : '' }}"><a
-                                href="{{ route('all-request') }}"><i class="ti-more"></i>All Request</a></li> --}}
+                            <li class="{{ $route == 'all-request' ? 'active' : '' }}"><a
+                                href="{{ route('all-request') }}"><i class="ti-more"></i>All Request</a></li>
                 </ul>
             </li>
 
