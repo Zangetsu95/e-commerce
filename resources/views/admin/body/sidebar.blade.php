@@ -180,6 +180,22 @@ $route = Route::current()->getName();
                 </ul>
             </li>
 
+            <li class="treeview {{ $prefix == '/review' ? 'active' : '' }}  ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Manage Review</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'review-see' ? 'active' : '' }}"><a
+                            href="{{ route('review-see') }}"><i class="ti-more"></i>See the review</a></li>
+                            <li class="{{ $route == 'publish-review' ? 'active' : '' }}"><a
+                                href="{{ route('publish-review') }}"><i class="ti-more"></i>Comments</a></li>
+                </ul>
+            </li>
+
             <li class="header nav-small-cap">User Interface</li>
 
             <li class="treeview {{ $prefix == '/orders' ? 'active' : '' }}  ">

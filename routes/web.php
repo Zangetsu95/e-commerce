@@ -371,6 +371,18 @@ route::prefix('return')->group(function () {
 
 });
 
+/* Comments Product */
+route::prefix('review')->group(function () {
+    Route::get('/see', [ReviewController::class, 'SeeReview'])->name('review-see');
+
+    Route::get('/approve/{id}', [ReviewController::class, 'ApproveComment'])->name('approve-comment');
+
+    Route::get('/publish', [ReviewController::class, 'PublishedReview'])->name('publish-review');
+
+    Route::get('/delete/{id}', [ReviewController::class, 'DeleteReview'])->name('review-delete');
+
+});
+
 //////////////////////////////////////////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
 
