@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-5 mb-sm-5">
-                            <div class="card">
+                            {{-- <div class="card">
                                 <h5 class="mb-10">By Price</h5>
                                 <div class="sidebar-widget price_range range">
                                     <div class="price-filter mb-20">
@@ -128,7 +128,7 @@
                                                 $100.00</span></label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -136,9 +136,9 @@
             <div class="col-12">
                 <div class="shop-product-fillter">
                     <div class="totall-product">
-                        <p>We found <strong class="text-brand">29</strong> items for you!</p>
+                        {{-- <p>We found <strong class="text-brand">29</strong> items for you!</p> --}}
                     </div>
-                    <div class="sort-by-product-area">
+                    {{-- <div class="sort-by-product-area">
                         <div class="sort-by-cover mr-10">
                             <div class="sort-by-product-wrap">
                                 <div class="sort-by">
@@ -177,7 +177,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row product-grid">
                     @foreach ( $products as $product )
