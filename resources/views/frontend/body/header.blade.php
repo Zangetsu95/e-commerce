@@ -118,9 +118,12 @@
                     <div class="header-info">
                         <ul>
                             <li><a href="page-about.htlm">About Us</a></li>
-                            <li><a href="page-account.html">My Account</a></li>
+                            @auth
+                            <li><a href="{{ route('dashboard') }}">My Account</a></li>
                             <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
-                            <li><a href="shop-order.html">Order Tracking</a></li>
+                            {{-- <li><a href="shop-order.html">Order Tracking</a></li> --}}
+                            @endauth
+
                         </ul>
                     </div>
                 </div>
@@ -180,7 +183,7 @@
                 <div class="header-right">
                     <div class="search-style-2">
                         <form action="#">
-                            <select class="select-active">
+                            {{-- <select class="select-active">
                                 <option>All Categories</option>
                                 <option>Milks and Dairies</option>
                                 <option>Wines & Alcohol</option>
@@ -192,13 +195,13 @@
                                 <option>Fresh Seafood</option>
                                 <option>Noodles & Rice</option>
                                 <option>Ice cream</option>
-                            </select>
+                            </select> --}}
                             <input type="text" placeholder="Search for items..." />
                         </form>
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
-                            <div class="search-location">
+                            {{-- <div class="search-location">
                                 <form action="#">
                                     <select class="select-active">
                                         <option>Your Location</option>
@@ -217,20 +220,20 @@
                                         <option>New York</option>
                                     </select>
                                 </form>
-                            </div>
-                            <div class="header-action-icon-2">
+                            </div> --}}
+                            {{-- <div class="header-action-icon-2">
                                 <a href="shop-compare.html">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-compare.svg') }}" />
                                     <span class="pro-count blue">3</span>
                                 </a>
                                 <a href="shop-compare.html"><span class="lable ml-0">Compare</span></a>
-                            </div>
+                            </div> --}}
                             <div class="header-action-icon-2">
                                 <a href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
-                                    <span class="pro-count blue">6</span>
+                                    <span class="pro-count blue"></span>
                                 </a>
                                 <a href="{{ route('wishlist') }}"><span class="lable">Wishlist</span></a>
                             </div>

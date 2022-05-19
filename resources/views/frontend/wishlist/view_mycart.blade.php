@@ -19,7 +19,7 @@ Cart Page
             <div class="col-lg-8 mb-40">
                 <h1 class="heading-2 mb-10">Your Cart</h1>
                 <div class="d-flex justify-content-between">
-                    <h6 class="text-body">There are <span class="text-brand">3</span> products in your cart</h6>
+                    {{-- <h6 class="text-body">There are <span class="text-brand">3</span> products in your cart</h6> --}}
                     <h6 class="text-body"><a href="#" class="text-muted"><i class="fi-rs-trash mr-5"></i>Clear Cart</a></h6>
                 </div>
             </div>
@@ -361,14 +361,14 @@ Cart Page
                                     </td>
                                     <td class="cart_total_amount">
                                         <h5 class="text-heading text-end">Free</h4</td> </tr> <tr>
-                                    <td class="cart_total_label">
+                                    {{-- <td class="cart_total_label">
                                         <h6 class="text-muted">Estimate for</h6>
                                     </td>
                                     <td class="cart_total_amount">
                                         <h5 class="text-heading text-end">United Kingdom</h4</td> </tr> <tr>
                                     <td scope="col" colspan="2">
                                         <div class="divider-2 mt-10 mb-10"></div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 <tr id="couponCalField">
 

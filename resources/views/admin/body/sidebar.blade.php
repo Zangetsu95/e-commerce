@@ -229,8 +229,8 @@ $route = Route::current()->getName();
                             href="{{ route('delivered-orders') }}"><i class="ti-more"></i> Delivered
                             Orders</a></li>
 
-                    <li class="{{ $route == 'cancel-orders' ? 'active' : '' }}"><a
-                            href="{{ route('cancel-orders') }}"><i class="ti-more"></i> Cancel Orders</a></li>
+                    <li class="{{ $route == 'cancel-orders-admin' ? 'active' : '' }}"><a
+                            href="{{ route('cancel-orders-admin') }}"><i class="ti-more"></i> Cancel Orders</a></li>
 
                 </ul>
             </li>

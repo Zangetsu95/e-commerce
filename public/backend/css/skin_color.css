@@ -119,7 +119,7 @@ File: scss
 
 /*---Dark skin---*/
 body.dark-skin {
-  background-color: #1a233a;
+  background-color: #222736;
   color: #8a99b5; }
   body.dark-skin .navbar-nav > .user-menu > .dropdown-menu > .user-body {
     border-color: rgba(255, 255, 255, 0.12); }
@@ -698,7 +698,7 @@ body.dark-skin {
 .dark-skin .main-header li.user-header {
   background-color: #ffffff; }
 .dark-skin .main-header .navbar {
-  background: #272e48; }
+  background: #383e50; }
   .dark-skin .main-header .navbar .sidebar-toggle {
     color: #ffffff; }
   .dark-skin .main-header .navbar .res-only-view {
@@ -718,7 +718,7 @@ body.dark-skin {
   color: #8a99b5;
   border-color: rgba(255, 255, 255, 0.12); }
 .dark-skin .main-sidebar {
-  background-color: #272e48; }
+  background-color: #383e50; }
 .dark-skin .left-side {
   box-shadow: 0 10px 15px -5px rgba(103, 133, 167, 0.07);
   background-color: rgba(73, 99, 164, 0.75); }
@@ -727,7 +727,7 @@ body.dark-skin {
   .dark-skin .user-panel > .info > a {
     color: #ffffff; }
 .dark-skin .sidebar-menu {
-  background: #1a233a; }
+  background: #000000; }
   .dark-skin .sidebar-menu > li.treeview.menu-open {
     background-color: rgba(26, 35, 58, 0) !important; }
     .dark-skin .sidebar-menu > li.treeview.menu-open > a {

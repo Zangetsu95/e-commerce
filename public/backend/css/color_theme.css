@@ -389,7 +389,7 @@ a.text-white:hover, a.text-white:focus {
 Theme Primary Color
 **************************************/
 .bg-gradient-primary, .theme-primary .bg-gradient-primary, .theme-primary .art-bg {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7); }
+  background: linear-gradient(45deg, #526386, #38264f); }
 
 .bg-light-body, .theme-primary.fixed .main-header, .theme-primary .main-header, .theme-secondary.fixed .main-header, .theme-secondary .main-header, .theme-info.fixed .main-header, .theme-info .main-header, .theme-success.fixed .main-header, .theme-success .main-header, .theme-danger.fixed .main-header, .theme-danger .main-header, .theme-warning.fixed .main-header, .theme-warning .main-header {
   background: #eef0f8; }

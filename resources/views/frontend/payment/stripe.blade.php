@@ -73,7 +73,7 @@
                                     <tr>
                                         @if (Session::has('coupon'))
                                             <strong>SubTotal: </strong>
-                                            <h4>${{ $cartTotal }}</h4>
+                                            <h4>{{ $cartTotal }}€</h4>
                                             <hr>
 
                                             <strong>Coupon Name : </strong>
@@ -82,11 +82,11 @@
                                             <hr>
 
                                             <strong>Coupon Discount : </strong>
-                                            <h4>${{ session()->get('coupon')['discount_amount'] }} €</h4>
+                                            <h4>{{ session()->get('coupon')['discount_amount'] }} €</h4>
                                             <hr>
 
                                             <strong>Grand Total : </strong>
-                                            <h4 />${{ session()->get('coupon')['total_amount'] }} €</h4>
+                                            <h4 />{{ session()->get('coupon')['total_amount'] }} €</h4>
                                             <hr>
                                         @else
                                             <strong>SubTotal: </strong>

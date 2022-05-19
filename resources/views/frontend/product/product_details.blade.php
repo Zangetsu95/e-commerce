@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info pr-30 pl-30">
-                                        <span class="stock-status out-stock"> Sale Off </span>
+                                        {{-- <span class="stock-status out-stock"> Sale Off </span> --}}
                                         <h2 class="title-detail" id="pname">
                                             @if (session()->get('language') == 'french')
                                             {{ $product->product_name_fr }}
@@ -136,14 +136,15 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="Vendor-info-tab" data-bs-toggle="tab" href="#Vendor-info">Vendor</a>
-                                        </li>
+                                        </li> --}}
                                         <li class="nav-item">
-                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                            {{-- <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a> --}}
+                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content shop_info_tab entry-main-content">
@@ -393,7 +394,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-60">
+                            {{-- <div class="row mt-60">
                                 <div class="col-12">
                                     <h2 class="section-title style-1 mb-30">Related products</h2>
                                 </div>
@@ -521,13 +522,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-xl-3 primary-sidebar sticky-sidebar mt-30">
                         <div class="sidebar-widget widget-category-2 mb-30">
-                            <h5 class="section-title style-1 mb-30">Category</h5>
-                            <ul>
+                            <h5 class="section-title style-1 mb-30">Category.. Coming soon</h5>
+                            {{-- <ul>
                                 <li>
                                     <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
                                 </li>
@@ -543,12 +544,12 @@
                                 <li>
                                     <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                         <!-- Fillter By Price -->
                         <div class="sidebar-widget price_range range mb-30">
-                            <h5 class="section-title style-1 mb-30">Fill by price</h5>
-                            <div class="price-filter">
+                            <h5 class="section-title style-1 mb-30">Fill by price..Coming soon</h5>
+                            {{-- <div class="price-filter">
                                 <div class="price-filter-inner">
                                     <div id="slider-range" class="mb-20"></div>
                                     <div class="d-flex justify-content-between">
@@ -556,8 +557,8 @@
                                         <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="list-group">
+                            </div> --}}
+                            {{-- <div class="list-group">
                                 <div class="list-group-item mb-10 mt-10">
                                     <label class="fw-900">Color</label>
                                     <div class="custome-checkbox">
@@ -582,11 +583,11 @@
                                         <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
                                     </div>
                                 </div>
-                            </div>
-                            <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                            </div> --}}
+                            {{-- <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
                         </div>
                         <!-- Product sidebar Widget -->
-                        <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
+                        {{-- <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
                             <h5 class="section-title style-1 mb-30">New products</h5>
                             <div class="single-post clearfix">
                                 <div class="image">
@@ -624,8 +625,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                        </div> --}}
+                        {{-- <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
                             <img src="assets/imgs/banner/banner-11.png" alt="" />
                             <div class="banner-text">
                                 <span>Oganic</span>
@@ -635,7 +636,7 @@
                                     Juice
                                 </h4>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

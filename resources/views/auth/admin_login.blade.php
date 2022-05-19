@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
+    <link rel="icon" href="">
 
-    <title>Easy Ecommerce Admin - Log in </title>
+    <title>ShinSekaiManga-Admin - Log in </title>
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
@@ -29,8 +29,8 @@
                 <div class="row justify-content-center no-gutters">
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="content-top-agile p-10">
-                            <h2 class="text-white">Get started with Us</h2>
-                            <p class="text-white-50">Sign in to start your session</p>
+                            <h2 class="text-white">Welcome to the admin of ShinSekaiManga</h2>
+                            <p class="text-white-50">Let's start our journey !</p>
                         </div>
                         <div class="p-30 rounded30 box-shadowed b-2 b-dashed">
                             <!-- on copie l'id + type email et password du fichier login sinon conflit avec DB  -->

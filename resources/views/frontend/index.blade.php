@@ -479,16 +479,16 @@ ShinSekai Manga World
             <div class="container">
                 <div class="section-title">
                     <div class="title">
-                        <h3>Shop by Categories</h3>
-                        <a class="show-all" href="shop-grid-right.html">
+                        <h3>Shop by Categories.. Coming soon</h3>
+                        {{-- <a class="show-all" href="shop-grid-right.html">
                             All Categories
                             <i class="fi-rs-angle-right"></i>
-                        </a>
+                        </a> --}}
                     </div>
                     <div class="slider-arrow slider-arrow-2 flex-right carausel-8-columns-arrow"
                         id="carausel-8-columns-arrows"></div>
                 </div>
-                <div class="carausel-8-columns-cover position-relative">
+                {{-- <div class="carausel-8-columns-cover position-relative">
                     <div class="carausel-8-columns" id="carausel-8-columns">
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
@@ -587,7 +587,7 @@ ShinSekai Manga World
                             <h6><a href="shop-grid-right.html">Ice cream</a></h6>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 
@@ -685,8 +685,8 @@ ShinSekai Manga World
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block">
-                        <h4 class="section-title style-1 mb-30 animated animated">Recently added</h4>
-                        <div class="product-list-small animated animated">
+                        <h4 class="section-title style-1 mb-30 animated animated">Recently added..Coming soon</h4>
+                        {{-- <div class="product-list-small animated animated">
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
                                     <a href="shop-product-right.html"><img src=""
@@ -750,11 +750,11 @@ ShinSekai Manga World
                                     </div>
                                 </div>
                             </article>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block">
-                        <h4 class="section-title style-1 mb-30 animated animated">Top Rated</h4>
-                        <div class="product-list-small animated animated">
+                        <h4 class="section-title style-1 mb-30 animated animated">Top Rated...Coming Soon</h4>
+                        {{-- <div class="product-list-small animated animated">
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
                                     <a href="shop-product-right.html"><img src=""
@@ -820,7 +820,7 @@ ShinSekai Manga World
                                     </div>
                                 </div>
                             </article>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

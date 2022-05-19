@@ -106,7 +106,7 @@ class StripeController extends Controller
 
         //ne pas oublier de supprimer le coupon de la session si on avait mit un
         if (Session::has('coupon')) {
-            Session::forget();
+            Session::forget('coupon');
         }
 
         //après que le paiement passe on supprimer le panier

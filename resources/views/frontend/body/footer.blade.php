@@ -6,16 +6,16 @@
                     <div class="position-relative newsletter-inner">
                         <div class="newsletter-content">
                             <h2 class="mb-20">
-                                Stay home & get your daily <br />
-                                needs from our shop
+                                We love manga ! <br />
+                                The passion has not limit
                             </h2>
-                            <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Nest Mart</span></p>
-                            <form class="form-subcriber d-flex">
+                            <p class="mb-45">Support the <span class="text-brand">Local Business</span></p>
+                            {{-- <form class="form-subcriber d-flex">
                                 <input type="email" placeholder="Your emaill address" />
                                 <button class="btn" type="submit">Subscribe</button>
-                            </form>
+                            </form> --}}
                         </div>
-                        <img src="" alt="newsletter" />
+                        {{-- <img src="" alt="newsletter" /> --}}
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Best prices & offers</h3>
-                            <p>Orders $50 or more</p>
+                            <p>you can say thank you to your wallet</p>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Free delivery</h3>
-                            <p>24/7 amazing services</p>
+                            <p>Only in belgium</p>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Easy returns</h3>
-                            <p>Within 30 days</p>
+                            <p>Within 15 days</p>
                         </div>
                     </div>
                 </div>
@@ -98,10 +98,10 @@
             <div class="row">
                 <div class="col">
                     <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0">
-                        <div class="logo mb-30">
+                        {{-- <div class="logo mb-30">
                             <a href="index.html" class="mb-15"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                             <p class="font-lg text-heading">Awesome grocery store website template</p>
-                        </div>
+                        </div> --}}
                         <ul class="contact-infor">
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span></li>
@@ -134,7 +134,7 @@
                         <li><a href="#">Compare products</a></li>
                     </ul>
                 </div>
-                <div class="footer-link-widget col">
+                {{-- <div class="footer-link-widget col">
                     <h4 class="widget-title">Corporate</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
                         <li><a href="#">Become a Vendor</a></li>
@@ -145,8 +145,8 @@
                         <li><a href="#">Accessibility</a></li>
                         <li><a href="#">Promotions</a></li>
                     </ul>
-                </div>
-                <div class="footer-link-widget col">
+                </div> --}}
+                {{-- <div class="footer-link-widget col">
                     <h4 class="widget-title">Popular</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
                         <li><a href="#">Milk & Flavoured Milk</a></li>
@@ -157,14 +157,14 @@
                         <li><a href="#">Tea & Kombucha</a></li>
                         <li><a href="#">Cheese</a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="footer-link-widget widget-install-app col">
-                    <h4 class="widget-title">Install App</h4>
+                    {{-- <h4 class="widget-title">Install App</h4>
                     <p class="wow fadeIn animated">From App Store or Google Play</p>
                     <div class="download-app">
                         <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="{{ asset('frontend/assets/imgs/theme/app-store.jpg') }}" alt="" /></a>
                         <a href="#" class="hover-up mb-sm-2"><img src="{{ asset('frontend/assets/imgs/theme/google-play.jpg') }}" alt="" /></a>
-                    </div>
+                    </div> --}}
                     <p class="mb-20">Secured Payment Gateways</p>
                     <img class="wow fadeIn animated" src="{{ asset('frontend/assets/imgs/theme/payment-method.png') }}" alt="" />
                 </div>
@@ -177,7 +177,7 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6">
-                <p class="font-sm mb-0">&copy; 2021, <strong class="text-brand">Nest</strong> - HTML Ecommerce Template <br />All rights reserved</p>
+                <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand"></strong> - ShinSekaiManga <br />All rights reserved</p>
             </div>
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                 <div class="hotline d-lg-inline-flex mr-30">
@@ -198,7 +198,7 @@
                     <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
                     <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
                 </div>
-                <p class="font-sm">Up to 15% discount on your first subscribe</p>
+                {{-- <p class="font-sm">Up to 15% discount on your first subscribe</p> --}}
             </div>
         </div>
     </div>
