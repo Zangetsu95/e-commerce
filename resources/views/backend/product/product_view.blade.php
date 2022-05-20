@@ -80,9 +80,9 @@
                                                     @endif
                                                 </td>
                                                 <td width='30%'>
-                                                    <a href="{{ route('product-edit', $item->id) }}"
+                                                    {{-- <a href="{{ route('product-edit', $item->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-eye"
-                                                            title="Product Details Data"></i></a>
+                                                            title="Product Details Data"></i></a> --}}
 
                                                     <a href="{{ route('product-edit', $item->id) }}"
                                                         class="btn btn-info"><i class="fa fa-pencil"

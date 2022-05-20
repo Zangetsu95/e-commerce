@@ -111,8 +111,8 @@ ShinSekai Manga World
                                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
                                                     </div>
                                                     <div>
-                                                        <span class="font-small text-muted">By <a
-                                                                href="vendor-details-1.html">NestFood</a></span>
+                                                        {{-- <span class="font-small text-muted">By <a
+                                                                href="vendor-details-1.html">NestFood</a></span> --}}
                                                     </div>
                                                     {{-- Afficher le prix avec la réduction --}}
                                                     @php
