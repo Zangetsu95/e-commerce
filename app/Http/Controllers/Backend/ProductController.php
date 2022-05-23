@@ -190,7 +190,7 @@ class ProductController extends Controller
             } //end for each
             // UPDATE MULTI IMAGE \\\\\\\\\\\\\
         } else {
-            
+
             $imgs = $request->multi_img;
 
             foreach ($imgs as $id => $img) {
@@ -308,5 +308,13 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+
+    public function ManageStock()
+    {
+        $products = Product::latest()->get();
+
+        return view('backend.product.product_stock',compact('products'));
     }
 }

@@ -159,8 +159,8 @@ $route = Route::current()->getName();
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'site-settings' ? 'active' : '' }}"><a
                             href="{{ route('site-settings') }}"><i class="ti-more"></i>Site Setting</a></li>
-                            <li class="{{ $route == 'seo-settings' ? 'active' : '' }}"><a
-                                href="{{ route('seo-settings') }}"><i class="ti-more"></i>SEO Setting</a></li>
+                    <li class="{{ $route == 'seo-settings' ? 'active' : '' }}"><a
+                            href="{{ route('seo-settings') }}"><i class="ti-more"></i>SEO Setting</a></li>
                 </ul>
             </li>
 
@@ -174,9 +174,10 @@ $route = Route::current()->getName();
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'return-request' ? 'active' : '' }}"><a
-                            href="{{ route('return-request') }}"><i class="ti-more"></i>Return Request</a></li>
-                            <li class="{{ $route == 'all-request' ? 'active' : '' }}"><a
-                                href="{{ route('all-request') }}"><i class="ti-more"></i>All Request</a></li>
+                            href="{{ route('return-request') }}"><i class="ti-more"></i>Return Request</a>
+                    </li>
+                    <li class="{{ $route == 'all-request' ? 'active' : '' }}"><a
+                            href="{{ route('all-request') }}"><i class="ti-more"></i>All Request</a></li>
                 </ul>
             </li>
 
@@ -191,8 +192,23 @@ $route = Route::current()->getName();
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'review-see' ? 'active' : '' }}"><a
                             href="{{ route('review-see') }}"><i class="ti-more"></i>See the review</a></li>
-                            <li class="{{ $route == 'publish-review' ? 'active' : '' }}"><a
-                                href="{{ route('publish-review') }}"><i class="ti-more"></i>Comments</a></li>
+                    <li class="{{ $route == 'publish-review' ? 'active' : '' }}"><a
+                            href="{{ route('publish-review') }}"><i class="ti-more"></i>Comments</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview {{ $prefix == '/stock' ? 'active' : '' }}  ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Manage Stock </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'product-stock' ? 'active' : '' }}"><a
+                            href="{{ route('product-stock') }}"><i class="ti-more"></i>Product Stock</a></li>
+
                 </ul>
             </li>
 
@@ -211,7 +227,8 @@ $route = Route::current()->getName();
                             href="{{ route('pending-orders') }}"><i class="ti-more"></i>Pending Orders</a>
                     </li>
                     <li class="{{ $route == 'confirmed-orders' ? 'active' : '' }}"><a
-                            href="{{ route('confirmed-orders') }}"><i class="ti-more"></i>Confirmed Orders</a>
+                            href="{{ route('confirmed-orders') }}"><i class="ti-more"></i>Confirmed
+                            Orders</a>
                     </li>
 
                     <li class="{{ $route == 'processing-orders' ? 'active' : '' }}"><a
@@ -219,7 +236,8 @@ $route = Route::current()->getName();
                             Orders</a></li>
 
                     <li class="{{ $route == 'picked-orders' ? 'active' : '' }}"><a
-                            href="{{ route('picked-orders') }}"><i class="ti-more"></i> Picked Orders</a></li>
+                            href="{{ route('picked-orders') }}"><i class="ti-more"></i> Picked Orders</a>
+                    </li>
 
                     <li class="{{ $route == 'shipped-orders' ? 'active' : '' }}"><a
                             href="{{ route('shipped-orders') }}"><i class="ti-more"></i> Shipped Orders</a>
@@ -230,7 +248,8 @@ $route = Route::current()->getName();
                             Orders</a></li>
 
                     <li class="{{ $route == 'cancel-orders-admin' ? 'active' : '' }}"><a
-                            href="{{ route('cancel-orders-admin') }}"><i class="ti-more"></i> Cancel Orders</a></li>
+                            href="{{ route('cancel-orders-admin') }}"><i class="ti-more"></i> Cancel
+                            Orders</a></li>
 
                 </ul>
             </li>

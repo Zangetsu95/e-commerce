@@ -383,6 +383,14 @@ route::prefix('review')->group(function () {
 
 });
 
+route::prefix('stock')->group(function () {
+
+    Route::get('/product', [ProductController::class, 'ManageStock'])->name('product-stock');
+
+
+});
+
+
 //////////////////////////////////////////////// FRONTEND ALL ROUTES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /* Multi LAnguage All Routes */
 
