@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -368,7 +369,6 @@ route::prefix('return')->group(function () {
     Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnApprove'])->name('return-approve');
 
     Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all-request');
-
 });
 
 /* Comments Product */
@@ -380,13 +380,28 @@ route::prefix('review')->group(function () {
     Route::get('/publish', [ReviewController::class, 'PublishedReview'])->name('publish-review');
 
     Route::get('/delete/{id}', [ReviewController::class, 'DeleteReview'])->name('review-delete');
-
 });
 
+/* Stock Product */
 route::prefix('stock')->group(function () {
 
     Route::get('/product', [ProductController::class, 'ManageStock'])->name('product-stock');
+});
 
+/* Stock Product */
+route::prefix('/admin/user/role')->group(function () {
+
+    Route::get('/all', [AdminUserController::class, 'AllAdminRole'])->name('all-admin-user');
+
+    Route::get('/add', [AdminUserController::class, 'AddAdminRole'])->name('add-admin');
+
+    Route::post('/store', [AdminUserController::class, 'StoreAdminRole'])->name('admin-user-store');
+
+    Route::get('/edit/{id}', [AdminUserController::class, 'EditAdminRole'])->name('edit-admin-user');
+
+    Route::post('/update', [AdminUserController::class, 'UpdateAdminRole'])->name('admin-user-update');
+
+    Route::get('/delete/{id}', [AdminUserController::class, 'DeleteAdminRole'])->name('delete-admin-user');
 
 });
 
