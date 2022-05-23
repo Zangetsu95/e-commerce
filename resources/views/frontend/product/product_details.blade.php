@@ -113,7 +113,6 @@
                                                 {{-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                             </div>
                                         </div>
-
                                         {{-- <div class="font-xs">
                                             <ul class="mr-50 float-start">
                                                 <li class="mb-5">Type: <span class="text-brand">Organic</span></li>
@@ -646,5 +645,7 @@
 
 
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-628b54fe2320575e"></script>
 
 @endsection
