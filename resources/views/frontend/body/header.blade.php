@@ -182,7 +182,8 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                        <form method="post" action="{{ route('product-search') }}">
+                            @csrf
                             {{-- <select class="select-active">
                                 <option>All Categories</option>
                                 <option>Milks and Dairies</option>
@@ -196,7 +197,7 @@
                                 <option>Noodles & Rice</option>
                                 <option>Ice cream</option>
                             </select> --}}
-                            <input type="text" placeholder="Search for items..." />
+                            <input type="text" name="search" placeholder="Search for items..." />
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -637,7 +638,7 @@
         </div>
         <div class="mobile-header-content-area">
             <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
+                <form action="post" action="{{ route('product-search') }}">
                     <input type="text" placeholder="Search for items…" />
                     <button type="submit"><i class="fi-rs-search"></i></button>
                 </form>

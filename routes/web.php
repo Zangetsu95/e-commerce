@@ -519,3 +519,6 @@ Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'Blo
 
 Route::post('/review/add', [ReviewController::class, 'AddReview'])->name('review-add');
 
+/* Search Product */
+
+Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product-search');

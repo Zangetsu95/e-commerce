@@ -23,13 +23,13 @@ class IndexController extends Controller
             pour certaines variable on mettra une limite pour ne pas surchager
             ->get() pour récuper les données on oublie pas de la mettre dans le compact()
         */
-        $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
-        $categories = Category::orderBy('category_name_en','ASC')->get();
-        $products = Product::where('status',1)->orderBy('id','DESC')->limit(20)->get();
-        $featured = Product::where('featured',1)->orderBy('id','DESC')->limit(4)->get();
-        $hot = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(4)->get();
-        $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
-        $special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
+        $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(20)->get();
+        $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(4)->get();
+        $hot = Product::where('hot_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(4)->get();
+        $special_offer = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
 
         /*
             L'utilisation de la requête skip en laravel est utilisée pour sauter les données
@@ -40,9 +40,14 @@ class IndexController extends Controller
             $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
         */
 
-        return view('frontend.index',compact(
-            'sliders','categories','products',
-            'featured','hot','special_offer','special_deals',
+        return view('frontend.index', compact(
+            'sliders',
+            'categories',
+            'products',
+            'featured',
+            'hot',
+            'special_offer',
+            'special_deals',
         ));
     }
 
@@ -63,10 +68,10 @@ class IndexController extends Controller
     {
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('frontend.profile.user_profile',compact('user'));
+        return view('frontend.profile.user_profile', compact('user'));
     }
 
-    public function UserProfileStore (Request $request)
+    public function UserProfileStore(Request $request)
     {
         $data = User::find(Auth::user()->id);
         $data->name = $request->name;
@@ -98,7 +103,7 @@ class IndexController extends Controller
         $id = Auth::user()->id;
         $user = User::find($id);
 
-        return view('frontend.profile.change_password',compact('user'));
+        return view('frontend.profile.change_password', compact('user'));
     }
 
     public function UserPasswordUpdate(Request $request)
@@ -118,36 +123,35 @@ class IndexController extends Controller
             $user->save();
             Auth::logout();
             return redirect()->route('user.logout');
-
         } else {
 
             return redirect()->back();
-
         }
-
     }
 
-    public function ProductDetails($id,$slug)
+    public function ProductDetails($id, $slug)
     {
         $product = Product::findOrFail($id);
-        $multiImg = MultiImg::where('product_id',$id)->get();
+        $multiImg = MultiImg::where('product_id', $id)->get();
 
         $color_en = $product->product_color_en;
-		$product_color_en = explode(',', $color_en);
+        $product_color_en = explode(',', $color_en);
 
-		$color_fr = $product->product_color_fr;
-		$product_color_fr = explode(',', $color_fr);
+        $color_fr = $product->product_color_fr;
+        $product_color_fr = explode(',', $color_fr);
 
-		$size_en = $product->product_size_en;
-		$product_size_en = explode(',', $size_en);
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',', $size_en);
 
-		$size_fr = $product->product_size_fr;
-		$product_size_fr = explode(',', $size_fr);
+        $size_fr = $product->product_size_fr;
+        $product_size_fr = explode(',', $size_fr);
 
         $cat_id = $product->category_id;
 
-        return view('frontend.product.product_details',
-        compact('product','multiImg','product_color_en','product_color_fr','product_size_en','product_size_fr','cat_id'));
+        return view(
+            'frontend.product.product_details',
+            compact('product', 'multiImg', 'product_color_en', 'product_color_fr', 'product_size_en', 'product_size_fr', 'cat_id')
+        );
     }
 
     public function TagWiseProduct($tag)
@@ -156,25 +160,25 @@ class IndexController extends Controller
         On va prendre que les produits actifs
         l'autre where veut dire quand le tag va matcher avec celui qu'on va cliquer
         */
-        $products = Product::where('status',1)
-        ->where('product_tags_en',$tag)
-        ->where('product_tags_fr',$tag)
-        ->orderBy('id','DESC')
-        ->paginate(20);
-        $categories = Category::orderBy('category_name_en','ASC')->get();
+        $products = Product::where('status', 1)
+            ->where('product_tags_en', $tag)
+            ->where('product_tags_fr', $tag)
+            ->orderBy('id', 'DESC')
+            ->paginate(20);
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
 
-        return view('frontend.tags.tags_view',compact('products','categories'));
+        return view('frontend.tags.tags_view', compact('products', 'categories'));
     }
 
     public function ProductViewAjax($id)
     {
-        $product = Product::with('category','brand')->findOrFail($id);
+        $product = Product::with('category', 'brand')->findOrFail($id);
 
         $color_en = $product->product_color_en;
-        $product_color = explode(',',$color_en);
+        $product_color = explode(',', $color_en);
 
         $size = $product->product_size_en;
-        $product_size = explode(',',$size);
+        $product_size = explode(',', $size);
 
         $discount = $product->selling_price - $product->discount_price;
 
@@ -185,4 +189,20 @@ class IndexController extends Controller
             'discount' => $discount
         ));
     }
+
+
+    /**
+     * It takes the search item from the search form and searches the database for products with a name
+     * that matches the search item
+     * @param {Request} request - The request object.
+     */
+    public function ProductSearch(Request $request){
+		$item = $request->search;
+		
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+		$products = Product::where('product_name_en','LIKE',"%$item%")->get();
+		return view('frontend.product.search',compact('products','categories'));
+
+
+	}
 }
