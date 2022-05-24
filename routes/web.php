@@ -471,6 +471,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('orders-list-return');
 
     Route::get('/cancel/order', [AllUserController::class, 'CancelOrder'])->name('cancel-orders');
+
+    /* Order tracking user */
+    Route::post('/order/tracking', [AllUserController::class, 'OrderTracking'])->name('order-tracking');
+
 });
 
 
@@ -514,3 +518,4 @@ Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'Blo
 /* Review a product */
 
 Route::post('/review/add', [ReviewController::class, 'AddReview'])->name('review-add');
+

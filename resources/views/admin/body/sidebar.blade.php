@@ -87,11 +87,11 @@ $route = Route::current()->getName();
                 $alluser =
                     auth()
                         ->guard('admin')
-                        ->user()->alluser == 1;
+                        ->user()->all_user == 1;
                 $adminuserrole =
                     auth()
                         ->guard('admin')
-                        ->user()->adminuserrole == 1;
+                        ->user()->admin_user_role == 1;
             @endphp
 
             @if ($brand == true)

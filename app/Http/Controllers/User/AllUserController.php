@@ -115,4 +115,26 @@ class AllUserController extends Controller
         $orders = Order::where('user_id', Auth::id())->where('status', 'cancel')->orderBy('id', 'DESC')->get();
         return view('frontend.user.order.cancel_order_view', compact('orders'));
     }
+
+
+    public function OrderTracking(Request $request)
+    {
+        $order_id = $request->order_id;
+        $email_order = $request->billing_email;
+
+        $track = Order::where('invoice_no', $order_id)->where('email', $email_order)->first();
+
+        if ($track) {
+
+        
+            return view('frontend.tracking.track_order',compact('track'));
+        } else {
+
+            $notification = array(
+                'message' => 'Your data are invalid !',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
 }
