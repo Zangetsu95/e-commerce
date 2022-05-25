@@ -2,8 +2,16 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name_en}} Product Details
+    {{ $product->product_name_en }} Product Details
 @endsection
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .checked {
+        color: orange;
+    }
+
+</style>
 
 <main class="main">
     <div class="page-header breadcrumb-wrap">
@@ -27,18 +35,20 @@
                                         <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">
-                                            @foreach (  $multiImg as $img )
-                                            <figure class="border-radius-10" id="slide{{ $img->id }}">
-                                                <img src="{{ asset($img->photo_name) }}" alt="product image" />
-                                            </figure>
+                                            @foreach ($multiImg as $img)
+                                                <figure class="border-radius-10" id="slide{{ $img->id }}">
+                                                    <img src="{{ asset($img->photo_name) }}" alt="product image" />
+                                                </figure>
                                             @endforeach
                                         </div>
                                         <!-- THUMBNAILS -->
 
                                         <div class="slider-nav-thumbnails">
-                                            @foreach ( $multiImg as $img )
-                                                <div  href="#slide{{ $img->id }}"><img src="{{ asset($img->photo_name) }}" alt="product image" /></div>
-                                                @endforeach
+                                            @foreach ($multiImg as $img)
+                                                <div href="#slide{{ $img->id }}"><img
+                                                        src="{{ asset($img->photo_name) }}" alt="product image" />
+                                                </div>
+                                            @endforeach
                                         </div>
 
                                     </div>
@@ -49,67 +59,119 @@
                                         {{-- <span class="stock-status out-stock"> Sale Off </span> --}}
                                         <h2 class="title-detail" id="pname">
                                             @if (session()->get('language') == 'french')
-                                            {{ $product->product_name_fr }}
+                                                {{ $product->product_name_fr }}
                                             @else
-                                            {{ $product->product_name_en }}
+                                                {{ $product->product_name_en }}
                                             @endif
                                         </h2>
+                                        @php
+                                            $reviewCount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
+
                                         <div class="product-detail-rating">
                                             <div class="product-rate-cover text-end">
-                                                <div class="product-rate d-inline-block">
-                                                    <div class="product-rating" style="width: 90%"></div>
-                                                </div>
-                                                <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                                @if ($avarage == 0)
+                                                    <div class="product-rate d-inline-block">
+                                                        No ratings yet
+                                                    </div>
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                @endif
+                                                <span class="font-small ml-5 text-muted"> {{ count($reviewCount) }}
+                                                    Reviews</span>
                                             </div>
                                         </div>
                                         {{-- Afficher le prix avec la réduction --}}
                                         @php
                                             $amount = $product->selling_price - $product->discount_price;
-                                            $discount = $product->discount_price/$product->selling_price * 100;
+                                            $discount = ($product->discount_price / $product->selling_price) * 100;
                                             $percentage = round($discount);
                                         @endphp
 
                                         <div class="clearfix product-price-cover">
-                                            @if($product->discount_price == NULL)
-                                            <div class="product-price primary-color float-left">
-                                                <span class="current-price text-brand">{{ $product->selling_price }}€</span>
-                                            </div>
+                                            @if ($product->discount_price == null)
+                                                <div class="product-price primary-color float-left">
+                                                    <span
+                                                        class="current-price text-brand">{{ $product->selling_price }}€</span>
+                                                </div>
                                             @else
-                                            <div class="product-price primary-color float-left">
-                                                <span class="current-price text-brand">{{ $amount }}€</span>
-                                                <span>
-                                                    <span class="save-price font-md color3 ml-15">{{ $percentage }}% </span>
-                                                    <span class="old-price font-md ml-15">{{ $product->selling_price }}€</span>
-                                                </span>
-                                            </div>
+                                                <div class="product-price primary-color float-left">
+                                                    <span class="current-price text-brand">{{ $amount }}€</span>
+                                                    <span>
+                                                        <span
+                                                            class="save-price font-md color3 ml-15">{{ $percentage }}%
+                                                        </span>
+                                                        <span
+                                                            class="old-price font-md ml-15">{{ $product->selling_price }}€</span>
+                                                    </span>
+                                                </div>
                                             @endif
                                         </div>
                                         <div class="short-desc mb-30">
 
                                         </div>
                                         <div class="attr-detail attr-size mb-30" id="size">
-                                            @if ($product->category->category_name_en === "Clothes")
-                                            <strong class="mr-10">Size  </strong>
-                                            <ul class="list-filter size-filter font-small">
-                                                @foreach ( $product_size_en as $item )
-
-                                                <li><a href="#">{{ $item }}</a></li>
-                                                @endforeach
-                                            </ul>
+                                            @if ($product->category->category_name_en === 'Clothes')
+                                                <strong class="mr-10">Size </strong>
+                                                <ul class="list-filter size-filter font-small">
+                                                    @foreach ($product_size_en as $item)
+                                                        <li><a href="#">{{ $item }}</a></li>
+                                                    @endforeach
+                                                </ul>
                                             @endif
                                         </div>
                                         <div class="detail-extralink mb-50">
                                             <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span><input class="qty-val" type="text" id="qty" value="1" min="1"></span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                <a href="#" class="qty-down"><i
+                                                        class="fi-rs-angle-small-down"></i></a>
+                                                <span><input class="qty-val" type="text" id="qty" value="1"
+                                                        min="1"></span>
+                                                <a href="#" class="qty-up"><i
+                                                        class="fi-rs-angle-small-up"></i></a>
                                             </div>
 
-                                        <input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
+                                            <input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
                                             <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                <button type="submit" class="button button-add-to-cart"
+                                                    onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to
+                                                    cart</button>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                    href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                                                 {{-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                             </div>
                                         </div>
@@ -133,7 +195,8 @@
                                 <div class="tab-style3">
                                     <ul class="nav nav-tabs text-uppercase">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
+                                                href="#Description">Description</a>
                                         </li>
                                         {{-- <li class="nav-item">
                                             <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
@@ -143,15 +206,16 @@
                                         </li> --}}
                                         <li class="nav-item">
                                             {{-- <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a> --}}
-                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
+                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
+                                                href="#Reviews">Reviews</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content shop_info_tab entry-main-content">
                                         <div class="tab-pane fade show active" id="Description">
                                             @if (session()->get('language') == 'french')
-                                            {!! $product->long_descp_fr !!}
+                                                {!! $product->long_descp_fr !!}
                                             @else
-                                            {!! $product->long_descp_en !!}
+                                                {!! $product->long_descp_en !!}
                                             @endif
                                         </div>
                                         <div class="tab-pane fade" id="Additional-info">
@@ -244,6 +308,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        @php
+                                            $reviewCount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                         <div class="tab-pane fade" id="Vendor-info">
                                             <div class="vendor-logo d-flex mb-30">
                                                 <img src="assets/imgs/vendor/vendor-18.svg" alt="" />
@@ -255,13 +328,19 @@
                                                         <div class="product-rate d-inline-block">
                                                             <div class="product-rating" style="width: 90%"></div>
                                                         </div>
-                                                        <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                                        <span
+                                                            class="font-small ml-5 text-muted">{{ count($reviewCount) }}
+                                                            Reviews</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <ul class="contact-infor mb-50">
-                                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
-                                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Contact Seller:</strong><span>(+91) - 540-025-553</span></li>
+                                                <li><img src="assets/imgs/theme/icons/icon-location.svg"
+                                                        alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave
+                                                        undefined Kent, Utah 53127 United States</span></li>
+                                                <li><img src="assets/imgs/theme/icons/icon-contact.svg"
+                                                        alt="" /><strong>Contact Seller:</strong><span>(+91) -
+                                                        540-025-553</span></li>
                                             </ul>
                                             <div class="d-flex mb-55">
                                                 <div class="mr-30">
@@ -278,12 +357,21 @@
                                                 </div>
                                             </div>
                                             <p>
-                                                Noodles & Company is an American fast-casual restaurant that offers international and American noodle dishes and pasta in addition to soups and salads. Noodles & Company was founded in 1995 by Aaron Kennedy and is headquartered in Broomfield, Colorado. The company went public in 2013 and recorded a $457 million revenue in 2017.In late 2018, there were 460 Noodles & Company locations across 29 states and Washington, D.C.
+                                                Noodles & Company is an American fast-casual restaurant that offers
+                                                international and American noodle dishes and pasta in addition to soups
+                                                and salads. Noodles & Company was founded in 1995 by Aaron Kennedy and
+                                                is headquartered in Broomfield, Colorado. The company went public in
+                                                2013 and recorded a $457 million revenue in 2017.In late 2018, there
+                                                were 460 Noodles & Company locations across 29 states and Washington,
+                                                D.C.
                                             </p>
                                         </div>
                                         <div class="tab-pane fade" id="Reviews">
                                             @php
-                                                $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+                                                $reviews = App\Models\Review::where('product_id', $product->id)
+                                                    ->latest()
+                                                    ->limit(5)
+                                                    ->get();
 
                                             @endphp
                                             <!--Comments-->
@@ -292,36 +380,105 @@
 
                                                     <div class="col-lg-8">
                                                         <h4 class="mb-30">No comment for this Product</h4>
-                                                        @foreach ( $reviews as $comment )
-                                                        @if($comment->status == 0 )
-
-                                                        @else
-                                                        <h4 class="mb-30">Customer reviews</h4>
-                                                        <div class="comment-list">
-                                                            <div class="single-comment justify-content-between d-flex mb-30">
-                                                                <div class="user justify-content-between d-flex">
-                                                                    <div class="thumb text-center">
-                                                                        <img style="border-radius: 50%" src="{{ (!empty($comment->user->profile_photo_path))? url('upload/user_images/'.$comment->user->profile_photo_path):url('upload/no_image.jpg') }}" width="80px;" height="80px;"><b></b>
-                                                                        <a href="#" class="font-heading text-brand">{{ $comment->summary }}</a>
-                                                                    </div>
-                                                                    <div class="desc">
-                                                                        <div class="d-flex justify-content-between mb-10">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <span class="font-xs text-muted">{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</span>
+                                                        @foreach ($reviews as $comment)
+                                                            @if ($comment->status == 0)
+                                                            @else
+                                                                <h4 class="mb-30">Customer reviews</h4>
+                                                                <div class="comment-list">
+                                                                    <div
+                                                                        class="single-comment justify-content-between d-flex mb-30">
+                                                                        <div
+                                                                            class="user justify-content-between d-flex">
+                                                                            <div class="thumb text-center">
+                                                                                <img style="border-radius: 50%"
+                                                                                    src="{{ !empty($comment->user->profile_photo_path) ? url('upload/user_images/' . $comment->user->profile_photo_path) : url('upload/no_image.jpg') }}"
+                                                                                    width="80px;" height="80px;"><b></b>
+                                                                                <a href="#"
+                                                                                    class="font-heading text-brand">{{ $comment->summary }}</a>
                                                                             </div>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <span class="font-xs text-muted">by {{ $comment->user->name }} </span>
-                                                                            </div>
-                                                                            <div class="product-rate d-inline-block">
-                                                                                <div class="product-rating" style="width: 100%"></div>
+                                                                            <div class="desc">
+                                                                                <div
+                                                                                    class="d-flex justify-content-between mb-10">
+                                                                                    <div
+                                                                                        class="d-flex align-items-center">
+                                                                                        <span
+                                                                                            class="font-xs text-muted">{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</span>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="d-flex align-items-center">
+                                                                                        <span
+                                                                                            class="font-xs text-muted">by
+                                                                                            {{ $comment->user->name }}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    @if ($comment->rating == null)
+                                                                                    @elseif($comment->rating == 1)
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                    @elseif($comment->rating == 2)
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                    @elseif($comment->rating == 3)
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                    @elseif($comment->rating == 4)
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star"></span>
+                                                                                    @elseif($comment->rating == 5)
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star checked"></span>
+                                                                                    @endif
+                                                                                </div>
+                                                                                <p class="mb-10">
+                                                                                    {{ $comment->comment }} <a
+                                                                                        href="#"
+                                                                                        class="reply">Reply</a>
+                                                                                </p>
                                                                             </div>
                                                                         </div>
-                                                                        <p class="mb-10">{{ $comment->comment }} <a href="#" class="reply">Reply</a></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        @endif
+                                                            @endif
                                                         @endforeach
                                                     </div>
                                                     <div class="col-lg-4">
@@ -334,60 +491,115 @@
                                                         </div>
                                                         <div class="progress">
                                                             <span>5 star</span>
-                                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                aria-valuemax="100">50%</div>
                                                         </div>
                                                         <div class="progress">
                                                             <span>4 star</span>
-                                                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">25%</div>
                                                         </div>
                                                         <div class="progress">
                                                             <span>3 star</span>
-                                                            <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: 45%" aria-valuenow="45" aria-valuemin="0"
+                                                                aria-valuemax="100">45%</div>
                                                         </div>
                                                         <div class="progress">
                                                             <span>2 star</span>
-                                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+                                                                aria-valuemax="100">65%</div>
                                                         </div>
                                                         <div class="progress mb-30">
                                                             <span>1 star</span>
-                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+                                                                aria-valuemax="100">85%</div>
                                                         </div>
-                                                        <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
+                                                        <a href="#" class="font-xs text-muted">How are ratings
+                                                            calculated?</a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--comment form-->
                                             @guest
-                                            <h4 class="mb-15">You must be logged to make a comment !</h4>
+                                                <h4 class="mb-15">You must be logged to make a review !</h4>
                                             @else
-
-                                            <div class="comment-form">
-                                                <h4 class="mb-15">Add a review</h4>
-                                                <div class="product-rate d-inline-block mb-30"></div>
-                                                <div class="row">
-                                                    <div class="col-lg-8 col-md-12">
-                                                        <form class="form-contact comment_form" method="POST" action="{{ route('review-add') }}" id="commentForm">
-                                                            @csrf
-                                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <input class="form-control" name="summary" id="name" type="text" placeholder="Title" />
+                                                <div class="comment-form">
+                                                    <h4 class="mb-15">Add a review</h4>
+                                                    <div class="product-rate d-inline-block mb-30"></div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-12">
+                                                            <form class="form-contact comment_form" method="POST"
+                                                                action="{{ route('review-add') }}" id="commentForm">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $product->id }}">
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="cell-label">&nbsp;</th>
+                                                                                <th>1 star</th>
+                                                                                <th>2 stars</th>
+                                                                                <th>3 stars</th>
+                                                                                <th>4 stars</th>
+                                                                                <th>5 stars</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="cell-label">Quality</td>
+                                                                                <td><input style="height: 10px" type="radio"
+                                                                                        name="quality"
+                                                                                        class="radio" value="1">
+                                                                                </td>
+                                                                                <td><input style="height: 10px" type="radio"
+                                                                                        name="quality"
+                                                                                        class="radio" value="2">
+                                                                                </td>
+                                                                                <td><input style="height: 10px" type="radio"
+                                                                                        name="quality"
+                                                                                        class="radio" value="3">
+                                                                                </td>
+                                                                                <td><input style="height: 10px" type="radio"
+                                                                                        name="quality"
+                                                                                        class="radio" value="4">
+                                                                                </td>
+                                                                                <td><input style="height: 10px" type="radio"
+                                                                                        name="quality"
+                                                                                        class="radio" value="5">
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table><!-- /.table .table-bordered -->
+                                                                </div><!-- /.table-responsive -->
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <input class="form-control" name="summary"
+                                                                                id="name" type="text" placeholder="Title" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <div class="form-group">
+                                                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                                                                placeholder="Write Comment"></textarea>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                                                    </div>
+                                                                <div class="form-group">
+                                                                    <button type="submit"
+                                                                        class="button button-contactForm">Submit
+                                                                        Review</button>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <button type="submit" class="button button-contactForm">Submit Review</button>
-                                                            </div>
-                                                        </form>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @endguest
                                         </div>
                                     </div>
