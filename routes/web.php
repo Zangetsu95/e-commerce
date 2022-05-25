@@ -522,3 +522,5 @@ Route::post('/review/add', [ReviewController::class, 'AddReview'])->name('review
 /* Search Product */
 
 Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product-search');
+
+Route::post('/search-product', [IndexController::class, 'ProductSearchAdvanced']);

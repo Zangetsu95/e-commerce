@@ -119,9 +119,9 @@
                         <ul>
                             <li><a href="page-about.htlm">About Us</a></li>
                             @auth
-                            <li><a href="{{ route('dashboard') }}">My Account</a></li>
-                            <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
-                            {{-- <li><a href="shop-order.html">Order Tracking</a></li> --}}
+                                <li><a href="{{ route('dashboard') }}">My Account</a></li>
+                                <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
+                                {{-- <li><a href="shop-order.html">Order Tracking</a></li> --}}
                             @endauth
 
                         </ul>
@@ -184,22 +184,13 @@
                     <div class="search-style-2">
                         <form method="post" action="{{ route('product-search') }}">
                             @csrf
-                            {{-- <select class="select-active">
-                                <option>All Categories</option>
-                                <option>Milks and Dairies</option>
-                                <option>Wines & Alcohol</option>
-                                <option>Clothing & Beauty</option>
-                                <option>Pet Foods & Toy</option>
-                                <option>Fast food</option>
-                                <option>Baking material</option>
-                                <option>Vegetables</option>
-                                <option>Fresh Seafood</option>
-                                <option>Noodles & Rice</option>
-                                <option>Ice cream</option>
-                            </select> --}}
-                            <input type="text" name="search" placeholder="Search for items..." />
+                            <input type="text" id="search" onfocus="search_result_show()" onblur="search_result_hide()"
+                                name="search" placeholder="Search for items..." />
+                            <button class="search-button" type="submit"></button>
                         </form>
+                        <div id="searchProducts"></div>
                     </div>
+
                     <div class="header-action-right">
                         <div class="header-action-2">
                             {{-- <div class="search-location">
@@ -258,7 +249,8 @@
                                             <h4>Total <span id="cartSubTotal">€</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="{{ route('mycart') }}" class="outline">View cart</a>
+                                            <a href="{{ route('mycart') }}" class="outline">View
+                                                cart</a>
                                             <a href="{{ route('checkout') }}">Checkout</a>
                                         </div>
                                     </div>
@@ -611,7 +603,7 @@
                                         <h4>Total <span id="cartSubTotal">€</span></h4>
                                     </div>
                                     <div class="shopping-cart-button">
-                                        <a href="{{ route('mycart') }}" >View cart</a>
+                                        <a href="{{ route('mycart') }}">View cart</a>
                                         <a href="{{ route('checkout') }}">Checkout</a>
                                     </div>
                                 </div>
@@ -809,3 +801,29 @@
     </div>
 </div>
 <!--End header-->
+<style>
+    .search-style-2 {
+        position: relative;
+    }
+
+    #searchProducts {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+
+</style>
+<script>
+    function search_result_hide() {
+        $("#searchProducts").slideUp();
+    }
+
+    function search_result_show() {
+        $("#searchProducts").slideDown();
+    }
+</script>

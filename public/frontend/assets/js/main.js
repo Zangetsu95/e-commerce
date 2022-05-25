@@ -477,7 +477,7 @@
     }
 
     /*-----------------------
-        Shop filter active 
+        Shop filter active
     ------------------------- */
     $(".shop-filter-toogle").on("click", function (e) {
         e.preventDefault();
@@ -733,4 +733,39 @@
         showItems: 1
     });
 })(jQuery);
+
+
+/*---- Ajax search product ---- */
+
+   /* The above code is searching for a product. */
+    const site_url = "http://127.0.0.1:8000/";
+
+   /* The above code is using ajax to search for a product. */
+    $("body").on("keyup", "#search", function(){
+
+       /* Getting the value of the search input and storing it in a variable called text. */
+        let text = $("#search").val();
+        // console.log(text);
+
+        if(text.length >0 ){
+            $.ajax({
+                data: {search: text},
+                url : site_url + "search-product",
+                method : 'post',
+                beforSend : function(request){
+                    return request.setReuestHeader('X-CSRF-Token',("meta[name='csrf-token']"))
+
+                },
+                success:function(result){
+                    $("#searchProducts").html(result)
+                }
+
+            }); // end ajax
+        }
+
+        if(text.length < 1) $("#searchProducts").html("");
+
+
+    }); // end one
+
 
