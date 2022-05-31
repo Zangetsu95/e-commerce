@@ -129,6 +129,9 @@ class BlogController extends Controller
     //// BLOG POST  \\\\\\\\\\
 
 
+    /**
+     * It fetches all the blog posts from the database and returns the view.
+     */
     public function AllBlogPost()
     {
         $blogPost = BlogPost::with('blogCategory')->latest()->get();
@@ -192,6 +195,10 @@ class BlogController extends Controller
         return redirect()->route('blog-list')->with($notification);
     }
 
+    /**
+     * It finds the blog post and blog category by id and returns the view.
+     * @param id - The id of the blog post you want to edit.
+     */
     public function BlogPostEdit($id)
     {
         $blogPost = BlogPost::findOrFail($id);

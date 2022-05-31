@@ -196,25 +196,242 @@ class IndexController extends Controller
      * that matches the search item
      * @param {Request} request - The request object.
      */
-    public function ProductSearch(Request $request){
+    public function ProductSearch(Request $request)
+    {
 
-        $request->validate(["search" => "required" ]);
+        $request->validate(["search" => "required"]);
 
-		$item = $request->search;
+        $item = $request->search;
 
-        $categories = Category::orderBy('category_name_en','ASC')->get();
-		$products = Product::where('product_name_en','LIKE',"%$item%")->get();
-		return view('frontend.product.search',compact('products','categories'));
-
-	}
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        $products = Product::where('product_name_en', 'LIKE', "%$item%")->get();
+        return view('frontend.product.search', compact('products', 'categories'));
+    }
 
     public function ProductSearchAdvanced(Request $request)
     {
         $request->validate(["search" => "required"]);
 
-		$item = $request->search;
+        $item = $request->search;
 
-		$products = Product::where('product_name_en','LIKE',"%$item%")->select('product_name_en','product_thambnail','selling_price','id','product_slug_en')->limit(5)->get();
-		return view('frontend.product.search_product',compact('products'));
+        $products = Product::where('product_name_en', 'LIKE', "%$item%")->select('product_name_en', 'product_thambnail', 'selling_price', 'id', 'product_slug_en')->limit(5)->get();
+        return view('frontend.product.search_product', compact('products'));
+    }
+
+
+    /*---------------------------------------- */
+
+    public function ProductHot()
+    {
+        $products = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.hot_deals', compact('products'));
+    }
+
+    /*---------------- links for books --------------------------------*/
+    public function ProductBooks()
+    {
+
+        $products = Product::where('category_id', 22)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.index', compact('products'));
+    }
+
+    public function ProductDVD()
+    {
+        $products = Product::where('subcategory_id', 20)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.dvd', compact('products'));
+    }
+
+    public function ProductManga()
+    {
+        $products = Product::where('subcategory_id', 17)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.manga', compact('products'));
+    }
+
+    public function ProductShonen()
+    {
+        $products = Product::where('subcategory_id', 18)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.shonen', compact('products'));
+    }
+
+    public function ProductCalendar()
+    {
+        $products = Product::where('subcategory_id', 19)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.calendar', compact('products'));
+    }
+
+    public function ProductOthers()
+    {
+        $products = Product::where('subcategory_id', 35)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.books.other', compact('products'));
+    }
+    /*----------------------- links for clothes ---------------------------*/
+    public function ProductClothes()
+    {
+        $products = Product::where('category_id', 18)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.index', compact('products'));
+    }
+
+    public function ProductMask()
+    {
+        $products = Product::where('subcategory_id', 21)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.mask', compact('products'));
+    }
+
+    public function ProductTshirt()
+    {
+        $products = Product::where('subcategory_id', 22)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.mask', compact('products'));
+    }
+
+    public function ProductPulls()
+    {
+        $products = Product::where('subcategory_id', 23)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.pulls', compact('products'));
+    }
+
+    public function ProductCap()
+    {
+        $products = Product::where('subcategory_id', 24)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.cap', compact('products'));
+    }
+
+    public function ProductBags()
+    {
+        $products = Product::where('subcategory_id', 25)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.bags', compact('products'));
+    }
+
+    public function ProductClothesOthers()
+    {
+        $products = Product::where('subcategory_id', 36)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.clothes.others', compact('products'));
+    }
+
+    /*----------------------- links for miniature ---------------------------*/
+    public function ProductMiniature()
+    {
+        $products = Product::where('category_id', 19)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.miniature.index', compact('products'));
+    }
+    public function ProductMiniaOthers()
+    {
+        $products = Product::where('subcategory_id', 37)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.miniature.others', compact('products'));
+    }
+    public function ProductMiniatureManga()
+    {
+        $products = Product::where('subcategory_id', 27)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.miniature.manga', compact('products'));
+    }
+
+    public function ProductFunko()
+    {
+        $products = Product::where('subcategory_id', 31)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.miniature.manga', compact('products'));
+    }
+
+    /*----------------------- links for goodies ---------------------------*/
+    public function ProductGoodies()
+    {
+        $products = Product::where('category_id', 20)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.index', compact('products'));
+    }
+
+    public function ProductGoodiesPosters()
+    {
+        $products = Product::where('subcategory_id', 26)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.posters', compact('products'));
+    }
+
+    public function ProductGoodiesMug()
+    {
+        $products = Product::where('subcategory_id', 27)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.mug', compact('products'));
+    }
+
+    public function ProductGoodiesPillows()
+    {
+        $products = Product::where('subcategory_id', 28)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.pillows', compact('products'));
+    }
+
+    public function ProductGoodiesSnacks()
+    {
+        $products = Product::where('subcategory_id', 29)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.snacks', compact('products'));
+    }
+
+    public function ProductGoodiesOthers()
+    {
+        $products = Product::where('subcategory_id', 37)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.goodies.others', compact('products'));
+    }
+
+    /*----------------------- links for Trading ---------------------------*/
+
+    public function ProductTrading()
+    {
+        $products = Product::where('category_id', 21)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.trading.index', compact('products'));
+    }
+
+    public function ProductTradingDragon()
+    {
+        $products = Product::where('subcategory_id', 32)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.trading.dragon', compact('products'));
+    }
+
+    public function ProductTradingYugi()
+    {
+        $products = Product::where('subcategory_id', 33)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.trading.yugi', compact('products'));
+    }
+
+    public function ProductTradingPokemon()
+    {
+        $products = Product::where('subcategory_id', 33)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.trading.pokemon', compact('products'));
+    }
+
+    public function ProductTradingOthers()
+    {
+        $products = Product::where('subcategory_id', 37)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.trading.others', compact('products'));
+    }
+
+    public function ProductFeatured()
+    {
+        $products = Product::where('featured', 1)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('frontend.product.featured', compact('products'));
     }
 }

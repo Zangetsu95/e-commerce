@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\Hash;
 
 
+/* This class is used to create, update, delete and view the admin user role. */
 class AdminUserController extends Controller
 {
     public function AllAdminRole()
@@ -79,6 +80,10 @@ class AdminUserController extends Controller
         return redirect()->route('all-admin-user')->with($notification);
     }
 
+    /**
+     * A function to edit the admin role.
+     * @param id - The id of the user you want to edit.
+     */
     public function EditAdminRole($id)
     {
 
@@ -86,6 +91,11 @@ class AdminUserController extends Controller
         return view('backend.role.admin_role_edit', compact('adminuser'));
     }
 
+   /**
+    * It updates the admin user role.
+    * @param {Request} request - The request object.
+    * @returns The return value of the function is the value that is returned to the caller.
+    */
     public function UpdateAdminRole(Request $request)
     {
 
@@ -173,6 +183,10 @@ class AdminUserController extends Controller
         }
     }
 
+    /**
+     * It deletes the admin user from the database and deletes the profile photo from the storage.
+     * @param id - The id of the record you want to delete.
+     */
     public function DeleteAdminRole($id)
     {
 
@@ -188,5 +202,6 @@ class AdminUserController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    } // end method 
+
+    }
 }

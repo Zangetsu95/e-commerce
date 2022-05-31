@@ -9,12 +9,20 @@ use Image;
 
 class BrandController extends Controller
 {
+    /**
+     * A function that allows you to add a brand, edit a brand, delete a brand and view a brand.
+     * @returns The return value of the last statement executed in the function.
+     */
     public function BrandView()
     {
         $brands = Brand::latest()->get();
         return view('backend.brand.brand_view', compact('brands'));
-    } //end method
+    }
 
+   /**
+    * This function is used to insert the brand name and image into the database.
+    * @param {Request} request - The request object.
+    */
     public function BrandStore(Request $request)
     {
         $request->validate([
@@ -48,7 +56,7 @@ class BrandController extends Controller
         );
 
         return redirect()->back()->with($notifications);
-    } //end method
+    }
 
     public function BrandEdit($id)
     {
@@ -57,6 +65,13 @@ class BrandController extends Controller
         return view('backend.brand.brand_edit', compact('brand'));
     } //end method
 
+    /**
+     * It updates the brand.
+     * @param {Request} request - The request object.
+     * @returns ```
+     * return redirect()->route('all.brand')->with();
+     * ```
+     */
     public function BrandUpdate(Request $request)
     {
         $brand_id = $request->id;
@@ -104,9 +119,13 @@ class BrandController extends Controller
 
             return redirect()->route('all.brand')->with($notifications);
         }
-    } //end method
+    }
 
 
+   /**
+    * It deletes the brand from the database and deletes the image from the storage folder.
+    * @param id - The id of the record to be deleted.
+    */
     public function BrandDelete ($id)
     {
         $brand = Brand::FindOrFail($id);
@@ -120,5 +139,5 @@ class BrandController extends Controller
         );
 
         return redirect()->back()->with($notifications);
-    }//end Method
+    }
 }

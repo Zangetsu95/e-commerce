@@ -273,8 +273,8 @@ ShinSekai Manga World
                     <section class="section-padding pb-5">
                         <div class="section-title">
                             <h3 class="">Featured Product</h3>
-                            <a class="show-all" href="">
-                                All Deals
+                            <a class="show-all" href="{{ route('product-featured') }}">
+                                All featured product
                                 <i class="fi-rs-angle-right"></i>
                             </a>
                         </div>
@@ -352,7 +352,7 @@ ShinSekai Manga World
                     <section class="section-padding pb-5">
                         <div class="section-title">
                             <h3 class="">Hot Deals Product</h3>
-                            <a class="show-all" href="">
+                            <a class="show-all" href="{{ route('hot-deals') }}">
                                 All Deals
                                 <i class="fi-rs-angle-right"></i>
                             </a>

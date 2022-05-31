@@ -14,6 +14,10 @@ class CategoryController extends Controller
         return view('backend.category.category_view', compact('category'));
     }
 
+    /**
+     * This function is used to store the category data in the database.
+     * @param {Request} request - The request instance
+     */
     function CategoryStore (Request $request)
     {
         $request->validate([
@@ -41,15 +45,20 @@ class CategoryController extends Controller
 
         return redirect()->back()->with($notifications);
 
-    }//end method
+    }
 
 function CategoryEdit ($id)
     {
         $category = Category::findorFail($id);
 
         return view('backend.category.category_edit', compact('category'));
-    }//end method
+    }
 
+/**
+ * This function is used to update the category.
+ * @param {Request} request - The request object.
+ * @returns The method is returning the view of the page.
+ */
 function CategoryUpdate (Request $request)
     {
         $category_id = $request->id;
@@ -70,8 +79,12 @@ function CategoryUpdate (Request $request)
 
         return redirect()->route('all.category')->with($notifications);
 
-    }//end method
+    }
 
+/**
+ * It deletes a category from the database.
+ * @param id - The id of the category you want to delete.
+ */
 function CategoryDelete ($id)
     {
         $category = Category::FindOrFail($id);
@@ -84,7 +97,7 @@ function CategoryDelete ($id)
         );
 
         return redirect()->back()->with($notifications);
-    }//end method
+    }
 
 }
 

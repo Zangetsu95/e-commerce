@@ -15,6 +15,10 @@ class CouponController extends Controller
         return view('backend.coupons.view_coupon', compact('coupons'));
     }
 
+   /**
+    * A function that inserts the data into the database.
+    * @param {Request} request - The request object.
+    */
     public function CouponStore(Request $request)
     {
         //champs obligatoire du formulaire
@@ -51,6 +55,11 @@ class CouponController extends Controller
     }
 
 
+   /**
+    * It updates the coupon with the id that is passed in the url.
+    * @param {Request} request - The request object.
+    * @param id - The id of the coupon you want to update.
+    */
     public function CouponUpdate(Request $request, $id)
     {
 
@@ -69,9 +78,13 @@ class CouponController extends Controller
         );
 
         return redirect()->route('manage-coupon')->with($notification);
-    } // end mehtod
+    }
 
 
+   /**
+    * It deletes a coupon from the database.
+    * @param id - The id of the coupon you want to delete.
+    */
     public function CouponDelete($id)
     {
 

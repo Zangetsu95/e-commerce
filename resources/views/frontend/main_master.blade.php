@@ -410,6 +410,8 @@
     <script type="text/javascript">
        /* The above code is adding a product to the wishlist. */
         function addToWishList(product_id) {
+            /* The above code is sending an ajax request to the server to add the product to the
+            wishlist. */
             $.ajax({
                 type: "POST",
                 dataType: 'json',

@@ -28,6 +28,7 @@ class CartController extends Controller
     public function AddToCart(Request $request, $id)
     {
 
+        /* Checking if there is a coupon in the session. If there is, it will remove it. */
         if (Session::has('coupon')) {
             Session::forget('coupon');
         }
@@ -56,6 +57,7 @@ class CartController extends Controller
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         } else {
 
+            /* Adding the product to the cart. */
             Cart::add([
                 'id' => $id,
                 'name' => $request->product_name,

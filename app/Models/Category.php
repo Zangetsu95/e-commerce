@@ -21,4 +21,9 @@ class Category extends Model
         'category_slug_fr',
         'category_image',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class,'category_id','id');
+    }
 }

@@ -402,7 +402,6 @@ route::prefix('/admin/user/role')->group(function () {
     Route::post('/update', [AdminUserController::class, 'UpdateAdminRole'])->name('admin-user-update');
 
     Route::get('/delete/{id}', [AdminUserController::class, 'DeleteAdminRole'])->name('delete-admin-user');
-
 });
 
 
@@ -474,7 +473,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
 
     /* Order tracking user */
     Route::post('/order/tracking', [AllUserController::class, 'OrderTracking'])->name('order-tracking');
-
 });
 
 
@@ -524,3 +522,71 @@ Route::post('/review/add', [ReviewController::class, 'AddReview'])->name('review
 Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product-search');
 
 Route::post('/search-product', [IndexController::class, 'ProductSearchAdvanced']);
+
+/* header links */
+Route::get('/hot-deals', [IndexController::class, 'ProductHot'])->name('hot-deals');
+/*Books */
+Route::get('/books', [IndexController::class, 'ProductBooks'])->name('books');
+
+Route::get('/dvd', [IndexController::class, 'ProductDVD'])->name('books-dvd');
+
+Route::get('/mangas', [IndexController::class, 'ProductManga'])->name('books-mangas');
+
+Route::get('/shonen', [IndexController::class, 'ProductShonen'])->name('books-shonen');
+
+Route::get('/calendar', [IndexController::class, 'ProductCalendar'])->name('books-calendar');
+
+Route::get('/others', [IndexController::class, 'ProductOthers'])->name('books-others');
+
+/*Clothes */
+Route::get('/clothes', [IndexController::class, 'ProductClothes'])->name('clothes');
+
+Route::get('/mask', [IndexController::class, 'ProductMask'])->name('clothes-mask');
+
+Route::get('/tshirt', [IndexController::class, 'ProductTshirt'])->name('clothes-tshirt');
+
+Route::get('/pulls', [IndexController::class, 'ProductPulls'])->name('clothes-pulls');
+
+Route::get('/cap', [IndexController::class, 'ProductCap'])->name('clothes-cap');
+
+Route::get('/bags', [IndexController::class, 'ProductBags'])->name('clothes-bags');
+
+Route::get('/clothes/others', [IndexController::class, 'ProductClothesOthers'])->name('clothes-others');
+
+
+/*Miniature */
+Route::get('/miniature', [IndexController::class, 'ProductMiniature'])->name('miniature');
+
+Route::get('/miniature-manga', [IndexController::class, 'ProductMiniatureManga'])->name('miniature-manga');
+
+Route::get('/funko-pop', [IndexController::class, 'ProductFunko'])->name('miniature-funko');
+
+Route::get('/miniature-others', [IndexController::class, 'ProductMiniaOthers'])->name('miniature-others');
+
+/*Goodies */
+Route::get('/goodies', [IndexController::class, 'ProductGoodies'])->name('goodies');
+
+Route::get('/goodies-posters', [IndexController::class, 'ProductGoodiesPosters'])->name('goodies-posters');
+
+Route::get('/goodies-mug', [IndexController::class, 'ProductGoodiesMug'])->name('goodies-mug');
+
+Route::get('/goodies-pillows', [IndexController::class, 'ProductGoodiesPillows'])->name('goodies-pillows');
+
+Route::get('/goodies-others', [IndexController::class, 'ProductGoodiesSnacks'])->name('goodies-snacks');
+
+Route::get('/goodies-others', [IndexController::class, 'ProductGoodiesOthers'])->name('goodies-others');
+
+/*Trading Cards */
+Route::get('/trading', [IndexController::class, 'ProductTrading'])->name('trading');
+
+Route::get('/trading-dragon', [IndexController::class, 'ProductTradingDragon'])->name('trading-dragon');
+
+Route::get('/trading-yugi', [IndexController::class, 'ProductTradingYugi'])->name('trading-yugi');
+
+Route::get('/trading-pokemon', [IndexController::class, 'ProductTradingPokemon'])->name('trading-pokemon');
+
+Route::get('/trading-others', [IndexController::class, 'ProductTradingOthers'])->name('trading-others');
+
+
+Route::get('/product-featured', [IndexController::class, 'ProductFeatured'])->name('product-featured');
+
