@@ -22,6 +22,8 @@ Bienvenue dans mon projet de fin d'étude : un site e-commerce sur le thème des
 
   * le fichier .env.example doit etre .env(cp .env.example .env)
 
+  * generer la clé : php artisan key:generate
+
   * Configurer la DB
 
   * configurer le fichier env pour utiliser mailtrap
@@ -69,6 +71,8 @@ Welcome to my end-of-study project: an e-commerce site on the theme of manga
   -> If you don't have composer, go to the site (https://getcomposer.org/download/) and download the .exe version
 
   * the .env.example file must be .env(cp .env.example .env)
+
+  * php artisan key:generate
 
   * Configure the DB
 
