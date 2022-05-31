@@ -26,13 +26,19 @@ Bienvenue dans mon projet de fin d'étude : un site e-commerce sur le thème des
 
   * configurer le fichier env pour utiliser mailtrap
 
-    DB_USERNAME should be root
-    DB_PASSWORD should be root
-    DB_DATABASE should be ecommerce
-    DB_PORT should be 3306
-    DB_HOST should be 127.0.0.1 or localhost
-
+<ul>
+    <li>DB_USERNAME should be root</li>
+    <li>DB_PASSWORD should be root</li>
+    <li>DB_DATABASE should be ecommerce</li>
+    <li>DB_PORT should be 3306</li>
+    <li>DB_HOST should be 127.0.0.1 or localhost</li>
+</ul>
 * Importer ce fichier <a href="https://drive.google.com/file/d/1wHcT92YbDdbkYtBnZny4Wrj43C408Dqm/view?usp=sharing" target="blank"> sql </a>
 
 
 * php artisan serve et voila ! 
+
+<h1>Licenses</h1>
+The Laravel framework is open-sourced software licensed under the MIT license.
+
+ShinseKaiManga is an application licensed under the MIT license.
