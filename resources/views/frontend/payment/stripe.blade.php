@@ -140,9 +140,8 @@
 
 <script type="text/javascript">
     // Create a Stripe client.
-    var stripe = Stripe(
-        'pk_test_51KhHQpEAgR4E4ZKpGrxH1jhGPYORAwRJ2XPj2PQ77i0tPBCRd6g9gZ214yDNDb71qAAg6yJi2nhyB2GHXaAQXKBX00a6qZQzqN'
-        );
+    var stripeEnv = '{{ env('STRIPE_KEY') }}';
+    var stripe = Stripe(stripeEnv);
     // Create an instance of Elements.
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.

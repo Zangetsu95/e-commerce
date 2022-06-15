@@ -103,35 +103,40 @@
                             <p class="font-lg text-heading">Awesome grocery store website template</p>
                         </div> --}}
                         <ul class="contact-infor">
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span></li>
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-email-2.svg') }}" alt="" /><strong>Email:</strong><span>sale@Nest.com</span></li>
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-clock.svg') }}" alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}"
+                                    alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah
+                                    53127 United States</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}"
+                                    alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-email-2.svg') }}"
+                                    alt="" /><strong>Email:</strong><span>shinsekaiManga@support.com</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-clock.svg') }}"
+                                    alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-link-widget col">
                     <h4 class="widget-title">Company</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Support Center</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="{{ route('about') }}">About Us</a></li>
+                        <li><a href="{{ route('shipping') }}">Delivery Information</a></li>
+                        <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                        <li><a href="{{ route('conditions') }}">Terms &amp; Conditions</a></li>
+                        {{-- <li><a href="#">Contact Us</a></li> --}}
+                        <li><a href="{{ route('support') }}">Support Center</a></li>
+                        {{-- <li><a href="#">Careers</a></li> --}}
                     </ul>
                 </div>
                 <div class="footer-link-widget col">
                     <h4 class="widget-title">Account</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">Sign In</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="#">Help Ticket</a></li>
-                        <li><a href="#">Shipping Details</a></li>
-                        <li><a href="#">Compare products</a></li>
+                        <li><a href="{{ route('login') }}">Sign In</a></li>
+                        {{-- <li><a href="#">View Cart</a></li> --}}
+                        <li><a href="{{ route('wishlist') }}">My Wishlist</a></li>
+                        {{-- <li><a href="#">Track My Order</a></li>
+                        <li><a href="#">Help Ticket</a></li> --}}
+                        {{-- <li><a href="#">Shipping Details</a></li> --}}
+                        {{-- <li><a href="#">Compare products</a></li> --}}
                     </ul>
                 </div>
                 {{-- <div class="footer-link-widget col">
@@ -166,7 +171,8 @@
                         <a href="#" class="hover-up mb-sm-2"><img src="{{ asset('frontend/assets/imgs/theme/google-play.jpg') }}" alt="" /></a>
                     </div> --}}
                     <p class="mb-20">Secured Payment Gateways</p>
-                    <img class="wow fadeIn animated" src="{{ asset('frontend/assets/imgs/theme/payment-method.png') }}" alt="" />
+                    <img class="wow fadeIn animated"
+                        src="{{ asset('frontend/assets/imgs/theme/payment-method.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -177,7 +183,8 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6">
-                <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand"></strong> - ShinSekaiManga <br />All rights reserved</p>
+                <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand"></strong> - ShinSekaiManga
+                    <br />All rights reserved</p>
             </div>
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                 <div class="hotline d-lg-inline-flex mr-30">
@@ -192,11 +199,16 @@
             <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                 <div class="mobile-social-icon">
                     <h6>Follow Us</h6>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
+                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
+                            alt="" /></a>
+                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
+                            alt="" /></a>
+                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}"
+                            alt="" /></a>
+                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}"
+                            alt="" /></a>
+                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}"
+                            alt="" /></a>
                 </div>
                 {{-- <p class="font-sm">Up to 15% discount on your first subscribe</p> --}}
             </div>

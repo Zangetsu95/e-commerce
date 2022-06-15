@@ -203,13 +203,13 @@
                                         <td>
                                             <h6 class="w-160 mb-5"><a href="shop-product-full.html"
                                                     class="text-heading">{{ $item->name }}</a></h6></span>
-                                            <div class="product-rate-cover">
+                                            {{-- <div class="product-rate-cover">
                                                 <div class="product-rate d-inline-block">
                                                     <div class="product-rating" style="width:90%">
                                                     </div>
                                                 </div>
                                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                            </div>
+                                            </div> --}}
                                         </td>
                                         @if ($item->options->size != null)
                                             <td>

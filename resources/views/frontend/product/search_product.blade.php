@@ -57,9 +57,6 @@
 </style>
 
 <style>
-    body {
-        background-color: #eee
-    }
 
     .card {
         background-color: #fff;

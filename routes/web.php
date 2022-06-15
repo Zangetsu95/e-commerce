@@ -26,7 +26,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomeBlogController;
-
+use App\Http\Controllers\Frontend\RulesController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
@@ -589,4 +589,20 @@ Route::get('/trading-others', [IndexController::class, 'ProductTradingOthers'])-
 
 
 Route::get('/product-featured', [IndexController::class, 'ProductFeatured'])->name('product-featured');
+
+/* HTML PAGES */
+Route::get('/about', [RulesController::class, 'AboutUs'])->name('about');
+
+Route::get('/conditions', [RulesController::class, 'TermsConditions'])->name('conditions');
+
+Route::get('/delivery', [RulesController::class, 'DeliveryInformations'])->name('delivery');
+
+Route::get('/privacy', [RulesController::class, 'PrivacyPolicy'])->name('privacy');
+
+Route::get('/support', [RulesController::class, 'SupportCenter'])->name('support');
+
+Route::get('/shipping', [RulesController::class, 'ShippingDetails'])->name('shipping');
+
+
+
 

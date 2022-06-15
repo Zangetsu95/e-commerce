@@ -354,11 +354,11 @@
 
                     $.each(response.carts, function(key, value) {
                         miniCart += `<div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest"
+                                            <a href=""><img alt="Nest"
                                                     src="/${value.options.image}" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">${value.name}</a></h4>
+                                            <h4><a href="">${value.name}</a></h4>
                                             <h3><span> </span>${value.price}€ * ${value.qty}</h3>
                                         </div>
                                         <div class="shopping-cart-delete">
@@ -462,7 +462,7 @@
                                     <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thambnail}"
                                             alt="#" /></td>§
                                     <td class="product-des product-name">
-                                        <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name_en}</a></h6>
+                                        <h6><a class="product-name mb-10" href="">${value.product.product_name_en}</a></h6>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -551,7 +551,7 @@
                                 </td>
                                 <td class="image product-thumbnail pt-40"><img src="/${value.options.image}" style="width:60px;height:60px" alt="product-image"></td>
                                 <td class="product-des product-name">
-                                    <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="shop-product-right.html">
+                                    <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="">
                                         ${value.name}
                                          ${value.options.size != null
                                             ?`(${value.options.size})`

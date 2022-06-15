@@ -30,6 +30,10 @@ class IndexController extends Controller
         $hot = Product::where('hot_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(4)->get();
         $special_offer = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $speacial_deals = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(3)->get();
+
+
 
         /*
             L'utilisation de la requête skip en laravel est utilisée pour sauter les données
@@ -48,6 +52,8 @@ class IndexController extends Controller
             'hot',
             'special_offer',
             'special_deals',
+            'hot_deals',
+            'speacial_deals'
         ));
     }
 

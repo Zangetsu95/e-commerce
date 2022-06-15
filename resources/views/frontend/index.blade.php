@@ -76,15 +76,15 @@ ShinSekai Manga World
                                                     </div>
                                                     <div class="product-action-1">
                                                         <a aria-label="Add To Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" class="action-btn"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn"
-                                                            href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                                        <a aria-label="Quick view" class="action-btn"
+                                                        {{-- <a aria-label="Compare" class="action-btn"
+                                                            href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
+                                                        {{-- <a aria-label="Quick view" class="action-btn"
                                                             data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                class="fi-rs-eye"></i></a>
+                                                                class="fi-rs-eye"></i></a> --}}
                                                     </div>
-                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                    {{-- <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="hot">Hot</span>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="product-content-wrap">
                                                     <div class="product-category">
@@ -104,12 +104,12 @@ ShinSekai Manga World
                                                             @endif
                                                         </a>
                                                     </h2>
-                                                    <div class="product-rate-cover">
+                                                    {{-- <div class="product-rate-cover">
                                                         <div class="product-rate d-inline-block">
                                                             <div class="product-rating" style="width: 90%"></div>
                                                         </div>
                                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                                    </div>
+                                                    </div> --}}
                                                     <div>
                                                         {{-- <span class="font-small text-muted">By <a
                                                                 href="vendor-details-1.html">NestFood</a></span> --}}
@@ -181,13 +181,13 @@ ShinSekai Manga World
                                                             <div class="product-action-1">
                                                                 <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"><i
                                                                         class="fi-rs-heart"></i></a>
-                                                                <a aria-label="Compare" class="action-btn"
+                                                                {{-- <a aria-label="Compare" class="action-btn"
                                                                     href="shop-compare.html"><i
                                                                         class="fi-rs-shuffle"></i></a>
                                                                 <a aria-label="Quick view" class="action-btn"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#quickViewModal"><i
-                                                                        class="fi-rs-eye"></i></a>
+                                                                        class="fi-rs-eye"></i></a> --}}
                                                             </div>
                                                             <div
                                                                 class="product-badges product-badges-position product-badges-mrg">
@@ -214,12 +214,12 @@ ShinSekai Manga World
                                                                     @endif
                                                                 </a>
                                                             </h2>
-                                                            <div class="product-rate-cover">
+                                                            {{-- <div class="product-rate-cover">
                                                                 <div class="product-rate d-inline-block">
                                                                     <div class="product-rating" style="width: 90%"></div>
                                                                 </div>
                                                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                                            </div>
+                                                            </div> --}}
                                                             <div>
                                                                 <span class="font-small text-muted">By <a
                                                                         href="vendor-details-1.html">NestFood</a></span>
@@ -302,12 +302,12 @@ ShinSekai Manga World
                                                 @endif
                                             </a>
                                             </h2>
-                                            <div class="product-rate-cover">
+                                            {{-- <div class="product-rate-cover">
                                                 <div class="product-rate d-inline-block">
                                                     <div class="product-rating" style="width: 90%"></div>
                                                 </div>
                                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                            </div>
+                                            </div> --}}
                                             {{-- <div>
                                                 <span class="font-small text-muted">By <a
                                                         href="vendor-details-1.html">NestFood</a></span>
@@ -381,12 +381,12 @@ ShinSekai Manga World
                                                 @endif
                                             </a>
                                             </h2>
-                                            <div class="product-rate-cover">
+                                            {{-- <div class="product-rate-cover">
                                                 <div class="product-rate d-inline-block">
                                                     <div class="product-rating" style="width: 90%"></div>
                                                 </div>
                                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                            </div>
+                                            </div> --}}
                                             {{-- <div>
                                                 <span class="font-small text-muted">By <a
                                                         href="vendor-details-1.html">NestFood</a></span>
@@ -615,12 +615,12 @@ ShinSekai Manga World
                                             @endif
                                         </a>
                                     </h6>
-                                    <div class="product-rate-cover">
+                                    {{-- <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
+                                    </div> --}}
                                     @php
                                     $amount = $product->selling_price - $product->discount_price;
                                     $discount = ($amount/$product->selling_price) * 100;
@@ -659,12 +659,12 @@ ShinSekai Manga World
                                             @endif
                                         </a>
                                     </h6>
-                                    <div class="product-rate-cover">
+                                    {{-- <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
+                                    </div> --}}
                                     @php
                                     $amount = $product->selling_price - $product->discount_price;
                                     $discount = ($amount/$product->selling_price) * 100;
@@ -685,142 +685,92 @@ ShinSekai Manga World
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block">
-                        <h4 class="section-title style-1 mb-30 animated animated">Recently added..Coming soon</h4>
-                        {{-- <div class="product-list-small animated animated">
+                        <h4 class="section-title style-1 mb-30 animated animated">Hot Deals</h4>
+                        <div class="product-list-small animated animated">
+                            @foreach ( $hot_deals as $product )
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
+                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                        <img src="{{ $product->product_thambnail }}" alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
                                     <h6>
-                                        <a href="shop-product-right.html">Pepperidge Farm Farmhouse Hearty White Bread</a>
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                            @if (session()->get('language') == 'french')
+                                                {{ $product->product_name_fr }}
+                                            @else
+                                                {{ $product->product_name_en }}
+                                            @endif
+                                        </a>
                                     </h6>
-                                    <div class="product-rate-cover">
+                                    {{-- <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
+                                    </div> --}}
+                                    @php
+                                    $amount = $product->selling_price - $product->discount_price;
+                                    $discount = ($amount/$product->selling_price) * 100;
+                                @endphp
+                                @if($product->discount_price == NULL)
                                     <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
+                                        <span>{{ $product->selling_price }}€</span>
                                     </div>
+                                @else
+                                <div class="product-price">
+                                    <span>{{ $amount }}€</span>
+                                    <span class="old-price">{{ $product->selling_price }}€</span>
+                                </div>
+                                @endif
                                 </div>
                             </article>
-                            <article class="row align-items-center hover-up">
-                                <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
-                                </figure>
-                                <div class="col-md-8 mb-0">
-                                    <h6>
-                                        <a href="shop-product-right.html">Organic Frozen Triple Berry Blend</a>
-                                    </h6>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
-                                    <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="row align-items-center hover-up">
-                                <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
-                                </figure>
-                                <div class="col-md-8 mb-0">
-                                    <h6>
-                                        <a href="shop-product-right.html">Oroweat Country Buttermilk Bread</a>
-                                    </h6>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
-                                    <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div> --}}
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block">
-                        <h4 class="section-title style-1 mb-30 animated animated">Top Rated...Coming Soon</h4>
-                        {{-- <div class="product-list-small animated animated">
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block">
+                        <h4 class="section-title style-1 mb-30 animated animated">Featured Product</h4>
+                        <div class="product-list-small animated animated">
+                            @foreach ( $hot_deals as $product )
                             <article class="row align-items-center hover-up">
                                 <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
+                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                        <img src="{{ $product->product_thambnail }}" alt="" /></a>
                                 </figure>
                                 <div class="col-md-8 mb-0">
                                     <h6>
-                                        <a href="shop-product-right.html">Foster Farms Takeout Crispy Classic Buffalo
-                                            Wings</a>
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                            @if (session()->get('language') == 'french')
+                                                {{ $product->product_name_fr }}
+                                            @else
+                                                {{ $product->product_name_en }}
+                                            @endif
+                                        </a>
                                     </h6>
-                                    <div class="product-rate-cover">
+                                    {{-- <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
+                                    </div> --}}
+                                    @php
+                                    $amount = $product->selling_price - $product->discount_price;
+                                    $discount = ($amount/$product->selling_price) * 100;
+                                @endphp
+                                @if($product->discount_price == NULL)
                                     <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
+                                        <span>{{ $product->selling_price }}€</span>
                                     </div>
+                                @else
+                                <div class="product-price">
+                                    <span>{{ $amount }}€</span>
+                                    <span class="old-price">{{ $product->selling_price }}€</span>
+                                </div>
+                                @endif
                                 </div>
                             </article>
-                            <article class="row align-items-center hover-up">
-                                <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
-                                </figure>
-                                <div class="col-md-8 mb-0">
-                                    <h6>
-                                        <a href="shop-product-right.html">Angie’s Boomchickapop Sweet & Salty Kettle
-                                            Corn</a>
-                                    </h6>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
-                                    <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="row align-items-center hover-up">
-                                <figure class="col-md-4 mb-0">
-                                    <a href="shop-product-right.html"><img src=""
-                                            alt="" /></a>
-                                </figure>
-                                <div class="col-md-8 mb-0">
-                                    <h6>
-                                        <a href="shop-product-right.html">All Natural Italian-Style Chicken Meatballs</a>
-                                    </h6>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
-                                    <div class="product-price">
-                                        <span>$32.85</span>
-                                        <span class="old-price">$33.8</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div> --}}
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

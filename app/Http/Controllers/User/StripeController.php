@@ -28,7 +28,7 @@ class StripeController extends Controller
             $total_amount = round(Cart::total());
         }
 
-        \Stripe\Stripe::setApiKey('sk_test_51KhHQpEAgR4E4ZKpsfYiNvYy9s7lhDpO37fMfjncrjp8rv82ic4pzaUKqU8Mwp9VnFhGq4yvS9fkSn694d4KjrPx00X4BVB4go');
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         // Token is created using Checkout or Elements!
         // Get the payment token ID submitted by the form:

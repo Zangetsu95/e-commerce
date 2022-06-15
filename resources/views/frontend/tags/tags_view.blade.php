@@ -199,9 +199,9 @@
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
                                         data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                 </div>
-                                <div class="product-badges product-badges-position product-badges-mrg">
+                                {{-- <div class="product-badges product-badges-position product-badges-mrg">
                                     <span class="hot">Hot</span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
@@ -234,7 +234,7 @@
                                         <span>{{ $product->selling_price }}€</span>
                                     </div>
                                     <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i
+                                        <a  class="add" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i
                                                 class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                     @else
@@ -244,8 +244,8 @@
                                     </div>
 
                                     <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i
-                                            class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                         <a  class="add" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i
+                                                class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                     @endif
                                 </div>

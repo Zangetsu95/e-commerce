@@ -178,7 +178,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ asset($settings->logo) }}" alt="logo" /></a>
+                    <a href="{{ route('home')}}"><img src="{{ asset($settings->logo) }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -290,8 +290,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
-                            alt="logo" /></a>
+                    <a href="{{ route('home')}}"><img src="{{ asset('upload/logo/logo-texte.jpg') }}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     {{-- <div class="main-categori-wrap d-none d-lg-block">
@@ -567,7 +566,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        @elseif($category->category_name_en == 'Goodies')
+                                    @elseif($category->category_name_en == 'Goodies')
                                         <li>
                                             <a href="{{ route('goodies') }}">
                                                 @if (session()->get('language') == 'french')
@@ -628,7 +627,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        @elseif($category->category_name_en == 'Trading Cards')
+                                    @elseif($category->category_name_en == 'Trading Cards')
                                         <li>
                                             <a href="{{ route('trading') }}">
                                                 @if (session()->get('language') == 'french')
@@ -787,9 +786,9 @@
                                         <li><a href="page-404.html">404 Page</a></li>
                                     </ul>
                                 </li> --}}
-                                <li>
+                                {{-- <li>
                                     <a href="page-contact.html">Contact</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                     </div>
@@ -811,14 +810,14 @@
                             <a href="shop-wishlist.html">
                                 <img alt="Nest"
                                     src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
-                                <span class="pro-count white">4</span>
+                                <span class="pro-count white"></span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="shop-cart.html">
                                 <img alt="Nest"
                                     src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                <span class="pro-count white">2</span>
+                                <span class="pro-count white" id="cartQty"></span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                 <ul>
@@ -852,7 +851,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                <a href="{{ route('home') }}"><img src="{{asset('upload/logo/logo-texte.jpg') }}" alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -863,154 +862,315 @@
         </div>
         <div class="mobile-header-content-area">
             <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="post" action="{{ route('product-search') }}">
-                    <input type="text" placeholder="Search for items…" />
-                    <button type="submit"><i class="fi-rs-search"></i></button>
+                <form method="post" action="{{ route('product-search') }}">
+                    @csrf
+                    <input type="text" id="search" onfocus="search_result_show()" onblur="search_result_hide()"
+                        name="search" placeholder="Search for items..." />
+                    <button class="search-button" type="submit"></button>
                 </form>
+                <div id="searchProducts"></div>
             </div>
             <div class="mobile-menu-wrap mobile-header-border">
                 <!-- mobile menu start -->
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                             <ul class="dropdown">
-                                <li><a href="index.html">Home 1</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
-                                <li><a href="index-3.html">Home 3</a></li>
-                                <li><a href="index-4.html">Home 4</a></li>
-                                <li><a href="index-5.html">Home 5</a></li>
-                                <li><a href="index-6.html">Home 6</a></li>
+                                <li><a href="{{ route('blog-home') }}">About</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
-                            <a href="shop-grid-right.html">shop</a>
-                            <ul class="dropdown">
-                                <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                        @foreach ($categories as $category)
+                            @php
+                                //Getting data from the SUBCATEGORY Table
+                                $subCategories = App\Models\SubCategory::where('category_id', $category->id)
+                                    ->orderBy('subcategory_name_en', 'ASC')
+                                    ->get();
+
+                            @endphp
+                            @if ($category->category_name_en == 'Books')
                                 <li class="menu-item-has-children">
-                                    <a href="#">Single Product</a>
+                                    <a href="{{ route('books') }}">
+                                        @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                        @else
+                                            {{ $category->category_name_en }}
+                                        @endif
+                                        <ul class="dropdown">
+                                            @foreach ($subCategories as $subCategory)
+                                                @if ($subCategory->subcategory_name_en == 'Blu-ray and DVD')
+                                                    <li><a href="{{ route('books-dvd') }}">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $subCategory->subcategory_name_fr }}
+                                                            @else
+                                                                {{ $subCategory->subcategory_name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @elseif ($subCategory->subcategory_name_en == 'Mangas')
+                                                    <li><a href="{{ route('books-mangas') }}">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $subCategory->subcategory_name_fr }}
+                                                            @else
+                                                                {{ $subCategory->subcategory_name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @elseif ($subCategory->subcategory_name_en == 'Shonen Jump')
+                                                    <li><a href="{{ route('books-shonen') }}">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $subCategory->subcategory_name_fr }}
+                                                            @else
+                                                                {{ $subCategory->subcategory_name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @elseif ($subCategory->subcategory_name_en == 'Others')
+                                                    <li><a href="{{ route('books-others') }}">
+                                                            @if (session()->get('language') == 'french')
+                                                                {{ $subCategory->subcategory_name_fr }}
+                                                            @else
+                                                                {{ $subCategory->subcategory_name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                </li>
+                                @elseif($category->category_name_en == 'Clothes')
+                                <li class="menu-item-has-children">
+                                    <a href="{{ route('clothes') }}">
+                                        @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                        @else
+                                            {{ $category->category_name_en }}
+                                        @endif
+                                        <ul class="dropdown">
+                                            @foreach ($subCategories as $subCategory)
+                                            @if ($subCategory->subcategory_name_en == 'Mask')
+                                            <li><a href="{{ route('clothes-mask') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'T-shirt')
+                                            <li><a href="{{ route('clothes-tshirt') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Pulls')
+                                            <li><a href="{{ route('clothes-pulls') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Cap')
+                                            <li><a href="{{ route('clothes-cap') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Bags')
+                                            <li><a href="{{ route('clothes-bags') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Others')
+                                            <li><a href="{{ route('clothes-others') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                            @endforeach
+                                        </ul>
+                                </li>
+                                @elseif($category->category_name_en == 'Miniature')
+                                <li class="menu-item-has-children">
+                                    <a href="{{ route('miniature') }}">
+                                        @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                        @else
+                                            {{ $category->category_name_en }}
+                                        @endif
+                                    </a>
                                     <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                        <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                        <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                        <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
+                                        @foreach ($subCategories as $subCategory)
+                                        @if ($subCategory->subcategory_name_en == 'Miniature Manga')
+                                            <li><a href="{{ route('miniature-manga') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Funko Pop')
+                                            <li><a href="{{ route('miniature-funko') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Others')
+                                            <li><a href="{{ route('miniature-others') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                <li><a href="shop-compare.html">Shop – Compare</a></li>
+                                @elseif($category->category_name_en == 'Goodies')
                                 <li class="menu-item-has-children">
-                                    <a href="#">Shop Invoice</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
-                                        <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
-                                        <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
-                                        <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
-                                        <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
-                                        <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
+                                    <a href="{{ route('goodies') }}">
+                                        @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                        @else
+                                            {{ $category->category_name_en }}
+                                        @endif
+                                    </a>
+                                    <ul class=" dropdown">
+                                        @foreach ($subCategories as $subCategory)
+                                        @if ($subCategory->subcategory_name_en == 'Posters')
+                                            <li><a href="{{ route('goodies-posters') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Mug')
+                                            <li><a href="{{ route('goodies-mug') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Pillows')
+                                            <li><a href="{{ route('goodies-pillows') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'snacks')
+                                            <li><a href="{{ route('goodies-snacks') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Others')
+                                            <li><a href="{{ route('goodies-others') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Vendors</a>
-                            <ul class="dropdown">
-                                <li><a href="vendors-grid.html">Vendors Grid</a></li>
-                                <li><a href="vendors-list.html">Vendors List</a></li>
-                                <li><a href="vendor-details-1.html">Vendor Details 01</a></li>
-                                <li><a href="vendor-details-2.html">Vendor Details 02</a></li>
-                                <li><a href="vendor-dashboard.html">Vendor Dashboard</a></li>
-                                <li><a href="vendor-guide.html">Vendor Guide</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Mega menu</a>
-                            <ul class="dropdown">
+                                @elseif($category->category_name_en == 'Trading Cards')
                                 <li class="menu-item-has-children">
-                                    <a href="#">Women's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Dresses</a></li>
-                                        <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                        <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                    <a href="{{ route('trading') }}">
+                                        @if (session()->get('language') == 'french')
+                                            {{ $category->category_name_fr }}
+                                        @else
+                                            {{ $category->category_name_en }}
+                                        @endif
+                                    </a>
+                                    <ul class=" dropdown">
+                                        @foreach ($subCategories as $subCategory)
+                                        @if ($subCategory->subcategory_name_en == 'Dragon Ball Z')
+                                            <li><a href="{{ route('trading-dragon') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'YUGIHO')
+                                            <li><a href="{{ route('trading-yugi') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Pokemon')
+                                            <li><a href="{{ route('trading-pokemon') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif ($subCategory->subcategory_name_en == 'Others')
+                                            <li><a href="{{ route('trading-others') }}">
+                                                    @if (session()->get('language') == 'french')
+                                                        {{ $subCategory->subcategory_name_fr }}
+                                                    @else
+                                                        {{ $subCategory->subcategory_name_en }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Jackets</a></li>
-                                        <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                        <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Tablets</a></li>
-                                        <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                        <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="blog-category-fullwidth.html">Blog</a>
-                            <ul class="dropdown">
-                                <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product Layout</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                        <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                        <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="page-about.html">About Us</a></li>
-                                <li><a href="page-contact.html">Contact</a></li>
-                                <li><a href="page-account.html">My Account</a></li>
-                                <li><a href="page-login.html">Login</a></li>
-                                <li><a href="page-register.html">Register</a></li>
-                                <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="page-terms.html">Terms of Service</a></li>
-                                <li><a href="page-404.html">404 Page</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Language</a>
-                            <ul class="dropdown">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                                <li><a href="#">Spanish</a></li>
-                            </ul>
-                        </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
             </div>
             <div class="mobile-header-info-wrap">
-                <div class="single-mobile-header-info">
+                {{-- <div class="single-mobile-header-info">
                     <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
-                </div>
+                </div> --}}
                 <div class="single-mobile-header-info">
-                    <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                    <a href="{{ route('login') }}"><i class="fi-rs-user"></i>Log In / Sign Up </a>
                 </div>
                 <div class="single-mobile-header-info">
                     <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
@@ -1049,7 +1209,6 @@
         border-radius: 8px;
         margin-top: 5px;
     }
-
 </style>
 <script>
     function search_result_hide() {
