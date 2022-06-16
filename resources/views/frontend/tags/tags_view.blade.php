@@ -24,7 +24,7 @@
                 </a>
                 <div class="shop-product-fillter-header">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
+                        {{-- <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
                             <div class="card">
                                 <h5 class="mb-30">By Categories</h5>
                                 <div class="categories-dropdown-wrap font-heading">
@@ -44,7 +44,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         @php
                             /*
                                 groupby va prendre une seul fois le tag pour ne pas répéter
@@ -192,12 +192,12 @@
                                     </a>
                                 </div>
                                 <div class="product-action-1">
-                                    <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i
+                                    <a aria-label="Add To Wishlist"  id="{{ $product->id }}" onclick="addToWishList(this.id)" class="action-btn"><i
                                             class="fi-rs-heart"></i></a>
-                                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
+                                    {{-- <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                             class="fi-rs-shuffle"></i></a>
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a> --}}
                                 </div>
                                 {{-- <div class="product-badges product-badges-position product-badges-mrg">
                                     <span class="hot">Hot</span>

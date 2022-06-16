@@ -41,7 +41,7 @@
                                 </figure>
                             </div>
                             <!-- THUMBNAILS -->
-                            <div class="slider-nav-thumbnails">
+                            {{-- <div class="slider-nav-thumbnails">
                                 <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-3.jpg') }}&"
                                         alt="product image" /></div>
                                 <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-4.jpg') }}&"
@@ -56,7 +56,7 @@
                                         alt="product image" /></div>
                                 <div><img src="{{ asset('frontend/assets/imgs/shop/thumbnail-9.jpg') }}&"
                                         alt="product image" /></div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- End Gallery -->
                     </div>

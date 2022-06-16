@@ -127,7 +127,7 @@ Featured
                                     <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                         <img class="default-img"
                                             src="{{ asset($product->product_thambnail) }}" alt="" />
-                                        <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="" />
+                                        {{-- <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="" /> --}}
                                     </a>
                                 </div>
                                 <div class="product-action-1">
@@ -138,9 +138,9 @@ Featured
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
                                         data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                 </div>
-                                <div class="product-badges product-badges-position product-badges-mrg">
+                                {{-- <div class="product-badges product-badges-position product-badges-mrg">
                                     <span class="hot">Hot</span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
@@ -153,12 +153,12 @@ Featured
                                         {{ $product->product_name_en }}
                                     @endif
                                 </a></h2>
-                                <div class="product-rate-cover">
+                                {{-- <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
                                     <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                </div>
+                                </div> --}}
                                 <div>
                                     {{-- <span class="font-small text-muted">By <a
                                             href="vendor-details-1.html">NestFood</a></span> --}}

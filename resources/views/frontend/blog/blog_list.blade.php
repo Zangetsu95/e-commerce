@@ -114,7 +114,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                    {{-- <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
                                 <li class="page-item">
@@ -130,7 +130,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-3 primary-sidebar sticky-sidebar">
                     <div class="widget-area">

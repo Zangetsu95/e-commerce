@@ -143,10 +143,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-lg-6">
+                            {{-- <div class="form-group col-lg-6">
                                 <input required="" name="post_code" type="text" name="zipcode"
                                     placeholder="Postcode / ZIP *">
-                            </div>
+                            </div> --}}
                             <div class="form-group col-lg-6">
                                 <input required="" type="text" name="notes" placeholder="Adress *">
                             </div>
@@ -160,7 +160,7 @@
                                     <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
                                         data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                                 </div>
-                                <div class="custome-radio">
+                                {{-- <div class="custome-radio">
                                     <input class="form-check-input" required="" value="cash" type="radio" name="payment_option"
                                         id="exampleRadios4" checked="">
                                     <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse"
@@ -171,7 +171,7 @@
                                         id="exampleRadios5" checked="">
                                     <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse"
                                         data-target="#paypal" aria-controls="paypal">Card</label>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="payment-logo d-flex">
                                 <img class="mr-15" src="" alt="">

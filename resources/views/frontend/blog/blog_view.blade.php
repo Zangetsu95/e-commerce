@@ -418,7 +418,7 @@
                                             </li>
                                         </ul>
                                     </div> --}}
-                                    <div class="banner-img wow fadeIn mb-50 animated d-lg-block d-none">
+                                    {{-- <div class="banner-img wow fadeIn mb-50 animated d-lg-block d-none">
                                         <img src="assets/imgs/banner/banner-11.png" alt="" />
                                         <div class="banner-text">
                                             <span>Oganic</span>
@@ -428,7 +428,7 @@
                                                 Juice
                                             </h4>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

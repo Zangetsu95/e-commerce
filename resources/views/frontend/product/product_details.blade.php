@@ -171,7 +171,7 @@
                                                     onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to
                                                     cart</button>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                id="{{ $product->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
                                                 {{-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                             </div>
                                         </div>
@@ -319,7 +319,7 @@
                                         @endphp
                                         <div class="tab-pane fade" id="Vendor-info">
                                             <div class="vendor-logo d-flex mb-30">
-                                                <img src="assets/imgs/vendor/vendor-18.svg" alt="" />
+                                                <img src="{{ asset('frontend/assets/imgs/vendor/vendor-18.svg')}}" alt="" />
                                                 <div class="vendor-name ml-15">
                                                     <h6>
                                                         <a href="vendor-details-2.html">Noodles Co.</a>
@@ -335,10 +335,10 @@
                                                 </div>
                                             </div>
                                             <ul class="contact-infor mb-50">
-                                                <li><img src="assets/imgs/theme/icons/icon-location.svg"
+                                                <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}"
                                                         alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave
                                                         undefined Kent, Utah 53127 United States</span></li>
-                                                <li><img src="assets/imgs/theme/icons/icon-contact.svg"
+                                                <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}"
                                                         alt="" /><strong>Contact Seller:</strong><span>(+91) -
                                                         540-025-553</span></li>
                                             </ul>
@@ -481,7 +481,7 @@
                                                             @endif
                                                         @endforeach
                                                     </div>
-                                                    <div class="col-lg-4">
+                                                    {{-- <div class="col-lg-4">
                                                         <h4 class="mb-30">Customer reviews</h4>
                                                         <div class="d-flex mb-30">
                                                             <div class="product-rate d-inline-block mr-15">
@@ -521,7 +521,7 @@
                                                         </div>
                                                         <a href="#" class="font-xs text-muted">How are ratings
                                                             calculated?</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <!--comment form-->
@@ -737,8 +737,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 primary-sidebar sticky-sidebar mt-30">
-                        <div class="sidebar-widget widget-category-2 mb-30">
-                            <h5 class="section-title style-1 mb-30">Category.. Coming soon</h5>
+                        {{-- <div class="sidebar-widget widget-category-2 mb-30"> --}}
+                            {{-- <h5 class="section-title style-1 mb-30">Category.. Coming soon</h5> --}}
                             {{-- <ul>
                                 <li>
                                     <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
@@ -756,10 +756,10 @@
                                     <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
                                 </li>
                             </ul> --}}
-                        </div>
+                        {{-- </div> --}}
                         <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30">
-                            <h5 class="section-title style-1 mb-30">Fill by price..Coming soon</h5>
+                        {{-- <div class="sidebar-widget price_range range mb-30"> --}}
+                            {{-- <h5 class="section-title style-1 mb-30">Fill by price..Coming soon</h5> --}}
                             {{-- <div class="price-filter">
                                 <div class="price-filter-inner">
                                     <div id="slider-range" class="mb-20"></div>
@@ -796,7 +796,7 @@
                                 </div>
                             </div> --}}
                             {{-- <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
-                        </div>
+                        {{-- </div> --}}
                         <!-- Product sidebar Widget -->
                         {{-- <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
                             <h5 class="section-title style-1 mb-30">New products</h5>

@@ -133,10 +133,10 @@ Miniature
                                 <div class="product-action-1">
                                     <a aria-label="Add To Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" class="action-btn"><i
                                             class="fi-rs-heart"></i></a>
-                                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
+                                    {{-- <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                             class="fi-rs-shuffle"></i></a>
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a> --}}
                                 </div>
                                 {{-- <div class="product-badges product-badges-position product-badges-mrg">
                                     <span class="hot">Hot</span>
@@ -153,12 +153,12 @@ Miniature
                                         {{ $product->product_name_en }}
                                     @endif
                                 </a></h2>
-                                <div class="product-rate-cover">
+                                {{-- <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
                                     <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                </div>
+                                </div> --}}
                                 <div>
                                     {{-- <span class="font-small text-muted">By <a
                                             href="vendor-details-1.html">NestFood</a></span> --}}
