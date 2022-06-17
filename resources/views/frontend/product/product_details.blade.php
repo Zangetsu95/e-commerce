@@ -167,9 +167,13 @@
                                             <input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
                                             <div class="product-extra-link2">
+                                                @if($product->product_qty == 0)
+                                                <strong>This product is not in stock</strong>
+                                                @else
                                                 <button type="submit" class="button button-add-to-cart"
                                                     onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to
                                                     cart</button>
+                                                @endif
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                                 id="{{ $product->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
                                                 {{-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}

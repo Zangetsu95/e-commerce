@@ -37,7 +37,7 @@
                                             <div class="col-xl-10 col-lg-12 m-auto">
                                                 <div class="col-xl-10 col-lg-12 m-auto">
                                                     <p>
-                                                        <h1>Privacy Policy</h1>
+                                                        <h1>Support</h1>
                                                     </p>
                                                     <p>
                                                         Privacy Policy of shinsekaimanga

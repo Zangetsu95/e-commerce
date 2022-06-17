@@ -130,7 +130,9 @@
                 <div class="footer-link-widget col">
                     <h4 class="widget-title">Account</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="{{ route('login') }}">Sign In</a></li>
+                        @auth
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        @endauth
                         {{-- <li><a href="#">View Cart</a></li> --}}
                         <li><a href="{{ route('wishlist') }}">My Wishlist</a></li>
                         {{-- <li><a href="#">Track My Order</a></li>

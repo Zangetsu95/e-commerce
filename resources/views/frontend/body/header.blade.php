@@ -117,7 +117,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="page-about.htlm">About Us</a></li>
+                            <li><a href="{{ route('about') }}">About Us</a></li>
                             @auth
                                 <li><a href="{{ route('dashboard') }}">My Account</a></li>
                                 <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
@@ -131,9 +131,9 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>100% Secure delivery without contacting the courier</li>
+                                <li>The best place for anime fan</li>
                                 <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today</li>
+                                <li>use TFE code for 25% discount</li>
                             </ul>
                         </div>
                     </div>

@@ -140,7 +140,7 @@
                                 <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
                                 <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
                                 <li class="list-group-item">Stock
-                                    <span class="badge badge-pill badge-success" id="aviable"
+                                    <span class="badge badge-pill badge-success" id="available"
                                         style="background: green;color:white"></span>
                                     <span class="badge badge-pill badge-danger" id="stockout"
                                         style="background: red;color:white"></span>
@@ -165,7 +165,7 @@
                                 <input type="number" class="form-control" id="qty" value="1" min="1">
                             </div> <!-- // end form group -->
                             <input type="hidden" id="product_id">
-                            <button type="submit" class="btn btn-primary mb-3" onclick="addToCart()">Add to
+                            <button type="submit" class="btn btn-primary mb-3" id="buttonAddCart" onclick="addToCart()">Add to
                                 Cart</button>
                         </div><!-- // end col md -->
                     </div> <!-- // end row -->
@@ -228,14 +228,15 @@
 
                     /// STOCK \\\
                     if (data.product.product_qty > 0) {
-                        $('#aviable').text('');
+                        $('#available').text('');
                         $('#stockout').text('');
-                        $('#aviable').text('aviable');
-
+                        $('#available').text('available');
+                        $('#buttonAddCart').show();
                     } else {
-                        $('#aviable').text('');
+                        $('#available').text('');
                         $('#stockout').text('');
                         $('#stockout').text('stockout');
+                        $('#buttonAddCart').hide();
                     }
 
 
@@ -477,13 +478,20 @@
                                         `${(value.product.selling_price) - (value.product.discount_price)}€ <span class="text-danger">(${value.product.selling_price}€)</span>`
                                         }
                                     </td>
+                                    ${value.product.product_qty == 0
+                                        ?` <td class="text-center detail-info" data-title="Stock">
+                                        <span class="stock-status in-stock mb-0"></span>
+                                    </td>
+                                        <td class="text-right" data-title="Cart">
+                                        <strong>not in stock</strong>
+                                    </td>`
+                                    : `
                                     <td class="text-center detail-info" data-title="Stock">
                                         <span class="stock-status in-stock mb-0"> In Stock </span>
-                                    </td>
                                     <td class="text-right" data-title="Cart">
                                         <button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Add Cart" id="${value.product_id}" onclick="productView(this.id)">Add to cart</button>
-
-                                    </td>
+                                    </td>`
+                                    }
                                     <td class="action text-center" data-title="Remove">
                                         <a id="${value.id}" onclick="wishListRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a>
                                     </td>
