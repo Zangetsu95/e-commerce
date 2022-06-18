@@ -33,6 +33,14 @@ class ProductController extends Controller
         Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
         $save_url = 'upload/products/thambnail/' . $name_gen;
 
+        $request->validate([
+            'long_descp_en' => 'required|max:60',
+            'long_descp_fr' => 'required|max:60',
+        ],[
+            'long_descp_fr' => 'explain the product',
+            'long_descp_en' => 'explain the product',
+        ]);
+
         $product_id  = Product::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,

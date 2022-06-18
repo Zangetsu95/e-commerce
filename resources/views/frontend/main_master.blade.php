@@ -293,6 +293,7 @@
                     miniCart()
                     if ($("#closeModel").click()) {
                         $('#exampleModal').removeClass('show');
+                        window.location.reload();
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',

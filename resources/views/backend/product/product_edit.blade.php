@@ -501,7 +501,7 @@
                                         <div class="form-group">
                                             <label for="" class="form-control-label"> Change Image <span
                                                     class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" name="multi_img_add[]" multiple>
+                                            <input type="file" class="form-control" name="multi_img_add[]" multiple required="">
                                         </div>
                                         </p>
 
@@ -555,7 +555,7 @@
                                                 <label class="form-control-label">Change Image <span
                                                         class="tx-danger">*</span></label>
                                                 <input onchange="mainThamUrl(this)" class="form-control" type="file"
-                                                    name="product_thambnail">
+                                                    name="product_thambnail" required ="">
                                                 <img src="" id="mainThmb">
                                             </div>
                                             </p>

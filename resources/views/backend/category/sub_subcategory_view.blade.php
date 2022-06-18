@@ -49,7 +49,7 @@
                                         @foreach ($subSubCategory as $item)
                                             <tr>
                                                 <td>{{ $item->category->category_name_en }}</td>
-                                                <td>{{ $item->subCategory->subcategory_name_en }}</td>
+                                                <td>{{ $item->subCategory->subcategory_name_en ?? '' }}</td>
                                                 <td>{{ $item->subsubcategory_name_en }}</td>
                                                 <td>{{ $item->subsubcategory_name_fr }}</td>
                                                 <td>
