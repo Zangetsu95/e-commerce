@@ -262,7 +262,7 @@
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-user.svg') }}" />
                                 </a>
                                 @auth
-                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <a href="{{ route('login') }}"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <li><a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My
@@ -271,7 +271,7 @@
                                         </ul>
                                     </div>
                                 @else
-                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <a href="{{ route('login') }}"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <li><a href="{{ route('login') }}"><i
