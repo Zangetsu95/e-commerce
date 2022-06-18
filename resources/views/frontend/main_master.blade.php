@@ -581,13 +581,13 @@
                                         <div class="detail-extralink mr-15">
                                             <div class="detail-qty border radius">
                                                 ${value.qty >1
-                                                    ?`<a href="#" class="qty-down"><i class="fi-rs-angle-small-down"  id="${value.rowId}" onclick="cartDecrement(this.id)"></i></a>`
+                                                    ?`<a  class="qty-down"><i class="fi-rs-angle-small-down"  id="${value.rowId}" onclick="cartDecrement(this.id)"></i></a>`
 
-                                                    :`<a href="#" class="qty-down"><i class="fi-rs-angle-small-down" disabled=""></i></a>`
+                                                    :`<a  class="qty-down"><i class="fi-rs-angle-small-down" disabled=""></i></a>`
                                                 }
 
                                                 <span class="qty-val">${value.qty}</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up" id="${value.rowId}" onclick="cartIncrement(this.id)"></i></a>
+                                                <a  class="qty-up"><i class="fi-rs-angle-small-up" id="${value.rowId}" onclick="cartIncrement(this.id)"></i></a>
                                             </div>
                                         </div>
                                     </td>
