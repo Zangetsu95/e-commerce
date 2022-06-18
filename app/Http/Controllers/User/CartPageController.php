@@ -32,7 +32,7 @@ class CartPageController extends Controller
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
-            'cartTotal' => number_format($cartTotal,2),
+            'cartTotal' => $cartTotal,
         ));
     }
 
@@ -100,8 +100,8 @@ class CartPageController extends Controller
             Session::put('coupon', [
                 'coupon_name' => $coupon->coupon_name,
                 'coupon_discount' => $coupon->coupon_discount,
-                'discount_amount' => number_format(Cart::total() * $coupon->coupon_discount / 100,2),
-                'total_amount' => number_format(Cart::total() - Cart::total() * $coupon->coupon_discount / 100,2)
+                'discount_amount' => Cart::total() * $coupon->coupon_discount / 100,
+                'total_amount' => Cart::total() - Cart::total() * $coupon->coupon_discount / 100
             ]);
         }
 
