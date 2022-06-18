@@ -32,7 +32,7 @@ class CartPageController extends Controller
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
-            'cartTotal' => $cartTotal,
+            'cartTotal' => number_format($cartTotal,2),
         ));
     }
 
