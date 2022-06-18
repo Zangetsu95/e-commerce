@@ -372,7 +372,7 @@ $route = Route::current()->getName();
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        
+
                         <li class="{{ $route == 'all-reports' ? 'active' : '' }}"><a
                                 href="{{ route('all-reports') }}"><i class="ti-more"></i>All Reports</a></li>
                     </ul>
@@ -421,13 +421,13 @@ $route = Route::current()->getName();
 
     <div class="sidebar-footer">
         <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
+        {{-- <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
             data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
         <!-- item-->
         <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title=""
-            data-original-title="Email"><i class="ti-email"></i></a>
+            data-original-title="Email"><i class="ti-email"></i></a> --}}
         <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
-            data-original-title="Logout"><i class="ti-lock"></i></a>
+        {{-- <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
+            data-original-title="Logout"><i class="ti-lock"></i></a> --}}
     </div>
 </aside>

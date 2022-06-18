@@ -14,7 +14,7 @@
                         <i class="nav-link-icon mdi mdi-crop-free"></i>
                     </a>
                 </li>
-                <li class="btn-group nav-item d-none d-xl-inline-block">
+                {{-- <li class="btn-group nav-item d-none d-xl-inline-block">
                     <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
                         <i class="ti-check-box"></i>
                     </a>
@@ -23,20 +23,20 @@
                     <a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
                         <i class="ti-calendar"></i>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
 
         <div class="navbar-custom-menu r-side">
             <ul class="nav navbar-nav">
                 <!-- full Screen -->
-                <li class="search-bar">
+                {{-- <li class="search-bar">
                     <div class="lookup lookup-circle lookup-right">
                         <input type="text" name="s">
                     </div>
-                </li>
+                </li> --}}
                 <!-- Notifications -->
-                <li class="dropdown notifications-menu">
+                {{-- <li class="dropdown notifications-menu">
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
                         <i class="ti-bell"></i>
                     </a>
@@ -99,13 +99,13 @@
                             <a href="#">View all</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
 
                 @php
 
                 $adminData = DB::table('admins')->first();
-                
+
                 @endphp
 
                 <!-- User Account-->
@@ -123,11 +123,11 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
                         <i class="ti-settings"></i>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </div>
