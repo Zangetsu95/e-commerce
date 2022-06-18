@@ -306,6 +306,16 @@ Route::prefix('reports')->group(function () {
     Route::post('/view', [ReportController::class, 'ReportYear'])->name('search-year');
 });
 
+/* Admin RETURN */
+Route::prefix('return')->group(function(){
+
+    Route::get('/admin/request', [ReturnController::class, 'ReturnRequest'])->name('return.request');
+
+    Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnRequestApprove'])->name('return.approve');
+
+    Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all.request');
+
+    });
 
 /* ADMIN GET ALL USERS */
 Route::prefix('allusers')->group(function () {

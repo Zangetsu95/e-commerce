@@ -372,6 +372,7 @@ $route = Route::current()->getName();
                         </span>
                     </a>
                     <ul class="treeview-menu">
+                        
                         <li class="{{ $route == 'all-reports' ? 'active' : '' }}"><a
                                 href="{{ route('all-reports') }}"><i class="ti-more"></i>All Reports</a></li>
                     </ul>
