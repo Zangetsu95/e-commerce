@@ -290,9 +290,9 @@ ShinSekai Manga World
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
-                                        <div class="deals-countdown-wrap">
+                                        {{-- <div class="deals-countdown-wrap">
                                             <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
-                                        </div>
+                                        </div> --}}
                                         <div class="deals-content">
                                             <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                 @if (session()->get('language') == 'french')
@@ -369,9 +369,9 @@ ShinSekai Manga World
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
-                                        <div class="deals-countdown-wrap">
+                                        {{-- <div class="deals-countdown-wrap">
                                             <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
-                                        </div>
+                                        </div> --}}
                                         <div class="deals-content">
                                             <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                 @if (session()->get('language') == 'french')
