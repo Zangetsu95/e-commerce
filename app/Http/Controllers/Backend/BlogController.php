@@ -214,7 +214,12 @@ class BlogController extends Controller
         $blogPost_id = $request->id;
 
         $request->validate([
+            'post_details_fr' => 'required|max:60',
+            'post_details_en' => 'required|max:60',
             'post_image' => 'required',
+        ],[
+            'long_descp_fr' => 'explain the product',
+            'post_details_en' => 'explain the product',
         ]);
         /* Updating the blog category. */
         BlogPost::findOrFail($blogPost_id)->update([
