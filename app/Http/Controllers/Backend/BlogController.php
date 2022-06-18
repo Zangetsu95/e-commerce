@@ -213,7 +213,9 @@ class BlogController extends Controller
         /* Getting the id from the request object. */
         $blogPost_id = $request->id;
 
-
+        $request->validate([
+            'post_image' => 'required',
+        ]);
         /* Updating the blog category. */
         BlogPost::findOrFail($blogPost_id)->update([
             'post_title_en' => $request->post_title_en,
