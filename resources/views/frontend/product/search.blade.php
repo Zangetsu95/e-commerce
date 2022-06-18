@@ -125,8 +125,8 @@
                                         <span class="old-price">{{ $product->selling_price }}€</span>
                                     </div>
 
-                                    <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i
+                                    <div class="add-cart" <div class="add-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"  >
+                                        <a class="add"><i
                                             class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                     @endif
