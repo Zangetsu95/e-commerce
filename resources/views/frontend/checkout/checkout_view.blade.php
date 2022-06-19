@@ -160,6 +160,10 @@
                                     <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
                                         data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                                 </div>
+                                <div ">
+                                    <input class="form-check-input" type="checkbox" required>
+                                    <label for="vehicle1"> I accept the general <a href="{{ route('conditions') }}" target="blank" >conditions</a></label><br>
+                                </div>
                                 {{-- <div class="custome-radio">
                                     <input class="form-check-input" required="" value="cash" type="radio" name="payment_option"
                                         id="exampleRadios4" checked="">
@@ -179,6 +183,7 @@
                                 <img class="mr-15" src="" alt="">
                                 <img src="assets/imgs/theme/icons/payment-zapper.svg" alt="">
                             </div>
+
                             <button type="submit" class="btn btn-fill-out btn-block mt-30">Place an Order<i
                                     class="fi-rs-sign-out ml-15"></i></button>
                         </div>
