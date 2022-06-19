@@ -465,12 +465,7 @@
                                             alt="#" /></td>§
                                     <td class="product-des product-name">
                                         <h6><a class="product-name mb-10" href="">${value.product.product_name_en}</a></h6>
-                                        <div class="product-rate-cover">
-                                            <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
-                                            </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                        </div>
+
                                     </td>
                                     <td class="price" data-title="Price">
                                         ${value.product.discount_price == null
@@ -567,13 +562,6 @@
                                             :``
                                         }</a>
                                         </h6>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:90%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                    </div>
                                 <td class="price" data-title="Price">
                                    ${value.price}€
                                 </td>

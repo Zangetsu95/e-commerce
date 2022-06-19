@@ -479,7 +479,7 @@ ShinSekai Manga World
             <div class="container">
                 <div class="section-title">
                     <div class="title">
-                        <h3>Shop by Categories.. Coming soon</h3>
+                        {{-- <h3>Shop by Categories.. Coming soon</h3> --}}
                         {{-- <a class="show-all" href="shop-grid-right.html">
                             All Categories
                             <i class="fi-rs-angle-right"></i>
