@@ -47,10 +47,10 @@ Cart Page
                     </table>
                 </div>
                 <div class="divider-2 mb-30"></div>
-                <div class="cart-action d-flex justify-content-between">
+                {{-- <div class="cart-action d-flex justify-content-between">
                     <a class="btn "><i class="fi-rs-arrow-left mr-10"></i>Continue Shopping</a>
-                    {{-- <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-refresh mr-10"></i>Update Cart</a> --}}
-                </div>
+                    <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-refresh mr-10"></i>Update Cart</a>
+                </div> --}}
                 <div class="row mt-50">
                     {{-- <div class="col-lg-7">
                         <div class="calculate-shiping p-40 border-radius-15 border">
